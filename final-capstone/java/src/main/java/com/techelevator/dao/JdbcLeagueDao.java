@@ -71,7 +71,6 @@ public class JdbcLeagueDao implements LeagueDao {
         league.setLeagueName(results.getString("league_name"));
         league.setCourseName(results.getString("league_course"));
         league.setDayOfWeek(results.getString("day_of_week"));
-        league.isActive(true);
         return league;
     }
 }

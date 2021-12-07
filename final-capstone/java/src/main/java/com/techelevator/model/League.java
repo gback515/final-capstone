@@ -14,7 +14,9 @@ public class League {
     private Boolean active;
 
 
-    public League() {}
+    public League() {
+        this.active = true;
+    }
     public League(String leagueName, String courseName, String leagueAdmin, String dayOfWeek) {
         this.leagueName = leagueName;
         this.courseName = courseName;
