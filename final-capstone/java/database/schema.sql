@@ -49,7 +49,7 @@ CREATE TABLE leagues (
     league_admin int NOT NULL,
     league_course int NOT NULL,
     day_of_week varchar(20),
-    isActive boolean DEFAULT true,
+    active boolean DEFAULT true,
     CONSTRAINT PK_league PRIMARY KEY (league_id),
     CONSTRAINT FK_leagues_league_course FOREIGN KEY(league_course) REFERENCES courses(course_id),
     CONSTRAINT FK_league_league_admin FOREIGN KEY(league_admin) REFERENCES users(user_id)

@@ -14,5 +14,5 @@ public interface LeagueDao {
 
     int findIdByLeagueName(String leagueName);
 
-    League create(String leagueName, String leagueAdmin, String courseName, String dayOfWeek);
+    League create(String leagueName, Long leagueAdmin, String courseName, String dayOfWeek);
 }

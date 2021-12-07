@@ -56,7 +56,7 @@ public class JdbcLeagueDao implements LeagueDao {
     }
 
     @Override
-    public League create(String leagueName, String leagueAdmin, String courseName, String dayOfWeek) {
+    public League create(String leagueName, Long leagueAdmin, String courseName, String dayOfWeek) {
         League league = new League(leagueName, leagueAdmin, courseName, dayOfWeek);
         String sql = "INSERT INTO leagues (league_name, league_admin, league_course, day_of_week) VALUES(?,?,?,?) RETURNING league_id;";
         long newLeagueId = jdbcTemplate.update(sql, leagueName, leagueAdmin, courseName, dayOfWeek);
@@ -67,7 +67,7 @@ public class JdbcLeagueDao implements LeagueDao {
     private League mapRowToLeague(SqlRowSet results) {
         League league = new League();
         league.setId(results.getLong("league_id"));
-        league.setLeagueAdmin(results.getString("league_admin"));
+        league.setLeagueAdmin(results.getLong("league_admin"));
         league.setLeagueName(results.getString("league_name"));
         league.setCourseName(results.getString("league_course"));
         league.setDayOfWeek(results.getString("day_of_week"));

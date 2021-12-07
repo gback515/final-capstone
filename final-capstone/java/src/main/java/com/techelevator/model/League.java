@@ -8,7 +8,7 @@ public class League {
     private Long id;
     private String leagueName;
     private String courseName;
-    private String leagueAdmin;
+    private Long leagueAdmin;
     private String dayOfWeek;
     private List<LeagueMemberDTO> leagueMembers;
     private Boolean active;
@@ -17,14 +17,14 @@ public class League {
     public League() {
         this.active = true;
     }
-    public League(String leagueName, String courseName, String leagueAdmin, String dayOfWeek) {
+    public League(String leagueName, Long leagueAdmin, String courseName, String dayOfWeek) {
         this.leagueName = leagueName;
         this.courseName = courseName;
         this.leagueAdmin = leagueAdmin;
         this.dayOfWeek = dayOfWeek;
         this.active = true;
     }
-    public League(Long id, String leagueName, String courseName, String leagueAdmin, String dayOfWeek) {
+    public League(Long id, String leagueName, Long leagueAdmin, String courseName, String dayOfWeek) {
         this.id = id;
         this.leagueName = leagueName;
         this.courseName = courseName;
@@ -58,11 +58,11 @@ public class League {
         this.courseName = courseName;
     }
 
-    public String getLeagueAdmin() {
+    public Long getLeagueAdmin() {
         return leagueAdmin;
     }
 
-    public void setLeagueAdmin(String leagueAdmin) {
+    public void setLeagueAdmin(Long leagueAdmin) {
         this.leagueAdmin = leagueAdmin;
     }
 
