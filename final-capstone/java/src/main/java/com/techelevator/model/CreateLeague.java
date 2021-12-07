@@ -7,16 +7,19 @@ public class CreateLeague {
     private String password;
     private String courseName;
     private Long numberOfPlayers;
+    private String playerName;
     private Boolean created;
 
 
     public CreateLeague() {}
-    public CreateLeague(Long id, String username, String password, String courseName, Long numberOfPlayers) {
+    public CreateLeague(Long id, String username, String password, String courseName, Long numberOfPlayers, String playerName) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.courseName = courseName;
         this.numberOfPlayers = numberOfPlayers;
+        this.playerName = playerName;
+
         this.created = true;
     }
 
@@ -59,6 +62,14 @@ public class CreateLeague {
 
     public void setNumberOfPlayers(Long numberOfPlayers) {
         this.numberOfPlayers = numberOfPlayers;
+    }
+
+    public String getPlayerName() {
+        return playerName;
+    }
+
+    public void setPlayerName(String playerName) {
+        this.playerName = playerName;
     }
 
     public Boolean getCreated() {
