@@ -1,6 +1,8 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.User;
+import com.techelevator.model.League;
+
+import java.util.List;
 
 public interface LeagueDao {
 
@@ -12,5 +14,5 @@ public interface LeagueDao {
 
     int findIdByLeagueName(String leagueName);
 
-    League create(String leagueName, String leagueCourse);
+    League create(String leagueName, String leagueAdmin, String courseName, String dayOfWeek);
 }

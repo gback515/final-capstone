@@ -23,6 +23,7 @@ public class User {
       this.username = username;
       this.password = password;
       this.activated = true;
+      setAuthorities(authorities);
    }
 
    public Long getId() {

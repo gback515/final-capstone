@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.League;
+import com.techelevator.model.LeagueNameAlreadyExistsException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Service;
@@ -45,29 +46,31 @@ public class JdbcLeagueDao implements LeagueDao {
     }
 
     @Override
-    public League findByLeagueName(String leagueName) throws LeageNameNotFoundException {
+    public League findByLeagueName(String leagueName) throws LeagueNameAlreadyExistsException {
         for (League league : this.findAll()) {
-            if (leage.getLeageName().toLowerCase().equals(leagueName.toLowerCase())) {
+            if (league.getLeagueName().toLowerCase().equals(leagueName.toLowerCase())) {
                 return league;
             }
         }
-        throw new LeageNameNotFoundException("League " + leagueName + " was not found.");
+        throw new LeagueNameAlreadyExistsException();
     }
 
     @Override
-    public League create(String leagueName, String leagueCourse) {
-        League league = new League(leagueName, leagueCourse);
-        String sql = "INSERT INTO leagues (league_name, league_course) VALUES(?,?) RETURNING league_id;";
-        int newLeagueId = jdbcTemplate.update(sql, leagueName, leagueCourse);
-        league.setLeagueId(newLeagueId);
+    public League create(String leagueName, String leagueAdmin, String courseName, String dayOfWeek) {
+        League league = new League(leagueName, leagueAdmin, courseName, dayOfWeek);
+        String sql = "INSERT INTO leagues (league_name, league_admin, league_course, day_of_week) VALUES(?,?,?,?) RETURNING league_id;";
+        long newLeagueId = jdbcTemplate.update(sql, leagueName, courseName);
+        league.setId(newLeagueId);
         return league;
     }
 
     private League mapRowToLeague(SqlRowSet results) {
         League league = new League();
-        user.setId(results.getLong("user_id"));
-        user.setLeagueName(results.getString("league_name"));
-        user.setLeagueCourse(results.getString("league_course"));
+        league.setId(results.getLong("league_id"));
+        league.setLeagueAdmin(results.getString("league_admin"));
+        league.setLeagueName(results.getString("league_name"));
+        league.setCourseName(results.getString("league_course"));
+        league.setDayOfWeek(results.getString("day_of_week"));
         return league;
     }
 }
