@@ -19,9 +19,7 @@ public class League {
     private Boolean active;
 
 
-    public League() {
-        this.active = true;
-    }
+    public League() {}
     public League(String leagueName, Long leagueAdmin, Long leagueCourse, String dayOfWeek) {
         this.leagueName = leagueName;
         this.leagueCourse = leagueCourse;

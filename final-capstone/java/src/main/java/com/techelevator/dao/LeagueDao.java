@@ -8,6 +8,8 @@ public interface LeagueDao {
 
     List<League> findAll();
 
+    List<League> findLeaguesByUser(long userId);
+
     League getLeagueById(Long leagueId);
 
     League findByLeagueName(String leagueName);
