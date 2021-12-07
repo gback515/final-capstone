@@ -69,7 +69,7 @@ public class JdbcLeagueDao implements LeagueDao {
         league.setId(results.getLong("league_id"));
         league.setLeagueAdmin(results.getLong("league_admin"));
         league.setLeagueName(results.getString("league_name"));
-        league.setCourseName(results.getString("league_course"));
+        league.setLeagueCourse(results.getString("league_course"));
         league.setDayOfWeek(results.getString("day_of_week"));
         return league;
     }

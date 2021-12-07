@@ -1,13 +1,12 @@
 package com.techelevator.model;
 
 import java.util.List;
-import java.util.Set;
 
 public class League {
 
     private Long id;
     private String leagueName;
-    private String courseName;
+    private String leagueCourse;
     private Long leagueAdmin;
     private String dayOfWeek;
     private List<LeagueMemberDTO> leagueMembers;
@@ -17,17 +16,17 @@ public class League {
     public League() {
         this.active = true;
     }
-    public League(String leagueName, Long leagueAdmin, String courseName, String dayOfWeek) {
+    public League(String leagueName, Long leagueAdmin, String leagueCourse, String dayOfWeek) {
         this.leagueName = leagueName;
-        this.courseName = courseName;
+        this.leagueCourse = leagueCourse;
         this.leagueAdmin = leagueAdmin;
         this.dayOfWeek = dayOfWeek;
         this.active = true;
     }
-    public League(Long id, String leagueName, Long leagueAdmin, String courseName, String dayOfWeek) {
+    public League(Long id, String leagueName, Long leagueAdmin, String leagueCourse, String dayOfWeek) {
         this.id = id;
         this.leagueName = leagueName;
-        this.courseName = courseName;
+        this.leagueCourse = leagueCourse;
         this.leagueAdmin = leagueAdmin;
         this.dayOfWeek = dayOfWeek;
         this.active = true;
@@ -50,12 +49,12 @@ public class League {
         this.leagueName = leagueName;
     }
 
-    public String getCourseName() {
-        return courseName;
+    public String getLeagueCourse() {
+        return leagueCourse;
     }
 
-    public void setCourseName(String courseName) {
-        this.courseName = courseName;
+    public void setLeagueCourse(String leagueCourse) {
+        this.leagueCourse = leagueCourse;
     }
 
     public Long getLeagueAdmin() {
