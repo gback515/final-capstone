@@ -59,7 +59,7 @@ public class JdbcLeagueDao implements LeagueDao {
     public League create(String leagueName, Long leagueAdmin, String courseName, String dayOfWeek) {
         League league = new League(leagueName, leagueAdmin, courseName, dayOfWeek);
         String sql = "INSERT INTO leagues (league_name, league_admin, league_course, day_of_week) VALUES(?,?,?,?) RETURNING league_id;";
-        long newLeagueId = jdbcTemplate.update(sql, leagueName, leagueAdmin, courseName, dayOfWeek);
+        Long newLeagueId = jdbcTemplate.queryForObject(sql, Long.class, leagueName, leagueAdmin, courseName, dayOfWeek);
         league.setId(newLeagueId);
         return league;
     }

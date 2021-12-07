@@ -93,7 +93,7 @@ public class League {
     public void setLeagueMembers(String leagueMembers) {
         String[] members = leagueMembers.split(",");
         for(String member : members)
-            this.leagueMembers.add(new LeagueMemberDTO(member));
+            this.leagueMembers.add(new LeagueMemberDTO(Long.parseLong(member)));
         }
     }
 

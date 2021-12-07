@@ -1,19 +1,19 @@
 package com.techelevator.model;
 
 public class LeagueMemberDTO {
-    private String username;
+    private Long userId;
 
     public LeagueMemberDTO() {}
 
-    public LeagueMemberDTO(String username) {
-        this.username = username;
+    public LeagueMemberDTO(Long userId) {
+        this.userId = userId;
     }
 
-    public String getUsername() {
-        return username;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }
