@@ -1,14 +1,14 @@
 import axios from 'axios';
 
-const http = axios.create({
-    baseURL: "http://localhost:8081"
-});
-
 export default {
 
     addLeague(newLeague) {
-        return http.post('/create-league', newLeague);
+        return axios.post('/create-league', newLeague);
     },
 
+    getMyLeagues(userId) {
+        return axios.get(`/my-leagues/${userId}`)
+    },
 
+    
 }

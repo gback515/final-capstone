@@ -5,8 +5,9 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
-import CreateLeague from '../components/CreateLeague'
-import League from '../components/League'
+import League from '../views/League'
+import LeagueDetails from '../views/LeagueDetails'
+import LeagueForm from '../components/LeagueForm'
 
 Vue.use(Router)
 
@@ -56,21 +57,29 @@ const router = new Router({
       }
     },
     {
-      path: "/create-league",
-      name: "create-league",
-      component: CreateLeague,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: "/league/leagueId",
-      name: "league",
+      path: "/my-leagues",
+      name: "my-leagues",
       component: League,
       meta: {
         requiresAuth: true
       }
     },
+    {
+      path: "/create-league",
+      name: "create-league",
+      component: LeagueForm,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/league/:leagueId",
+      name: "league-details",
+      component: LeagueDetails,
+      meta: {
+        requiresAuth: true
+      }
+    }
   ]
 })
 

@@ -1,10 +1,48 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
-      <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout | </router-link>
-      <router-link v-bind:to="{ name: 'create-league' }">Create New League</router-link>
+      <img id="golf-ball" src="@/assets/golf-ball-logo.png" />
+      <router-link style="text-decoration: none; color: inherit" v-bind:to="{ name: 'home' }">Home</router-link>
+      <router-link style="text-decoration: none; color: inherit" v-bind:to="{ name: 'create-league' }">Create New League</router-link>
+      <router-link style="text-decoration: none; color: inherit" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
     </div>
     <router-view />
   </div>
 </template>
+
+<script>
+export default {
+  name: 'App'
+}
+</script>
+
+<style>
+#app {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  background: url(assets/golf-background.jpg) left / cover no-repeat;
+  width: auto;
+  display: flex;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+#nav {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 17%;
+  background-color: rgba(31, 219, 72, 0.925);
+  align-items: center;
+  padding-top: 10px;
+}
+#golf-ball {
+  max-width: 100%;
+  height: auto;
+}
+.router-link:hover {
+  color: grey;
+}
+.router-link-active {
+  font-weight: bold;
+}
+</style>
