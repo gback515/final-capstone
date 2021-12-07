@@ -40,10 +40,10 @@ public class LeagueController {
     @RequestMapping(value = "/create-league", method = RequestMethod.POST)
     public void createLeague(@Valid @RequestBody League newLeague) {
         try {
-            League league = leagueDao.create(newLeague.getLeagueName(), newLeague.getLeagueAdmin(), newLeague.getCourseName(), newLeague.getDayOfWeek());
+            League league = leagueDao.create(newLeague.getLeagueName(), newLeague.getLeagueAdmin(), newLeague.getLeagueCourse(), newLeague.getDayOfWeek());
             throw new LeagueNameAlreadyExistsException();
         } catch (LeagueNameAlreadyExistsException e) {
-            leagueDao.create(newLeague.getLeagueName(), newLeague.getLeagueAdmin(), newLeague.getCourseName(), newLeague.getDayOfWeek());
+            leagueDao.create(newLeague.getLeagueName(), newLeague.getLeagueAdmin(), newLeague.getLeagueCourse(), newLeague.getDayOfWeek());
         }
     }
 }
