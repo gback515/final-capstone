@@ -14,7 +14,9 @@ public class League {
     private Boolean active;
 
 
-    public League() {}
+    public League() {
+        this.active = true;
+    }
     public League(String leagueName, String courseName, String leagueAdmin, String dayOfWeek) {
         this.leagueName = leagueName;
         this.courseName = courseName;
@@ -78,6 +80,10 @@ public class League {
 
     public Boolean getActive() {
         return active;
+    }
+
+    public void isActive(boolean active) {
+        this.active = active;
     }
 
     public void setLeagueMembers(List<LeagueMemberDTO> leagueMembers) {
