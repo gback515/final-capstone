@@ -19,7 +19,7 @@ public class LeagueController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(value = "/league/create", method = RequestMethod.POST)
+    @RequestMapping(value = "/create-league", method = RequestMethod.POST)
     public void createLeague(@Valid @RequestBody League newLeague) {
         try {
             League league = leagueDao.findByLeagueName(newLeague.getLeagueName());
