@@ -80,6 +80,9 @@ CREATE TABLE scores (
 INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
 
+INSERT INTO courses (course_id, course_name, coordinate) VALUES (0, 'Top Golf', '92.945872364 89.23718094');
+INSERT INTO leagues (league_id, league_name, league_admin, league_course, day_of_week, active) VALUES (0, 'Test', 1, 0, 'Friday', true);
+
 
 COMMIT TRANSACTION;
 
