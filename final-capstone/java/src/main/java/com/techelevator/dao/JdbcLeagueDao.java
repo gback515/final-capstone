@@ -24,7 +24,7 @@ public class JdbcLeagueDao implements LeagueDao {
 
     @Override
     public League getLeagueById(Long leagueId) {
-        String sql = "SELECT * FROM leagues WHERE league_id = ?;";
+        String sql = "SELECT league_id, league_name, league_admin, league_course, day_of_week FROM leagues WHERE league_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, leagueId);
         if (results.next()) {
             return mapRowToLeague(results);
@@ -36,7 +36,7 @@ public class JdbcLeagueDao implements LeagueDao {
     @Override
     public List<League> findAll() {
         List<League> leagues = new ArrayList<League>();
-        String sql = "SELECT * FROM leagues;";
+        String sql = "SELECT league_id, league_name, league_admin, league_course, day_of_week FROM leagues;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
             League league = mapRowToLeague(results);
@@ -48,7 +48,7 @@ public class JdbcLeagueDao implements LeagueDao {
     @Override
     public League findByLeagueName(String leagueName) throws LeagueNameAlreadyExistsException {
         for (League league : this.findAll()) {
-            if (league.getLeagueName().toLowerCase().equals(leagueName.toLowerCase())) {
+            if (league.getLeagueName().equalsIgnoreCase(leagueName)) {
                 return league;
             }
         }
@@ -59,7 +59,7 @@ public class JdbcLeagueDao implements LeagueDao {
     public League create(String leagueName, String leagueAdmin, String courseName, String dayOfWeek) {
         League league = new League(leagueName, leagueAdmin, courseName, dayOfWeek);
         String sql = "INSERT INTO leagues (league_name, league_admin, league_course, day_of_week) VALUES(?,?,?,?) RETURNING league_id;";
-        long newLeagueId = jdbcTemplate.update(sql, leagueName, courseName);
+        long newLeagueId = jdbcTemplate.update(sql, leagueName, leagueAdmin, courseName, dayOfWeek);
         league.setId(newLeagueId);
         return league;
     }
