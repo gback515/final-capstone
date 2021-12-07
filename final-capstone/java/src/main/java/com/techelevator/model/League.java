@@ -80,6 +80,10 @@ public class League {
         return active;
     }
 
+    public void isActive(boolean active) {
+        this.active = active;
+    }
+
     public void setLeagueMembers(List<LeagueMemberDTO> leagueMembers) {
         this.leagueMembers = leagueMembers;
     }
