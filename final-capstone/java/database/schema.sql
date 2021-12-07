@@ -82,6 +82,8 @@ INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpUL
 
 INSERT INTO courses (course_id, course_name, coordinate) VALUES (0, 'Top Golf', '92.945872364 89.23718094');
 INSERT INTO leagues (league_id, league_name, league_admin, league_course, day_of_week, active) VALUES (0, 'Test', 1, 0, 'Friday', true);
+INSERT INTO user_league (user_id, league_id) VALUES (1,0);
+
 
 
 COMMIT TRANSACTION;
