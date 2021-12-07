@@ -1,29 +1,17 @@
 <template>
   <form v-on:submit.prevent="submitLeague" class="league-form">
       <div class="form-group">
-          <label for="name">League Name</label>
+          <label for="name">League Name </label>
           <input id="name" type="text" class="form-control" v-model="league.name" autocomplete="off" />
       </div>
       <div class="form-group">
-          <label for="home-course">Home Course</label>
-          <select id="home-course" class="form-control" v-model="league.homeCourse">
+          <label for="league-course">Home Course </label>
+          <select id="league-course" class="form-control" v-model="league.homeCourse">
               <option value="Course List">Add Course List Here</option>
           </select>
       </div>
       <div class="form-group">
-          <label for="number-of-games">Number of Games</label>
-          <input id="number-of-games" class="form-control" type="number" name="number-of-games" v-model="league.numberOfGames" />
-      </div>
-      <div class="form-group">
-        <label for="number-of-teams">Number of Teams</label>
-        <input id="number-of-teams" class="form-control" type="number" name="number-of-teams" v-model="league.numberOfTeams" />
-      </div>
-      <div class="form-group">
-        <label for="players-per-team">Players Per Team</label>
-        <input id="players-per-team" class="form-control" type="number" name="players-per-team" min="1" max="4" v-model="league.playersPerTeam" />
-      </div>
-      <div class="form-group">
-        <label for="day-of-week">Day of the Week to Play on</label>
+        <label for="day-of-week">Day of the Week to Play </label>
         <select id="day-of-week" class="form-control" name="day-of-week" v-model="league.dayOfWeekToPlay">
           <option value="Sunday">Sunday</option>
           <option value="Monday">Monday</option>
@@ -33,10 +21,6 @@
           <option value="Friday">Friday</option>
           <option value="Saturday">Saturday</option>
         </select>
-      </div>
-      <div class="form-group">
-        <label for="length-of-league">Length of League in Weeks</label>
-        <input id="length-of-league" class="form-control" type="number" name="length-of-league">
       </div>
       <button class="btn btn-submit">Submit</button>
       <button class="btn btn-cancel" v-on:click.prevent="cancelForm" type="cancel">Cancel</button>
@@ -57,13 +41,10 @@ export default {
     return {
       league: {
         name: "",
-        homeCourse: "",
-        numberOfGames: "",
-        numberOfTeams: "",
-        playersPerTeam: "",
+        leagueAdministrator: "",
+        leagueCourse: "",
         dayOfWeekToPlay: "",
-        lengthOfLeague: "",
-        members: [""],
+        members: [],
       },
     };
   },
@@ -72,11 +53,7 @@ export default {
       const newLeague = {
         name: this.league.name,
         homeCourse: this.league.homeCourse,
-        numberOfGames: this.league.numberOfGames,
-        numberOfTeams: this.league.numberOfTeams,
-        playersPerTeam: this.league.playersPerTeam,
         dayOfWeekToPlay: this.league.dayOfWeekToPlay,
-        lengthOfLeague: this.league.lengthOfLeague,
         members: this.league.members,
       };
       if (this.leagueId === 0) {
@@ -100,4 +77,13 @@ export default {
 </script>
 
 <style>
+.league-form {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.form-group {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
 </style>
