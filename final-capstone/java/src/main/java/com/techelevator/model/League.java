@@ -1,13 +1,19 @@
 package com.techelevator.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
 public class League {
 
     private Long id;
+    @JsonProperty("league_name")
     private String leagueName;
-    private String leagueCourse;
+    @JsonProperty("league_course")
+    private Long leagueCourse;
+    @JsonProperty("league_admin")
     private Long leagueAdmin;
+    @JsonProperty("day_of_week")
     private String dayOfWeek;
     private List<LeagueMemberDTO> leagueMembers;
     private Boolean active;
@@ -16,14 +22,14 @@ public class League {
     public League() {
         this.active = true;
     }
-    public League(String leagueName, Long leagueAdmin, String leagueCourse, String dayOfWeek) {
+    public League(String leagueName, Long leagueAdmin, Long leagueCourse, String dayOfWeek) {
         this.leagueName = leagueName;
         this.leagueCourse = leagueCourse;
         this.leagueAdmin = leagueAdmin;
         this.dayOfWeek = dayOfWeek;
         this.active = true;
     }
-    public League(Long id, String leagueName, Long leagueAdmin, String leagueCourse, String dayOfWeek) {
+    public League(Long id, String leagueName, Long leagueAdmin, Long leagueCourse, String dayOfWeek) {
         this.id = id;
         this.leagueName = leagueName;
         this.leagueCourse = leagueCourse;
@@ -49,11 +55,11 @@ public class League {
         this.leagueName = leagueName;
     }
 
-    public String getLeagueCourse() {
+    public Long getLeagueCourse() {
         return leagueCourse;
     }
 
-    public void setLeagueCourse(String leagueCourse) {
+    public void setLeagueCourse(Long leagueCourse) {
         this.leagueCourse = leagueCourse;
     }
 
