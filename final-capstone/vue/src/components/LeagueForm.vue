@@ -1,29 +1,50 @@
 <template>
   <form v-on:submit.prevent="submitLeague" class="league-form">
-      <div class="form-group">
-          <label for="name">League Name </label>
-          <input id="name" type="text" class="form-control" v-model="league.name" autocomplete="off" />
-      </div>
-      <div class="form-group">
-          <label for="league-course">Home Course </label>
-          <select id="league-course" class="form-control" v-model="league.homeCourse">
-              <option value="Course List">Add Course List Here</option>
-          </select>
-      </div>
-      <div class="form-group">
-        <label for="day-of-week">Day of the Week to Play </label>
-        <select id="day-of-week" class="form-control" name="day-of-week" v-model="league.dayOfWeekToPlay">
-          <option value="Sunday">Sunday</option>
-          <option value="Monday">Monday</option>
-          <option value="Tuesday">Tuesday</option>
-          <option value="Wednesday">Wednesday</option>
-          <option value="Thursday">Thursday</option>
-          <option value="Friday">Friday</option>
-          <option value="Saturday">Saturday</option>
-        </select>
-      </div>
-      <button class="btn btn-submit">Submit</button>
-      <button class="btn btn-cancel" v-on:click.prevent="cancelForm" type="cancel">Cancel</button>
+    <div class="form-group">
+      <label for="name">League Name </label>
+      <input
+        id="name"
+        type="text"
+        class="form-control"
+        v-model="league.name"
+        autocomplete="off"
+      />
+    </div>
+    <div class="form-group">
+      <label for="league-course">Home Course </label>
+      <select
+        id="league-course"
+        class="form-control"
+        v-model="league.homeCourse"
+      >
+        <option value="Course List">Add Course List Here</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="day-of-week">Day of the Week to Play </label>
+      <select
+        id="day-of-week"
+        class="form-control"
+        name="day-of-week"
+        v-model="league.dayOfWeekToPlay"
+      >
+        <option value="Sunday">Sunday</option>
+        <option value="Monday">Monday</option>
+        <option value="Tuesday">Tuesday</option>
+        <option value="Wednesday">Wednesday</option>
+        <option value="Thursday">Thursday</option>
+        <option value="Friday">Friday</option>
+        <option value="Saturday">Saturday</option>
+      </select>
+    </div>
+    <button class="btn btn-submit">Submit</button>
+    <button
+      class="btn btn-cancel"
+      v-on:click.prevent="cancelForm"
+      type="cancel"
+    >
+      Cancel
+    </button>
   </form>
 </template>
 
@@ -70,14 +91,14 @@ export default {
       }
     },
     cancelForm() {
-        this.$router.push('/')
-    }
+      this.$router.push("/");
+    },
   },
 };
 </script>
 
 <style>
-.league-form {
+/* .league-form {
   padding: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -85,5 +106,5 @@ export default {
 .form-group {
   margin-bottom: 10px;
   margin-top: 10px;
-}
+} */
 </style>
