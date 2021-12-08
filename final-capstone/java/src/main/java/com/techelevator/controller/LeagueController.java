@@ -38,7 +38,6 @@ public class LeagueController {
     public void createLeague(@Valid @RequestBody League newLeague) {
         try {
             League league = leagueDao.create(newLeague.getLeagueName(), newLeague.getLeagueAdmin(), newLeague.getLeagueCourse(), newLeague.getDayOfWeek());
-            throw new LeagueNameAlreadyExistsException();
         } catch (LeagueNameAlreadyExistsException e) {
             leagueDao.create(newLeague.getLeagueName(), newLeague.getLeagueAdmin(), newLeague.getLeagueCourse(), newLeague.getDayOfWeek());
         }
