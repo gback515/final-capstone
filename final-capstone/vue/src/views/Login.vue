@@ -105,13 +105,18 @@ export default {
   grid-area: submit-ga;
 }
 .form-signin {
+  width: 50%;
+  font-size: 1.5rem;
+  justify-content: center;
   display: grid;
-  margin-top: 50px;
-  margin-right: 450px;
+  width: auto;
+  margin-top: 30%;
+  display:inline;
   grid-template-areas:
     "header-ga   header-ga"
     "u-label-ga  username-ga"
     "p-label-ga  password-ga"
-    "submit-ga   create-ga";
+    "submit-ga   submit-ga"
+    "create-ga   create-ga";
 }
 </style>

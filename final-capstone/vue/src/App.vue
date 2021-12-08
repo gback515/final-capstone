@@ -46,7 +46,7 @@ export default {
   background: url(assets/golf-background.jpg) left / cover no-repeat;
   width: auto;
   display: flex;
-  justify-content: space-between;
+  justify-content:flex-start;
   height: 100vh;
   overflow: hidden;
   margin: 0px;
@@ -66,10 +66,8 @@ body {
   max-width: 100%;
   height: auto;
 }
-.link:hover {
+.link:visited {
   color: grey;
-}
-.link:active {
   font-weight: bold;
 }
 </style>

@@ -43,6 +43,7 @@ export default {
       leagueService.addUserToLeague(
         parseInt(this.leagueId),
         parseInt(this.userId)
+        
       );
     },
   },

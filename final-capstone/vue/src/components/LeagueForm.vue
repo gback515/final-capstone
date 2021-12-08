@@ -97,13 +97,20 @@ export default {
 </script>
 
 <style>
-/* .league-form {
-  padding: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+.league-form {
+  margin-left: 20%;
+  margin-top: 10%;
+  
 }
 .form-group {
   margin-bottom: 10px;
   margin-top: 10px;
-} */
+  display: flex;
+  justify-content: space-around;
+  justify-items: center;
+  padding-bottom: 5px;
+}
+.btn {
+  margin-right: 20px;
+}
 </style>
