@@ -13,13 +13,13 @@ export default {
     getUserId(username) {
         return axios.get(`/${username}`)
     },
-    
+
     getLeagueDetails(leagueId) {
         return axios.get(`/league/${leagueId}`)
     },
 
-    addUserToLeague(member) {
-        return axios.post('/league', member)
+    addUserToLeague(leagueId, userId) {
+        return axios.post(`/league/${leagueId}/addUser/${userId}`)
     }
 
 }

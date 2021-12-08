@@ -17,6 +17,12 @@
       <router-link
         class="link"
         style="text-decoration: none; color: inherit"
+        v-bind:to="{ name: 'add-golfer' }"
+        >Add Golfer</router-link
+      >
+      <router-link
+        class="link"
+        style="text-decoration: none; color: inherit"
         v-bind:to="{ name: 'logout' }"
         v-if="$store.state.token != ''"
         >Logout</router-link
