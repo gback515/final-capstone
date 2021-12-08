@@ -6,7 +6,7 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
 import League from '../views/League'
-import LeagueDetails from '../views/LeagueDetails'
+import LeagueDetails from "../components/LeagueDetails"
 import LeagueForm from '../components/LeagueForm'
 
 Vue.use(Router)

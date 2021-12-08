@@ -65,7 +65,7 @@ export default {
         leagueAdmin: this.$store.state.user.id,
         leagueCourse: 0,
         dayOfWeek: "",
-        //members: [],
+        members: [],
       },
     };
   },
@@ -76,17 +76,17 @@ export default {
         league_admin: this.league.leagueAdmin,
         league_course: parseInt(this.league.leagueCourse),
         day_of_week: this.league.dayOfWeek,
-        //members: this.league.members,
+        members: this.league.members,
       };
       if (this.leagueId === 0) {
         leagueService.addLeague(newLeague).then((response) => {
           if (response.status === 201) {
             this.$router.push(`/`);
           }
+        })
+        .catch((error) => {
+        this.handleErrorResponse(error, "adding");
         });
-        //.catch((error) => {
-        // this.handleErrorResponse(error, "adding");
-        //});
       }
     },
     cancelForm() {
