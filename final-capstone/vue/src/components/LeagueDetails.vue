@@ -4,8 +4,9 @@
     <h2>{{ league.leagueAdmin }}</h2>
     <h2>{{ league.leagueCourse }}</h2>
     <h2>{{ league.dayOfWeek }}</h2>
-    <form action="addMembers"></form>
-    <input type="text" >
+    <form action="addMembers">
+        <input type="text" >
+    </form>
     <h2>Members</h2>
   </div>
 </template>
