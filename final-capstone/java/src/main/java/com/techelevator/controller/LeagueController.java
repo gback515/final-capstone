@@ -42,4 +42,10 @@ public class LeagueController {
             leagueDao.create(newLeague.getLeagueName(), newLeague.getLeagueAdmin(), newLeague.getLeagueCourse(), newLeague.getDayOfWeek());
         }
     }
+
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value = "/league/{leagueId}/addUser/{userId}", method = RequestMethod.POST)
+    public void addUserToLeague(@Valid @PathVariable("leagueId") long leagueId, @PathVariable("userId") long userId) {
+        leagueDao.addUser(userId, leagueId);
+    }
 }
