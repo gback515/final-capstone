@@ -6,7 +6,7 @@
         id="name"
         type="text"
         class="form-control"
-        v-model="league.name"
+        v-model="league.leagueName"
         autocomplete="off"
       />
     </div>
@@ -15,9 +15,9 @@
       <select
         id="league-course"
         class="form-control"
-        v-model="league.homeCourse"
+        v-model="league.leagueCourse"
       >
-        <option value="Course List">Add Course List Here</option>
+        <option value="0">Add Course List Here</option>
       </select>
     </div>
     <div class="form-group">
@@ -26,7 +26,7 @@
         id="day-of-week"
         class="form-control"
         name="day-of-week"
-        v-model="league.dayOfWeekToPlay"
+        v-model="league.dayOfWeek"
       >
         <option value="Sunday">Sunday</option>
         <option value="Monday">Monday</option>
@@ -61,33 +61,32 @@ export default {
   data() {
     return {
       league: {
-        name: "",
-        leagueAdministrator: "",
-        leagueCourse: "",
-        dayOfWeekToPlay: "",
-        members: [],
+        leagueName: "",
+        leagueAdmin: this.$store.state.user.id,
+        leagueCourse: 0,
+        dayOfWeek: "",
+        //members: [],
       },
     };
   },
   methods: {
     submitLeague() {
       const newLeague = {
-        name: this.league.name,
-        homeCourse: this.league.homeCourse,
-        dayOfWeekToPlay: this.league.dayOfWeekToPlay,
-        members: this.league.members,
+        league_name: this.league.leagueName,
+        league_admin: this.league.leagueAdmin,
+        league_course: parseInt(this.league.leagueCourse),
+        day_of_week: this.league.dayOfWeek,
+        //members: this.league.members,
       };
       if (this.leagueId === 0) {
-        leagueService
-          .addLeague(newLeague)
-          .then((response) => {
-            if (response.status === 201) {
-              this.$router.push(`/league/${newLeague.leagueId}`);
-            }
-          })
-          .catch((error) => {
-            this.handleErrorResponse(error, "adding");
-          });
+        leagueService.addLeague(newLeague).then((response) => {
+          if (response.status === 201) {
+            this.$router.push(`/`);
+          }
+        });
+        //.catch((error) => {
+        // this.handleErrorResponse(error, "adding");
+        //});
       }
     },
     cancelForm() {

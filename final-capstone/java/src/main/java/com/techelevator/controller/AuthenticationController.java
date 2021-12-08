@@ -1,6 +1,7 @@
 package com.techelevator.controller;
 
 import javax.validation.Valid;
+import javax.websocket.server.PathParam;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -33,6 +34,11 @@ public class AuthenticationController {
         this.tokenProvider = tokenProvider;
         this.authenticationManagerBuilder = authenticationManagerBuilder;
         this.userDao = userDao;
+    }
+
+    @RequestMapping(value = "/{username}", method = RequestMethod.GET)
+    public Integer getUserId(@Valid @PathVariable("username") String username) {
+        return userDao.findIdByUsername(username);
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
