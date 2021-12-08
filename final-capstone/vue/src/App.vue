@@ -2,9 +2,9 @@
   <div id="app">
     <div id="nav">
       <img id="golf-ball" src="@/assets/golf-ball-logo.png" />
-      <router-link style="text-decoration: none; color: inherit" v-bind:to="{ name: 'home' }">Home</router-link>
-      <router-link style="text-decoration: none; color: inherit" v-bind:to="{ name: 'create-league' }">Create New League</router-link>
-      <router-link style="text-decoration: none; color: inherit" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
+      <router-link class="link" style="text-decoration: none; color: inherit" v-bind:to="{ name: 'home' }">Home</router-link>
+      <router-link class="link" style="text-decoration: none; color: inherit" v-bind:to="{ name: 'create-league' }">Create New League</router-link>
+      <router-link class="link" style="text-decoration: none; color: inherit" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
     </div>
     <router-view />
   </div>
@@ -39,10 +39,10 @@ export default {
   max-width: 100%;
   height: auto;
 }
-.router-link:hover {
+.link:hover {
   color: grey;
 }
-.router-link-active {
+.link:active {
   font-weight: bold;
 }
 </style>
