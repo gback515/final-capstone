@@ -10,5 +10,8 @@ export default {
         return axios.get(`/my-leagues/${userId}`)
     },
 
+    getUserId(username) {
+        return axios.get(`/${username}`)
+    },
     
 }
