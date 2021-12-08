@@ -111,7 +111,7 @@ export default {
   display: grid;
   width: auto;
   margin-top: 30%;
-  display:inline;
+  display: inline;
   grid-template-areas:
     "header-ga   header-ga"
     "u-label-ga  username-ga"

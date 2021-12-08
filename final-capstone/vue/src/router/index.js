@@ -9,6 +9,7 @@ import League from '../views/League'
 import LeagueDetails from "../components/LeagueDetails"
 import LeagueForm from '../components/LeagueForm'
 import AddGolfer from "../views/AddGolfer.vue"
+import AddCourse from "../views/AddCourse.vue"
 
 Vue.use(Router)
 
@@ -85,6 +86,14 @@ const router = new Router({
       path: "/add-golfer",
       name: "add-golfer",
       component: AddGolfer,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/add-course",
+      name: "add-course",
+      component: AddCourse,
       meta: {
         requiresAuth: true
       }

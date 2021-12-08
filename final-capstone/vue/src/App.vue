@@ -23,6 +23,12 @@
       <router-link
         class="link"
         style="text-decoration: none; color: inherit"
+        v-bind:to="{ name: 'add-course' }"
+        >Add Course</router-link
+      >
+      <router-link
+        class="link"
+        style="text-decoration: none; color: inherit"
         v-bind:to="{ name: 'logout' }"
         v-if="$store.state.token != ''"
         >Logout</router-link
@@ -46,7 +52,7 @@ export default {
   background: url(assets/golf-background.jpg) left / cover no-repeat;
   width: auto;
   display: flex;
-  justify-content:flex-start;
+  justify-content: flex-start;
   height: 100vh;
   overflow: hidden;
   margin: 0px;
