@@ -24,7 +24,7 @@ public class JdbcLeagueDao implements LeagueDao {
 
     @Override
     public League getLeagueById(Long leagueId) {
-        String sql = "SELECT league_id, league_name, league_admin, league_course, day_of_week FROM leagues WHERE league_id = ?;";
+        String sql = "SELECT league_id, league_name, league_admin, league_course, day_of_week, active FROM leagues WHERE league_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, leagueId);
         if (results.next()) {
             return mapRowToLeague(results);
