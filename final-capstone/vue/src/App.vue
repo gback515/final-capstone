@@ -64,7 +64,7 @@ body {
   display: flex;
   flex-direction: column;
   flex-basis: 17%;
-  background-color: rgba(31, 219, 72, 0.925);
+  background-color: rgba(160, 141, 116, 0.849);
   align-items: center;
   padding-top: 10px;
 }
@@ -72,6 +72,18 @@ body {
   max-width: 100%;
   height: auto;
 }
+.link {
+  background-color: rgb(255, 168, 168);
+  border: solid black 1px;
+  margin-top: 5%;
+  padding: 5%;
+  border-radius: 4px;
+}
+
+.link:hover {
+  background-color: rgb(250, 137, 137);
+}
+
 .link:visited {
   color: grey;
   font-weight: bold;
