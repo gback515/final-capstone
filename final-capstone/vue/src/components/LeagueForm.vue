@@ -1,5 +1,6 @@
 <template>
   <form v-on:submit.prevent="submitLeague" class="league-form">
+    <h1>Create New League</h1>
     <div class="form-group">
       <label for="name">League Name </label>
       <input
@@ -45,6 +46,10 @@
     >
       Cancel
     </button>
+    <router-link class="link"
+        style="color: blue"
+        v-bind:to="{ name: 'add-course' }"
+        >Add New Course</router-link>
   </form>
 </template>
 
@@ -96,21 +101,71 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+
 .league-form {
-  margin-left: 20%;
+  margin-left: 23%;
   margin-top: 10%;
-  
+  background-color: rgba(250, 135, 123, 0.5);
+  padding: 5px;
+  border-radius: 30px;
+  width: 30%;
+  height: 54%;
+  box-sizing: border-box;
 }
+
+.link {
+  margin-left: 125px;
+}
+
+h1 {
+  margin-left: 9%;
+  margin-bottom: 20px;
+}
+
 .form-group {
-  margin-bottom: 10px;
-  margin-top: 10px;
-  display: flex;
-  justify-content: space-around;
-  justify-items: center;
+  margin-bottom: 5%;
+  margin-left: 12%;
   padding-bottom: 5px;
 }
-.btn {
-  margin-right: 20px;
+
+input[type=text] {
+  border: none;
+  background-color: rgba(160, 141, 116, 0.733);
+  border-radius: 3px;
 }
+
+input:hover {
+  cursor: text;
+}
+
+select:hover {
+  cursor: pointer;
+}
+
+select {
+  background-color: rgba(160, 141, 116, 0.76);
+  border: none;
+  color: white;
+  border-radius: 3px;
+}
+
+.btn {
+  margin-left: 16%;
+  background-color: rgba(160, 141, 116, 0.733);
+  border: none;
+  color: white;
+  padding: 15px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background-color: tan;
+  cursor: pointer;
+}
+
 </style>
