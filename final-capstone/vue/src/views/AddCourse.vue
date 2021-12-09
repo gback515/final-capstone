@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import CourseScervice from "@/services/CourseService.js";
+import CourseService from "@/services/CourseService.js";
 export default {
   name: "AddCourse",
   data() {
@@ -37,7 +37,8 @@ export default {
 
   methods: {
     submitCourse() {
-      CourseScervice.addCourse(this.addCourse);
+      CourseService.addCourse(this.addCourse);
+      this.$router.push("/"); // Change to course list view
     },
   },
 };

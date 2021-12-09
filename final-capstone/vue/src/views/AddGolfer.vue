@@ -43,8 +43,8 @@ export default {
       leagueService.addUserToLeague(
         parseInt(this.leagueId),
         parseInt(this.userId)
-        
       );
+      this.$router.push("/"); // Change to league details view
     },
   },
 };
