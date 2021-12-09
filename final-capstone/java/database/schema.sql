@@ -39,7 +39,13 @@ CREATE TABLE users (
 CREATE TABLE courses (
     course_id int DEFAULT nextval('seq_course_id'::regclass) NOT NULL,
     course_name varchar(50) NOT NULL,
+	course_par int DEFAULT 0,
+	course_length int DEFAULT 0,
     coordinate varchar(50) NOT NULL,
+	address varchar(50) DEFAULT '',
+	city varchar(50) DEFAULT '',
+	state varchar(50) DEFAULT '',
+	zip varchar(10) DEFAULT '',
     CONSTRAINT PK_course PRIMARY KEY (course_id)
 );
 
