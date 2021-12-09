@@ -146,17 +146,14 @@ h1 {
 }
 
 .useles {
-  width: 100vh;
+  width: 100%;
 }
 .course-form {
   display: grid;
-  margin-left: 30%;
-  margin-top: 20%;
+  margin: 5% 20% 50% 20%;
   background-color: rgba(250, 135, 123, 0.5);
   padding: 5%;
   border-radius: 30px;
-  width: 90%;
-  height: 45%;
   grid-template-columns: 1fr 1fr;
   grid-template-areas: 
       "h1-ga    h1-ga"
@@ -166,6 +163,7 @@ h1 {
       "sta      zi"
       "subm     can";
   justify-items: end;
+  box-sizing: border-box;
 }
 
 h1 {
@@ -173,6 +171,7 @@ h1 {
   margin-top: -10%;
   margin-bottom: 30px;
   justify-self: center;
+  box-sizing: border-box;
 }
 
 .form-group {
@@ -182,9 +181,21 @@ h1 {
   justify-content: space-around;
   justify-items: center;
   padding-bottom: 5px;
+  box-sizing: border-box;
 }
 
 input[type="text"] {
+  width: 80px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+  border: none;
+  background-color: rgba(160, 141, 116, 0.733);
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+input[type="text"]:focus {
+  width: 50%;
   border: none;
   background-color: rgba(160, 141, 116, 0.733);
   border-radius: 3px;
@@ -195,6 +206,7 @@ input[type="number"] {
   background-color: rgba(160, 141, 116, 0.733);
   border-radius: 3px;
   color: white;
+  box-sizing: border-box;
 }
 
 input {
@@ -214,6 +226,7 @@ select {
   border: none;
   color: white;
   border-radius: 3px;
+  box-sizing: border-box;
 }
 
 .btn {
@@ -229,10 +242,11 @@ select {
   font-size: 16px;
   border-radius: 10px;
   font-weight: bold;
+  box-sizing: border-box;
 }
 
 .btn:hover {
-  background-color: tan;
+  background-color: rgb(250, 137, 137);
   cursor: pointer;
 }
 </style>

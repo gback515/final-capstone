@@ -38,14 +38,16 @@
         <option value="Saturday">Saturday</option>
       </select>
     </div>
-    <button class="btn btn-submit">Submit</button>
-    <button
-      class="btn btn-cancel"
-      v-on:click.prevent="cancelForm"
-      type="cancel"
-    >
-      Cancel
-    </button>
+    <div class="buttons">
+      <button class="btn btn-submit">Submit</button>
+      <button
+        class="btn btn-cancel"
+        v-on:click.prevent="cancelForm"
+        type="cancel"
+      >
+        Cancel
+      </button>
+    </div>
     <!-- <router-link
       class="link"
       style="color: blue"
@@ -107,14 +109,17 @@ export default {
 
 <style scoped>
 .league-form {
-  margin-left: 23%;
-  margin-top: 10%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 16%;
+  margin-top: 5%;
   background-color: rgba(250, 135, 123, 0.5);
   padding: 5px;
   border-radius: 30px;
-  width: 25%;
-  height: 37%;
+  width: 50%;
+  height: 70%;
   box-sizing: border-box;
+  resize: both;
 }
 
 .link {
@@ -123,16 +128,32 @@ export default {
 
 h1 {
   margin-left: 18%;
-  margin-bottom: 20px;
+  margin-bottom: 0;
 }
 
 .form-group {
-  margin-bottom: 5%;
-  margin-left: 20%;
+  display: flex;
+  flex: 50%;
+  flex-shrink:unset;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: 5% 10% 0% 10%;
   padding-bottom: 5px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 input[type="text"] {
+  width: 100px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+  border: none;
+  background-color: rgba(160, 141, 116, 0.733);
+  border-radius: 3px;
+}
+
+input[type="text"]:focus {
+  width: 30%;
   border: none;
   background-color: rgba(160, 141, 116, 0.733);
   border-radius: 3px;
@@ -153,8 +174,18 @@ select {
   border-radius: 3px;
 }
 
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .btn {
-  margin-left: 18%;
+  display: flex;
+  justify-content: center;
+  margin-top: 2%;
+  width: 30%;
+  margin-left: 12%;
+  margin-bottom: 6%;
   background-color: rgba(160, 141, 116, 0.733);
   border: none;
   color: white;
@@ -167,7 +198,7 @@ select {
 }
 
 .btn:hover {
-  background-color: tan;
+  background-color: rgb(250, 137, 137);
   cursor: pointer;
 }
 </style>
