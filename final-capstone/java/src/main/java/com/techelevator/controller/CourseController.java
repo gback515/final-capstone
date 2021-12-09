@@ -20,12 +20,12 @@ public class CourseController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(value = "/create-course", method = RequestMethod.POST)
+    @RequestMapping(value = "/add-course", method = RequestMethod.POST)
     public void createCourse(@Valid @RequestBody Course newCourse) {
         try {
-            Long newCourseId = courseDao.addCourse(newCourse);
-        } catch (CourseNameAlreadyExistsException e) {
             courseDao.addCourse(newCourse);
+        } catch (CourseNameAlreadyExistsException e) {
+            System.out.println("Course already exists");
         }
     }
 

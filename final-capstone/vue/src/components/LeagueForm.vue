@@ -109,23 +109,23 @@ export default {
   background-color: rgba(250, 135, 123, 0.5);
   padding: 5px;
   border-radius: 30px;
-  width: 30%;
-  height: 54%;
+  width: 25%;
+  height: 37%;
   box-sizing: border-box;
 }
 
 .link {
-  margin-left: 125px;
+  margin-left: 34%;
 }
 
 h1 {
-  margin-left: 9%;
+  margin-left: 18%;
   margin-bottom: 20px;
 }
 
 .form-group {
   margin-bottom: 5%;
-  margin-left: 12%;
+  margin-left: 20%;
   padding-bottom: 5px;
 }
 
@@ -151,7 +151,7 @@ select {
 }
 
 .btn {
-  margin-left: 16%;
+  margin-left: 18%;
   background-color: rgba(160, 141, 116, 0.733);
   border: none;
   color: white;
