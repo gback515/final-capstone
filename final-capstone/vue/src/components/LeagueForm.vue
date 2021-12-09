@@ -18,7 +18,7 @@
         class="form-control"
         v-model="league.leagueCourse"
       >
-        <option value="0">Add Course List Here</option>
+        <option value="0">Add Course Here</option>
       </select>
     </div>
     <div class="form-group">
@@ -46,10 +46,12 @@
     >
       Cancel
     </button>
-    <router-link class="link"
-        style="color: blue"
-        v-bind:to="{ name: 'add-course' }"
-        >Add New Course</router-link>
+    <!-- <router-link
+      class="link"
+      style="color: blue"
+      v-bind:to="{ name: 'add-course' }"
+      >Add New Course</router-link
+    > -->
   </form>
 </template>
 
@@ -84,14 +86,16 @@ export default {
         members: this.league.members,
       };
       if (this.leagueId === 0) {
-        leagueService.addLeague(newLeague).then((response) => {
-          if (response.status === 201) {
-            this.$router.push(`/`);
-          }
-        })
-        .catch((error) => {
-        this.handleErrorResponse(error, "adding");
-        });
+        leagueService
+          .addLeague(newLeague)
+          .then((response) => {
+            if (response.status === 201) {
+              this.$router.push(`/`);
+            }
+          })
+          .catch((error) => {
+            this.handleErrorResponse(error, "adding");
+          });
       }
     },
     cancelForm() {
@@ -102,7 +106,6 @@ export default {
 </script>
 
 <style scoped>
-
 .league-form {
   margin-left: 23%;
   margin-top: 10%;
@@ -129,7 +132,7 @@ h1 {
   padding-bottom: 5px;
 }
 
-input[type=text] {
+input[type="text"] {
   border: none;
   background-color: rgba(160, 141, 116, 0.733);
   border-radius: 3px;
@@ -167,5 +170,4 @@ select {
   background-color: tan;
   cursor: pointer;
 }
-
 </style>

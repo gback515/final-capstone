@@ -81,7 +81,7 @@ h1 {
   padding-bottom: 5px;
 }
 
-input[type=text] {
+input[type="text"] {
   border: none;
   background-color: rgba(160, 141, 116, 0.733);
   border-radius: 3px;
