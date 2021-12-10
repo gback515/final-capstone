@@ -11,14 +11,8 @@
       <router-link
         class="link"
         style="text-decoration: none; color: inherit"
-        v-bind:to="{ name: 'create-league' }"
-        >Create New League</router-link
-      >
-      <router-link
-        class="link"
-        style="text-decoration: none; color: inherit"
-        v-bind:to="{ name: 'add-golfer' }"
-        >Add Golfer</router-link
+        v-bind:to="{ name: 'leagues' }"
+        >Leagues</router-link
       >
       <router-link
         class="link"

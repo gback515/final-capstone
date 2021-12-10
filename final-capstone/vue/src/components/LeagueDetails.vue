@@ -1,49 +1,32 @@
 <template>
   <div>
-    <h1>{{ league.leagueName }}</h1>
-    <h2>{{ league.leagueAdmin }}</h2>
-    <h2>{{ league.leagueCourse }}</h2>
-    <h2>{{ league.dayOfWeek }}</h2>
-    <form action="addMembers">
-        <input type="text" >
-    </form>
-    <h2>Members</h2>
+      <div>
+      <button class="btn" v-on:click="isHidden = !isHidden">
+        Add New Golfer
+      </button>
+      <add-golfer v-if="!isHidden" />
+    </div>
+      <ul>
+        <li v-for="user in members" :key="user.userId">{{ user.username }}</li>
+      </ul>
   </div>
 </template>
 
 <script>
 import LeagueService from "@/services/LeagueService.js";
+import AddGolfer from "../views/AddGolfer.vue";
 export default {
-  data() {
-      return {
-    league: {
-        leagueName: "",
-        leagueAdmin: 0,
-        leagueCourse: 0,
-        dayOfWeek: "",
-        members: []
-    }
-      }
-  },
+      components: { AddGolfer },
 
-  created() {
-      LeagueService.getLeagueDetails(this.$route.params.leagueId)
-      .then(response => {
-          if (response.status === 200) {
-              this.league = response.data;
-          }
-      })
-        .catch((error) => {
-          if (error.response && error.response.status === 404) {
-            alert(
-              "League not available. This league may have been deleted or you have entered an invalid league ID."
-            );
-            this.$router.push("/");
-          }
-        });
-  },
-};
+    methods: {
+        
+    },
+    created() {
+        LeagueService.getLeague(this.league.leagueId)
+    }
+}
 </script>
 
 <style>
+
 </style>

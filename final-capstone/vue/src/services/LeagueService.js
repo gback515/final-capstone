@@ -7,19 +7,15 @@ export default {
     },
 
     getMyLeagues(userId) {
-        return axios.get(`/my-leagues/${userId}`)
+        return axios.get(`/leagues/${userId}`)
     },
 
-    getUserId(username) {
-        return axios.get(`/${username}`)
-    },
-
-    getLeagueDetails(leagueId) {
+    getLeague(leagueId) {
         return axios.get(`/league/${leagueId}`)
     },
 
     addUserToLeague(leagueId, userId) {
         return axios.post(`/league/${leagueId}/addUser/${userId}`)
-    }
+    },
 
 }

@@ -28,7 +28,7 @@ public class LeagueController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(value = "/leagues/user/{userId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/leagues/{userId}", method = RequestMethod.GET)
     public List<League> getMyLeagues(@PathVariable("userId") long userId) {
         return leagueDao.findLeaguesByUser(userId);
     }

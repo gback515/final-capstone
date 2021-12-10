@@ -5,11 +5,11 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
-import League from '../views/League'
-import LeagueDetails from "../components/LeagueDetails"
+import LeagueList from "../components/LeagueList"
 import LeagueForm from '../components/LeagueForm'
 import AddGolfer from "../views/AddGolfer.vue"
 import AddCourse from "../views/AddCourse.vue"
+import LeagueDetails from "../components/LeagueDetails"
 
 Vue.use(Router)
 
@@ -59,9 +59,9 @@ const router = new Router({
       }
     },
     {
-      path: "/my-leagues",
-      name: "my-leagues",
-      component: League,
+      path: "/leagues/:userId",
+      name: "leagues",
+      component: LeagueList,
       meta: {
         requiresAuth: true
       }

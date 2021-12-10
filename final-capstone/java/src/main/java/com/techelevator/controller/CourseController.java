@@ -43,7 +43,7 @@ public class CourseController {
 
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/course/{courseName}", method = RequestMethod.GET)
-    public Course getCourseById(@Valid @PathVariable("courseName") String courseName) {
+    public Course getCourseByName(@Valid @PathVariable("courseName") String courseName) {
         return courseDao.findCourseByName(courseName);
     }
 }
