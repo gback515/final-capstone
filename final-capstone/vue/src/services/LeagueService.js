@@ -20,6 +20,6 @@ export default {
 
     addUserToLeague(leagueId, userId) {
         return axios.post(`/league/${leagueId}/addUser/${userId}`)
-    }
+    },
 
 }
