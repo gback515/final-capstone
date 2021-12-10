@@ -35,7 +35,7 @@ public class JdbcCourseDao implements CourseDao {
     @Override
     public List<Course> findAll() {
         List<Course> courses = new ArrayList<Course>();
-        String sql = "SELECT course_id, course_name, course_length, coordinate, address, city, state, zip FROM courses;";
+        String sql = "SELECT course_id, course_name, course_par, course_length, coordinate, address, city, state, zip FROM courses;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
             Course course = mapRowToCourse(results);

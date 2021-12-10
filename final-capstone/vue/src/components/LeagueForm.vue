@@ -18,7 +18,13 @@
         class="form-control"
         v-model="league.leagueCourse"
       >
-        <option value="0">Add Course Here</option>
+        <option
+          v-for="course in courses"
+          v-bind:key="course.course_id"
+          v-bind:value="course.course_id"
+        >
+          {{ course.course_name }}
+        </option>
       </select>
     </div>
     <div class="form-group">
@@ -58,6 +64,7 @@
 </template>
 
 <script>
+import CourseService from "../services/CourseService";
 import leagueService from "../services/LeagueService";
 export default {
   name: "create-league",
@@ -69,6 +76,12 @@ export default {
   },
   data() {
     return {
+      courses: [
+        {
+          courseId: 0,
+          courseName: "",
+        },
+      ],
       league: {
         leagueName: "",
         leagueAdmin: this.$store.state.user.id,
@@ -77,6 +90,12 @@ export default {
         members: [],
       },
     };
+  },
+  created() {
+    let coursePromise = CourseService.getCourses();
+    coursePromise.then((response) => {
+      this.courses = response.data;
+    });
   },
   methods: {
     submitLeague() {
@@ -134,7 +153,7 @@ h1 {
 .form-group {
   display: flex;
   flex: 50%;
-  flex-shrink:unset;
+  flex-shrink: unset;
   flex-wrap: wrap;
   justify-content: space-evenly;
   margin: 5% 10% 0% 10%;
