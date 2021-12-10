@@ -146,11 +146,13 @@ h1 {
 }
 
 .useles {
+  display: flex;
+  flex-basis: 80%;
   width: 100%;
 }
 .course-form {
   display: grid;
-  margin: 5% 20% 50% 20%;
+  margin: 5% 20% 10% 20%;
   background-color: rgba(250, 135, 123, 0.5);
   padding: 5%;
   border-radius: 30px;

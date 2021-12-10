@@ -18,4 +18,8 @@ export default {
         return axios.post(`/league/${leagueId}/addUser/${userId}`)
     },
 
+    getLeagueByLeagueName(leagueName) {
+        return axios.get(`/league/${leagueName}`)
+    },
+
 }

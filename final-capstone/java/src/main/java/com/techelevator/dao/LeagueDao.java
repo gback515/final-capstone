@@ -19,4 +19,6 @@ public interface LeagueDao {
     League create(String leagueName, Long leagueAdmin, Long courseName, String dayOfWeek);
 
     boolean addUser(Long userId, Long leagueId);
+
+    League getLeagueIdByName(String leagueName);
 }

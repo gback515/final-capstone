@@ -78,6 +78,12 @@ public class JdbcLeagueDao implements LeagueDao {
     }
 
     @Override
+    public League getLeagueIdByName(String leagueName) {
+        String sql = "SELECT league_id FROM leagues WHERE league_name = ?;";
+        return mapRowToLeague(jdbcTemplate.queryForRowSet(sql, leagueName));
+    }
+
+    @Override
     public boolean addUser(Long userId, Long leagueId) {
         String sql = "INSERT INTO user_league (user_id, league_id) VALUES (?,?)";
         jdbcTemplate.update(sql, userId, leagueId);

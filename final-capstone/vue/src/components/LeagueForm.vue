@@ -45,7 +45,7 @@
       </select>
     </div>
     <div class="buttons">
-      <button class="btn btn-submit">Submit</button>
+      <button v-on:click="addGolfer" class="btn btn-submit">Submit</button>
       <button
         class="btn btn-cancel"
         v-on:click.prevent="cancelForm"
@@ -65,6 +65,7 @@
 
 <script>
 import CourseService from "../services/CourseService";
+import LeagueService from '../services/LeagueService';
 import leagueService from "../services/LeagueService";
 export default {
   name: "create-league",
@@ -104,7 +105,7 @@ export default {
         league_admin: this.league.leagueAdmin,
         league_course: parseInt(this.league.leagueCourse),
         day_of_week: this.league.dayOfWeek,
-        members: this.league.members,
+        members: this.$store.state.user,
       };
       if (this.leagueId === 0) {
         leagueService
@@ -118,6 +119,12 @@ export default {
             this.handleErrorResponse(error, "adding");
           });
       }
+    },
+    addGolfer() {
+      leagueService.addUserToLeague(
+              parseInt(LeagueService.getLeagueByLeagueName(this.league.leagueName)),
+              parseInt(this.$store.state.user.id)
+      )
     },
     cancelForm() {
       this.$router.push("/");

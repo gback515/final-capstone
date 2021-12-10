@@ -39,6 +39,12 @@ public class LeagueController {
         return leagueDao.getLeagueById(leagueId);
     }
 
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value = "/league/{leagueName}", method = RequestMethod.GET)
+    public League getLeagueIdByLeagueName(@PathVariable("leagueName") String leagueName) {
+        return leagueDao.getLeagueIdByName(leagueName);
+    }
+
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "/create-league", method = RequestMethod.POST)
     public void createLeague(@Valid @RequestBody League newLeague) {

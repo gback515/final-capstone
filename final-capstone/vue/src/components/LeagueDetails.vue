@@ -16,8 +16,8 @@
 import LeagueService from "@/services/LeagueService.js";
 import AddGolfer from "../views/AddGolfer.vue";
 export default {
-      components: { AddGolfer },
-
+    isHidden: true,
+    components: { AddGolfer },
     methods: {
         
     },

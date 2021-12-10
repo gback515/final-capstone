@@ -4,6 +4,7 @@
     <div v-for="league in leagues" :key="league.leagueId" v-on:click="viewLeague(league.leagueId)">
       <router-link class="league-link" style="text-decoration: none; color: inherit" v-bind:to="{ name: 'league-details' }">{{ league.league_name }}</router-link>
     </div>
+    <router-link class="new-league" style="text-decoration: none; color: inherit" v-bind:to="{ name: 'create-league' }">Add New League</router-link>
   </div>
 </template>
 
@@ -13,7 +14,6 @@ import LeagueService from "@/services/LeagueService.js";
 export default {
   data() {
     return {
-      isHidden: true,
       leagues: [],
       league: {
         leagueName: "",
@@ -60,36 +60,28 @@ export default {
 }
 
 .league-link {
-  margin: 5% 20% 5% 30%; 
   background-color: rgba(250, 135, 123, 0.5);
   text-align: center;
   font-size: 30px;
-  padding: 5%;
+  padding: 40%;
+  border-radius: 30px;
+}
+
+.new-league {
+  margin: 20% 30% 5% 30%; 
+  background-color: rgba(250, 135, 123, 0.5);
+  text-align: center;
+  font-size: 30px;
+  padding: 3%;
   border-radius: 30px;
 }
 
 .leagues {
-  width: 100%;
-}
-
-.btn {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  margin: 10% 33.5%;
-  width: 20%;
-  background-color: rgba(160, 141, 116, 0.733);
-  border: none;
-  color: white;
-  padding: 10px 10px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;
-  border-radius: 10px;
-  font-weight: bold;
-}
-
-.btn:hover {
-  background-color: rgb(250, 137, 137);
-  cursor: pointer;
+  align-items: center;
+  flex-basis: 80%;
+  width: 100%;
 }
 </style>

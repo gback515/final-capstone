@@ -11,7 +11,7 @@
       <router-link
         class="link"
         style="text-decoration: none; color: inherit"
-        v-bind:to="{ name: 'leagues' }"
+        v-bind:to="{ path: `/leagues/${this.$store.state.user.id}` }"
         >Leagues</router-link
       >
       <router-link
