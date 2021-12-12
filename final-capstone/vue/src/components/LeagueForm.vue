@@ -45,7 +45,7 @@
       </select>
     </div>
     <div class="buttons">
-      <button v-on:click="addGolfer" class="btn btn-submit">Submit</button>
+      <button class="btn btn-submit">Submit</button>
       <button
         class="btn btn-cancel"
         v-on:click.prevent="cancelForm"
@@ -54,12 +54,12 @@
         Cancel
       </button>
     </div>
-    <!-- <router-link
+    <router-link
       class="link"
       style="color: blue"
       v-bind:to="{ name: 'add-course' }"
       >Add New Course</router-link
-    > -->
+    >
   </form>
 </template>
 
@@ -84,11 +84,12 @@ export default {
         },
       ],
       league: {
+        leagueId: 0,
         leagueName: "",
         leagueAdmin: this.$store.state.user.id,
         leagueCourse: 0,
         dayOfWeek: "",
-        members: [],
+        members: [this.$store.state.user.id]
       },
     };
   },
@@ -105,7 +106,7 @@ export default {
         league_admin: this.league.leagueAdmin,
         league_course: parseInt(this.league.leagueCourse),
         day_of_week: this.league.dayOfWeek,
-        members: this.$store.state.user,
+        members: this.league.members,
       };
       if (this.leagueId === 0) {
         leagueService

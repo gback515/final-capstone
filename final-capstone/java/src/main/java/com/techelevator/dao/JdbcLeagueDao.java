@@ -1,7 +1,9 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.League;
+import com.techelevator.model.LeagueMemberDTO;
 import com.techelevator.model.LeagueNameAlreadyExistsException;
+import com.techelevator.model.User;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Service;
@@ -69,18 +71,14 @@ public class JdbcLeagueDao implements LeagueDao {
     }
 
     @Override
-    public League create(String leagueName, Long leagueAdmin, Long courseName, String dayOfWeek) {
-        League league = new League(leagueName, leagueAdmin, courseName, dayOfWeek);
-        String sql = "INSERT INTO leagues (league_name, league_admin, league_course, day_of_week) VALUES(?,?,?,?) RETURNING league_id;";
-        Long newLeagueId = jdbcTemplate.queryForObject(sql, Long.class, leagueName, leagueAdmin, courseName, dayOfWeek);
+    public League create(String leagueName, Long leagueAdmin, Long courseName, String dayOfWeek, List<LeagueMemberDTO> leagueMembers) {
+        League league = new League(leagueName, leagueAdmin, courseName, dayOfWeek, leagueMembers);
+        String sql1 = "INSERT INTO leagues (league_name, league_admin, league_course, day_of_week) VALUES(?,?,?,?) RETURNING league_id;";
+        String sql2 = "INSERT INTO user_league (user_id, league_id) VALUES(?,?);";
+        Long newLeagueId = jdbcTemplate.queryForObject(sql1, Long.class, leagueName, leagueAdmin, courseName, dayOfWeek);
+        jdbcTemplate.queryForRowSet(sql2, newLeagueId, leagueMembers);
         league.setId(newLeagueId);
         return league;
-    }
-
-    @Override
-    public League getLeagueIdByName(String leagueName) {
-        String sql = "SELECT league_id FROM leagues WHERE league_name = ?;";
-        return mapRowToLeague(jdbcTemplate.queryForRowSet(sql, leagueName));
     }
 
     @Override

@@ -3,25 +3,25 @@
     <div id="nav">
       <img id="golf-ball" src="@/assets/golf-ball-logo.png" />
       <router-link
-        class="link"
+        class="links"
         style="text-decoration: none; color: inherit"
         v-bind:to="{ name: 'home' }"
         >Home</router-link
       >
       <router-link
-        class="link"
+        class="links"
         style="text-decoration: none; color: inherit"
         v-bind:to="{ path: `/leagues/${this.$store.state.user.id}` }"
         >Leagues</router-link
       >
       <router-link
-        class="link"
+        class="links"
         style="text-decoration: none; color: inherit"
         v-bind:to="{ name: 'add-course' }"
         >Add Course</router-link
       >
       <router-link
-        class="link"
+        class="links"
         style="text-decoration: none; color: inherit"
         v-bind:to="{ name: 'logout' }"
         v-if="$store.state.token != ''"
@@ -66,7 +66,7 @@ body {
   max-width: 100%;
   height: auto;
 }
-.link {
+.links {
   background-color: rgb(255, 168, 168);
   border: solid black 1px;
   margin-top: 5%;
@@ -74,11 +74,11 @@ body {
   border-radius: 4px;
 }
 
-.link:hover {
+.links:hover {
   background-color: rgb(250, 137, 137);
 }
 
-.link:visited {
+.links:visited {
   color: grey;
   font-weight: bold;
 }

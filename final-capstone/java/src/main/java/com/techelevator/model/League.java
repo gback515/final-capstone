@@ -15,16 +15,18 @@ public class League {
     private Long leagueAdmin;
     @JsonProperty("day_of_week")
     private String dayOfWeek;
+    @JsonProperty("members")
     private List<LeagueMemberDTO> leagueMembers;
     private Boolean active;
 
 
     public League() {}
-    public League(String leagueName, Long leagueAdmin, Long leagueCourse, String dayOfWeek) {
+    public League(String leagueName, Long leagueAdmin, Long leagueCourse, String dayOfWeek, List<LeagueMemberDTO> leagueMembers) {
         this.leagueName = leagueName;
         this.leagueCourse = leagueCourse;
         this.leagueAdmin = leagueAdmin;
         this.dayOfWeek = dayOfWeek;
+        this.leagueMembers = leagueMembers;
         this.active = true;
     }
     public League(Long id, String leagueName, Long leagueAdmin, Long leagueCourse, String dayOfWeek) {
