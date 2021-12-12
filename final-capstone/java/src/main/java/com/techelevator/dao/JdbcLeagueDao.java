@@ -48,6 +48,30 @@ public class JdbcLeagueDao implements LeagueDao {
     }
 
     @Override
+    public List<League> findAllActive() {
+        List<League> leagues = new ArrayList<League>();
+        String sql = "SELECT league_id, league_name, league_admin, league_course, day_of_week, active FROM leagues WHERE active = true;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while (results.next()) {
+            League league = mapRowToLeague(results);
+            leagues.add(league);
+        }
+        return leagues;
+    }
+
+    @Override
+    public List<League> findAllInactive() {
+        List<League> leagues = new ArrayList<League>();
+        String sql = "SELECT league_id, league_name, league_admin, league_course, day_of_week, active FROM leagues WHERE active = false;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while (results.next()) {
+            League league = mapRowToLeague(results);
+            leagues.add(league);
+        }
+        return leagues;
+    }
+
+    @Override
     public List<League> findLeaguesByUser(long userId) {
         List<League> leagues = new ArrayList<League>();
         String sql = "SELECT leagues.league_id, league_name, league_admin, league_course, day_of_week, active" +
