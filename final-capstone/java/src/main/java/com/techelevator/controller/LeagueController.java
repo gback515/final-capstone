@@ -28,6 +28,18 @@ public class LeagueController {
     }
 
     @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value = "/leagues/active", method = RequestMethod.GET)
+    public List<League> getAllActiveLeagues() {
+        return leagueDao.findAllActive();
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value = "/leagues/inactive", method = RequestMethod.GET)
+    public List<League> getAllInactiveLeagues() {
+        return leagueDao.findAllInactive();
+    }
+
+    @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/leagues/{userId}", method = RequestMethod.GET)
     public List<League> getMyLeagues(@PathVariable("userId") long userId) {
         return leagueDao.findLeaguesByUser(userId);

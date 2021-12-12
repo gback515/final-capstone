@@ -9,6 +9,10 @@ public interface LeagueDao {
 
     List<League> findAll();
 
+    List<League> findAllActive();
+
+    List<League> findAllInactive();
+
     List<League> findLeaguesByUser(long userId);
 
     League getLeagueById(Long leagueId);
