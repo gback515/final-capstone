@@ -65,7 +65,6 @@
 
 <script>
 import CourseService from "../services/CourseService";
-import LeagueService from '../services/LeagueService';
 import leagueService from "../services/LeagueService";
 export default {
   name: "create-league",
@@ -88,8 +87,7 @@ export default {
         leagueName: "",
         leagueAdmin: this.$store.state.user.id,
         leagueCourse: 0,
-        dayOfWeek: "",
-        members: [this.$store.state.user.id]
+        dayOfWeek: ""
       },
     };
   },
@@ -105,15 +103,16 @@ export default {
         league_name: this.league.leagueName,
         league_admin: this.league.leagueAdmin,
         league_course: parseInt(this.league.leagueCourse),
-        day_of_week: this.league.dayOfWeek,
-        members: this.league.members,
+        day_of_week: this.league.dayOfWeek
       };
       if (this.leagueId === 0) {
         leagueService
           .addLeague(newLeague)
           .then((response) => {
             if (response.status === 201) {
-              this.$router.push(`/`);
+              this.league.leagueId = response.data;
+              this.addGolfer();
+              //this.$router.push(`/`);
             }
           })
           .catch((error) => {
@@ -123,7 +122,7 @@ export default {
     },
     addGolfer() {
       leagueService.addUserToLeague(
-              parseInt(LeagueService.getLeagueByLeagueName(this.league.leagueName)),
+              parseInt(this.league.leagueId),
               parseInt(this.$store.state.user.id)
       )
     },
