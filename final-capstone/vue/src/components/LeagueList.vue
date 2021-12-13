@@ -1,6 +1,6 @@
 <template>
   <div class="leagues">
-    <h1 class="head">My Leagues</h1>
+    <h1 class="head">All Leagues</h1>
     <div v-for="league in leagues" :key="league.id">
       <router-link
         class="league-link"
