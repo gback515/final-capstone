@@ -20,12 +20,16 @@
         <input type="number" id="course-length" v-model="course.courseLength" />
       </div>
       <div id="coor" class="form-group">
-        <label for="course-coordinate">Course Coordinate</label>
+        <label for="course-lat">Course Latitude</label>
         <input
           type="text"
-          id="course-coordinate"
-          v-model="course.courseCoordinate"
+          id="course-lat"
+          v-model="course.lat"
         />
+        <label for="course-lng">Course Longitude</label>
+        <input type="text"
+        id="course-lng"
+        v-model="course.lng">
       </div>
       <div id="add" class="form-group">
         <label for="address">Street Address</label>
@@ -67,7 +71,8 @@ export default {
         courseName: "",
         coursePar: 0,
         courseLength: 0,
-        courseCoordinate: "",
+        lat: 0,
+        lng: 0,
         courseAddress: "",
         courseCity: "",
         courseState: "",

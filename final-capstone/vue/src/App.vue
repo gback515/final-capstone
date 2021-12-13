@@ -76,6 +76,7 @@ body {
   width: 60%;
   text-align: center;
   border-radius: 5px;
+  justify-self: center;
 }
 
 .links:hover {

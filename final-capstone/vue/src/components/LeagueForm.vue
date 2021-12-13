@@ -112,7 +112,7 @@ export default {
             if (response.status === 201) {
               this.league.leagueId = response.data;
               this.addGolfer();
-              //this.$router.push(`/`);
+              this.$router.push(`/league/${this.league.leagueId}`);
             }
           })
           .catch((error) => {
