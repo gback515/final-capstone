@@ -1,6 +1,7 @@
 <template>
   <div class="leagues">
     <h1 class="head">My Leagues</h1>
+<<<<<<< HEAD
     <div
       v-for="league in leagues"
       :key="league.leagueId"
@@ -10,6 +11,16 @@
         class="league-link"
         style="text-decoration: none; color: inherit"
         v-bind:to="{ name: 'league-details' }"
+=======
+    <div v-for="league in leagues" :key="league.id">
+      <router-link
+        class="league-link"
+        style="text-decoration: none; color: inherit"
+        v-bind:to="{
+          name: 'league-details',
+          params: { leagueId: league.id },
+        }"
+>>>>>>> cc5165291099f0860241f164ceae2ada0c604ae3
         >{{ league.league_name }}</router-link
       >
     </div>
@@ -40,8 +51,8 @@ export default {
   },
 
   methods: {
-    viewLeague() {
-      this.$route.push(`league/${this.league.leagueId}`);
+    viewLeague(leagueId) {
+      this.$route.push(`league/${leagueId}`);
     },
   },
 
