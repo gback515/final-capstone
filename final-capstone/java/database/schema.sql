@@ -87,7 +87,7 @@ CREATE TABLE scores (
 INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
 
-INSERT INTO courses (course_id, course_name, lng, lat) VALUES (0, 'Top Golf', '39.316124235753335' ,'-84.42551718231664');
+INSERT INTO courses (course_id, course_name, lat, lng) VALUES (0, 'Top Golf', '39.316124235753335' ,'-84.42551718231664');
 INSERT INTO courses ( course_name, lat, lng) VALUES ('Jamaica Run Golf Club', '39.617206321639166' ,' -84.33192808915973');
 INSERT INTO courses ( course_name, lat, lng) VALUES ('The Golf Club at Yankee Trace', '39.599330732123256' ,' -84.1976116215202');
 INSERT INTO courses ( course_name, lat, lng) VALUES ('Heatherwoode Golf Club', '39.5395770067503' ,' -84.23117233200432');
