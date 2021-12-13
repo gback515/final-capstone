@@ -139,7 +139,7 @@ export default {
   flex-direction: column;
   margin-left: 16%;
   margin-top: 5%;
-  background-color: rgba(250, 135, 123, 0.5);
+  background-color: rgba(250, 135, 123, 0.7);
   padding: 5px;
   border-radius: 30px;
   width: 50%;

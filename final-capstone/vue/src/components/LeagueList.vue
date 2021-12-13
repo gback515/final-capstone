@@ -60,7 +60,7 @@ export default {
 }
 
 .league-link {
-  background-color: rgba(250, 135, 123, 0.5);
+  background-color: rgba(250, 135, 123, 0.7);
   text-align: center;
   font-size: 30px;
   padding: 40%;

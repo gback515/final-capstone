@@ -159,7 +159,7 @@ h1 {
 .course-form {
   display: grid;
   margin: 5% 20% 10% 20%;
-  background-color: rgba(250, 135, 123, 0.5);
+  background-color: rgba(250, 135, 123, 0.7);
   padding: 5%;
   border-radius: 30px;
   grid-template-columns: 1fr 1fr;

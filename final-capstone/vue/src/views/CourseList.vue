@@ -2,8 +2,9 @@
   <div class="course-form">
     <div v-for="course in courses" :key="course.courseId">
       <router-link
+        tag="li"
         class="course-link"
-        style="text-decoration: none; color: inherit"
+        style="text-decoration: none; color: inherit; list-style-type: none"
         v-bind:to="{
           name: 'course-details',
           params: { courseId: course.course_id },
@@ -12,7 +13,7 @@
       >
     </div>
     <router-link
-      class="links"
+      class="add-course-link"
       style="text-decoration: none; color: inherit"
       v-bind:to="{ name: 'add-course' }"
       >Add Course
@@ -59,15 +60,41 @@ export default {
 <style>
 .course-form {
   display: flex;
+  align-items: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   flex-direction: column;
   margin-left: 16%;
   margin-top: 5%;
-  background-color: rgba(250, 135, 123, 0.5);
+  background-color: rgba(250, 135, 123, 0.7);
   padding: 5px;
   border-radius: 30px;
   width: 50%;
   height: 70%;
   box-sizing: border-box;
   resize: both;
+}
+
+.course-link {
+  margin-bottom: 3px;
+}
+
+.course-link:hover {
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.add-course-link {
+  background-color: rgb(255, 168, 168);
+  border: solid black 1px;
+  margin-top: 5%;
+  padding: 2%;
+  height: 5%;
+  width: 30%;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.add-course-link:hover {
+  background-color: rgb(250, 137, 137);
 }
 </style>

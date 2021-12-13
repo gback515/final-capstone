@@ -18,7 +18,7 @@
         class="links"
         style="text-decoration: none; color: inherit"
         v-bind:to="{ name: 'course-list' }"
-        >View All Courses</router-link
+        >Courses</router-link
       >
      
       <router-link
@@ -70,9 +70,12 @@ body {
 .links {
   background-color: rgb(255, 168, 168);
   border: solid black 1px;
-  margin-top: 5%;
-  padding: 5%;
-  border-radius: 4px;
+  margin-top: 7%;
+  padding: 2%;
+  height: 5%;
+  width: 60%;
+  text-align: center;
+  border-radius: 5px;
 }
 
 .links:hover {

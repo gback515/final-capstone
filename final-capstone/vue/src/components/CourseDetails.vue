@@ -1,12 +1,17 @@
 <template>
-  <div>
-    <p>Course Name: {{ course.course_name }}</p>
-    <p>Course Par: {{ course.course_par }}</p>
-    <p>Course Coordinate: {{ course.coordinate }}</p>
-    <p>Course Address: {{ course.address }}</p>
-    <p>Course City: {{ course.city }}</p>
-    <p>Course State: {{ course.state }}</p>
-    <p>Course Zip: {{ course.zip }}</p>
+  <div class="course-details">
+    <p>Course Name:  {{ course.course_name }}</p>
+    <p>Course Par:  {{ course.course_par }}</p>
+    <p>Course Coordinate:  {{ course.coordinate }}</p>
+    <p>Course Address:  {{ course.address }}</p>
+    <p>Course City:  {{ course.city }}</p>
+    <p>Course State:  {{ course.state }}</p>
+    <p>Course Zip:  {{ course.zip }}</p>
+    <GmapMap
+      :center='center'
+      :zoom='12'
+      style='width:100%;  height: 400px;'
+    />
   </div>
 </template>
 
@@ -26,6 +31,7 @@ export default {
         state: "",
         zip: "",
       },
+      center: { lat: 39.316, lng: -84.425 }
     };
   },
   created() {
@@ -46,4 +52,18 @@ export default {
 </script>
 
 <style>
+  
+  .course-details {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 50%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: rgba(250, 135, 123, 0.7);
+    padding: 2px;
+    border-radius: 30px;
+    width: 50%;
+    height: 90%;
+    margin: 2% 25% 2% 25%
+  }
+
 </style>
