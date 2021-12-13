@@ -29,19 +29,25 @@ export default {
     return {
       leagues: [],
       league: {
+        leagueId: "",
         leagueName: "",
         leagueAdmin: 0,
         leagueCourse: 0,
         dayOfWeek: "",
-        members: [],
       },
     };
   },
 
   methods: {
+<<<<<<< HEAD
     viewLeague(leagueId) {
       this.$route.push(`league/${leagueId}`);
     },
+=======
+    viewLeague() {
+      this.$route.push(`league/${this.league.leagueId}`);
+    }
+>>>>>>> c6dc49c84283515da2ee5f297dc621fd1456fc5d
   },
 
   created() {

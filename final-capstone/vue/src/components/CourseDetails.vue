@@ -2,15 +2,14 @@
   <div class="course-details">
     <p>Course Name:  {{ course.course_name }}</p>
     <p>Course Par:  {{ course.course_par }}</p>
-    <p>Course Coordinate:  {{ course.coordinate }}</p>
     <p>Course Address:  {{ course.address }}</p>
     <p>Course City:  {{ course.city }}</p>
     <p>Course State:  {{ course.state }}</p>
     <p>Course Zip:  {{ course.zip }}</p>
     <GmapMap
       :center='center'
-      :zoom='12'
-      style='width:100%;  height: 400px;'
+      :zoom='15'
+      style='width:80%;  height: 300px; border-radius: 10px;'
     />
   </div>
 </template>
@@ -25,13 +24,14 @@ export default {
         courseId: this.$route.params.courseId,
         course_name: "",
         course_par: 0,
-        coordinate: "",
+        lat: 0,
+        lng: 0,
         address: "",
         city: "",
         state: "",
         zip: "",
       },
-      center: { lat: 39.316, lng: -84.425 }
+      center: { lat: 0, Lng: 0 }
     };
   },
   created() {
@@ -39,6 +39,7 @@ export default {
       .then((response) => {
         if (response.status === 200) {
           this.course = response.data;
+          this.center = { lat: this.course.lat, lng: this.course.lng };
         }
       })
       .catch((error) => {

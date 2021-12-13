@@ -41,7 +41,8 @@ CREATE TABLE courses (
     course_name varchar(50) NOT NULL,
 	course_par int DEFAULT 0,
 	course_length int DEFAULT 0,
-    coordinate varchar(50) NOT NULL,
+    lng varchar(50) NOT NULL,
+    lat varchar(50) NOT NULL,
 	address varchar(50) DEFAULT '',
 	city varchar(50) DEFAULT '',
 	state varchar(50) DEFAULT '',
@@ -86,13 +87,13 @@ CREATE TABLE scores (
 INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
 
-INSERT INTO courses (course_id, course_name, coordinate) VALUES (0, 'Top Golf', '39.316124235753335, -84.42551718231664');
-INSERT INTO courses ( course_name, coordinate) VALUES ('Jamaica Run Golf Club', '39.617206321639166, -84.33192808915973');
-INSERT INTO courses ( course_name, coordinate) VALUES ('The Golf Club at Yankee Trace', '39.599330732123256, -84.1976116215202');
-INSERT INTO courses ( course_name, coordinate) VALUES ('Heatherwoode Golf Club', '39.5395770067503, -84.23117233200432');
-INSERT INTO courses ( course_name, coordinate) VALUES ('Avon Fields Golf Course', '39.159968292511905, -84.47809775374196');
-INSERT INTO courses ( course_name, coordinate) VALUES ('Shaker Run Golf Club', '39.45399919680888, -84.29617164014978');
-INSERT INTO courses ( course_name, coordinate) VALUES ('Pebble Beach Golf Links', '36.56982404634914, -121.94966420217276');
+INSERT INTO courses (course_id, course_name, lat, lng) VALUES (0, 'Top Golf', '39.316124235753335' ,'-84.42551718231664');
+INSERT INTO courses ( course_name, lat, lng) VALUES ('Jamaica Run Golf Club', '39.617206321639166' ,' -84.33192808915973');
+INSERT INTO courses ( course_name, lat, lng) VALUES ('The Golf Club at Yankee Trace', '39.599330732123256' ,' -84.1976116215202');
+INSERT INTO courses ( course_name, lat, lng) VALUES ('Heatherwoode Golf Club', '39.5395770067503' ,' -84.23117233200432');
+INSERT INTO courses ( course_name, lat, lng) VALUES ('Avon Fields Golf Course', '39.159968292511905' ,' -84.47809775374196');
+INSERT INTO courses ( course_name, lat, lng) VALUES ('Shaker Run Golf Club', '39.45399919680888' ,' -84.29617164014978');
+INSERT INTO courses ( course_name, lat, lng) VALUES ('Pebble Beach Golf Links', '36.56982404634914' ,' -121.94966420217276');
 INSERT INTO leagues (league_id, league_name, league_admin, league_course, day_of_week, active) VALUES (0, 'Test', 1, 0, 'Friday', true);
 INSERT INTO user_league (user_id, league_id) VALUES (1,0);
 
