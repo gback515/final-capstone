@@ -8,7 +8,7 @@
     <p>Course Zip:  {{ course.zip }}</p>
     <GmapMap
       :center='center'
-      :zoom='12'
+      :zoom='15'
       style='width:80%;  height: 300px; border-radius: 10px;'
     />
   </div>
@@ -31,7 +31,7 @@ export default {
         state: "",
         zip: "",
       },
-      center: { lat: this.course.lat, lng: this.course.lng }
+      center: { lat: 0, Lng: 0 }
     };
   },
   created() {
@@ -39,6 +39,7 @@ export default {
       .then((response) => {
         if (response.status === 200) {
           this.course = response.data;
+          this.center = { lat: this.course.lat, lng: this.course.lng };
         }
       })
       .catch((error) => {
