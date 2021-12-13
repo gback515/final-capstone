@@ -11,21 +11,21 @@ DROP SEQUENCE IF EXISTS seq_course_id;
 CREATE SEQUENCE seq_user_id
   INCREMENT BY 1
   NO MAXVALUE
-  NO MINVALUE
+  MINVALUE 0
   CACHE 1;
 
 CREATE SEQUENCE seq_league_id
   INCREMENT BY 1
   NO MAXVALUE
-  NO MINVALUE
+  MINVALUE 0
   CACHE 1;
 
 CREATE SEQUENCE seq_course_id
   INCREMENT BY 1
   NO MAXVALUE
-  NO MINVALUE
-  CACHE 1;
-
+  MINVALUE 0
+  CACHE 1
+  START WITH 0;
 
 
 CREATE TABLE users (
@@ -87,8 +87,8 @@ CREATE TABLE scores (
 INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
 
-INSERT INTO courses ( course_id, course_name, course_par, course_length, lat, lng, address, city, state, zip )
-	VALUES (0, 'Top Golf - West Chester', 0, 215, '39.316124235753335' ,'-84.42551718231664', '9568 Water Front Dr', 'West Chester', 'OH', '45069' );
+INSERT INTO courses ( course_name, course_par, course_length, lat, lng, address, city, state, zip )
+	VALUES ( 'Top Golf - West Chester', 0, 215, '39.316124235753335' ,'-84.42551718231664', '9568 Water Front Dr', 'West Chester', 'OH', '45069' );
 INSERT INTO courses ( course_name, course_par, course_length, lat, lng, address, city, state, zip )
 	VALUES ('Jamaica Run Golf Club', 72, 6094, '39.617206321639166' ,' -84.33192808915973', '8781 Jamaica Rd', 'Germantown', 'OH', '45327' );
 INSERT INTO courses ( course_name, course_par, course_length, lat, lng, address, city, state, zip )	
