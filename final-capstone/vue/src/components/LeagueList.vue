@@ -73,10 +73,11 @@ export default {
 }
 
 .league-link {
+  display: flex;
+  flex-direction: column;
   background-color: rgba(250, 135, 123, 0.7);
   text-align: center;
   font-size: 30px;
-  padding: 40%;
   border-radius: 30px;
 }
 
