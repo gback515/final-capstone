@@ -1,5 +1,6 @@
 <template>
-  <div class="leagues">
+  <div class="main">
+    <div class="leagues">
     <h1 class="head">All Leagues</h1>
     <div v-for="league in leagues" :key="league.id">
       <router-link
@@ -18,6 +19,7 @@
       v-bind:to="{ name: 'create-league' }"
       >Add New League</router-link
     >
+    </div>
   </div>
 </template>
 
@@ -34,6 +36,7 @@ export default {
         leagueAdmin: 0,
         leagueCourse: 0,
         dayOfWeek: "",
+        hover: false
       },
     };
   },
@@ -65,37 +68,51 @@ export default {
 
 <style>
 .main {
-  width: 100vw;
+  width: 85vw;
+  height: 100vh;
+}
+
+.leagues {
+  display: flex;
+  align-items: center;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  flex-direction: column;
+  margin: 5% 10% 0% 12%;
+  background-color: rgba(250, 135, 123, 0.8);
+  padding: 5px;
+  border-radius: 30px;
+  width: 75%;
+  height: 80%;
 }
 
 .head {
-  margin: 5% 37%;
+  display: flex;
+  justify-self: start;
+  align-self: center;
+}
+
+.league-link.router-link-active {
+  color: white;
 }
 
 .league-link {
   display: flex;
   flex-direction: column;
-  background-color: rgba(250, 135, 123, 0.7);
-  text-align: center;
-  font-size: 30px;
-  border-radius: 30px;
+  height: 5px;
+  padding: 8px;
+  margin: 0 0 30% 0;
+  font-size: 25px;
+  justify-content: center;
+  align-items: center;
 }
 
 .new-league {
-  margin: 20% 30% 5% 30%;
-  background-color: rgba(250, 135, 123, 0.5);
+  margin: 28%;
+  background-color: rgba(250, 135, 123, 0.8);
+  border: black 1px solid;
   text-align: center;
-  font-size: 30px;
-  padding: 3%;
-  border-radius: 30px;
-}
-
-.leagues {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex-basis: 80%;
-  width: 100%;
+  font-size: 20px;
+  padding: 2%;
+  border-radius: 10px;
 }
 </style>

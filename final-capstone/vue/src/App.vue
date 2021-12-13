@@ -58,7 +58,7 @@ body {
 #nav {
   display: flex;
   flex-direction: column;
-  flex-basis: 17%;
+  flex-basis: 15%;
   background-color: rgba(160, 141, 116, 0.849);
   align-items: center;
   padding-top: 10px;

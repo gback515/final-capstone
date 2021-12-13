@@ -1,23 +1,25 @@
 <template>
-  <div class="course-form">
-    <div v-for="course in courses" :key="course.courseId">
+  <div class="courses">
+    <div class="course-form">
+      <div class="course-list" v-for="course in courses" :key="course.courseId">
+        <router-link
+          tag="li"
+          class="course-link"
+          style="text-decoration: none; color: inherit; list-style-type: none"
+          v-bind:to="{
+            name: 'course-details',
+            params: { courseId: course.course_id },
+          }"
+          >{{ course.course_name }}</router-link
+        >
+      </div>
       <router-link
-        tag="li"
-        class="course-link"
-        style="text-decoration: none; color: inherit; list-style-type: none"
-        v-bind:to="{
-          name: 'course-details',
-          params: { courseId: course.course_id },
-        }"
-        >{{ course.course_name }}</router-link
-      >
+        class="add-course-link"
+        style="text-decoration: none; color: inherit"
+        v-bind:to="{ name: 'add-course' }"
+        >Add Course
+      </router-link>
     </div>
-    <router-link
-      class="add-course-link"
-      style="text-decoration: none; color: inherit"
-      v-bind:to="{ name: 'add-course' }"
-      >Add Course
-    </router-link>
   </div>
 </template>
 
@@ -59,20 +61,28 @@ export default {
 </script>
 
 <style>
+.courses {
+  height: 100vh;
+  width: 85vw;
+}
+
 .course-form {
   display: flex;
   align-items: center;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   flex-direction: column;
-  margin-left: 16%;
-  margin-top: 5%;
-  background-color: rgba(250, 135, 123, 0.7);
+  margin: 5% 10% 10% 12%;
+  background-color: rgba(250, 135, 123, 0.8);
   padding: 5px;
   border-radius: 30px;
-  width: 50%;
-  height: 70%;
+  width: 75%;
+  height: 80%;
   box-sizing: border-box;
   resize: both;
+}
+
+.course-list {
+  height: 100%;
 }
 
 .course-link {
@@ -93,6 +103,7 @@ export default {
   width: 30%;
   text-align: center;
   border-radius: 5px;
+  justify-self: flex-end;
 }
 
 .add-course-link:hover {

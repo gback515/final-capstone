@@ -2,7 +2,7 @@
   <form v-on:submit.prevent="submitLeague" class="league-form">
     <h1>Create New League</h1>
     <div class="form-group">
-      <label for="name">League Name </label>
+      <label for="name">League Name</label>
       <input
         id="name"
         type="text"
@@ -12,7 +12,7 @@
       />
     </div>
     <div class="form-group">
-      <label for="league-course">Home Course </label>
+      <label for="league-course">Home Course</label>
       <select
         id="league-course"
         class="form-control"
@@ -28,7 +28,7 @@
       </select>
     </div>
     <div class="form-group">
-      <label for="day-of-week">Day of the Week to Play </label>
+      <label for="day-of-week">Day of the Week to Play</label>
       <select
         id="day-of-week"
         class="form-control"
@@ -56,7 +56,7 @@
     </div>
     <router-link
       class="link"
-      style="color: blue"
+      style="color: white; text-decoration: none;"
       v-bind:to="{ name: 'add-course' }"
       >Add New Course</router-link
     >
@@ -139,17 +139,30 @@ export default {
   flex-direction: column;
   margin-left: 16%;
   margin-top: 5%;
-  background-color: rgba(250, 135, 123, 0.7);
+  background-color: rgba(250, 135, 123, 0.8);
   padding: 5px;
   border-radius: 30px;
   width: 50%;
-  height: 70%;
+  height: 75%;
   box-sizing: border-box;
   resize: both;
 }
 
 .link {
-  margin-left: 34%;
+  margin: 0% 32% 2%;
+  background-color: rgba(160, 141, 116, 0.8);
+  border: black 1px solid;
+  padding: 15px 20px;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 10px;
+  font-weight: bold;
+  width: 30%;
+}
+
+.link:hover {
+  background-color: rgb(250, 137, 137);
+  cursor: pointer;
 }
 
 h1 {
@@ -162,26 +175,25 @@ h1 {
   flex: 50%;
   flex-shrink: unset;
   flex-wrap: wrap;
-  justify-content: space-evenly;
-  margin: 5% 10% 0% 10%;
+  margin: 5% 10% 0% 5%;
   padding-bottom: 5px;
-  width: 100%;
-  box-sizing: border-box;
+  width: 70%;
+  justify-content: space-around;
+  justify-items: center;
 }
 
 input[type="text"] {
   width: 100px;
-  -webkit-transition: width 0.4s ease-in-out;
-  transition: width 0.4s ease-in-out;
+  transition: width 0.5s;
   border: none;
-  background-color: rgba(160, 141, 116, 0.733);
+  background-color: rgba(160, 141, 116, 0.8);
   border-radius: 3px;
 }
 
 input[type="text"]:focus {
-  width: 30%;
+  width: 200px;
   border: none;
-  background-color: rgba(160, 141, 116, 0.733);
+  background-color: rgba(160, 141, 116, 0.8);
   border-radius: 3px;
 }
 
@@ -194,10 +206,11 @@ select:hover {
 }
 
 select {
-  background-color: rgba(160, 141, 116, 0.76);
+  background-color: rgba(160, 141, 116, 0.8);
   border: none;
   color: white;
   border-radius: 3px;
+  width: 200px;
 }
 
 .buttons {
@@ -208,12 +221,10 @@ select {
 .btn {
   display: flex;
   justify-content: center;
-  margin-top: 2%;
+  margin: 3% 10% 2%;
   width: 30%;
-  margin-left: 12%;
-  margin-bottom: 6%;
-  background-color: rgba(160, 141, 116, 0.733);
-  border: none;
+  background-color: rgba(160, 141, 116, 0.8);
+  border: black 1px solid;
   color: white;
   padding: 15px 20px;
   text-align: center;

@@ -17,7 +17,7 @@
       </div>
       <div id="length" class="form-group">
         <label for="course-length">Course Length (yards)</label>
-        <input type="number" id="course-length" v-model="course.courseLength" />
+        <input type="number" id="course-length" placeholder="Course Length" v-model="course.courseLength" />
       </div>
       <div id="coor" class="form-group">
         <label for="course-lat">Course Latitude</label>
@@ -158,12 +158,14 @@ h1 {
 
 .useles {
   display: flex;
-  flex-basis: 80%;
+  flex-basis: 85%;
   width: 100%;
 }
 .course-form {
+  width: 100%;
+  height: 80%;
   display: grid;
-  margin: 5% 20% 10% 20%;
+  margin: 5% 10% 10% 10%;
   background-color: rgba(250, 135, 123, 0.7);
   padding: 5%;
   border-radius: 30px;
@@ -175,7 +177,7 @@ h1 {
     "addr     cit"
     "sta      zi"
     "subm     can";
-  justify-items: end;
+  justify-items: center;
   box-sizing: border-box;
 }
 
@@ -191,32 +193,31 @@ h1 {
   margin-bottom: 5%;
   margin-top: 5%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   justify-items: center;
   padding-bottom: 5px;
   box-sizing: border-box;
 }
 
 input[type="text"] {
-  width: 80px;
-  -webkit-transition: width 0.4s ease-in-out;
-  transition: width 0.4s ease-in-out;
+  width: 100px;
+  transition: width 0.5s;
   border: none;
-  background-color: rgba(160, 141, 116, 0.733);
+  background-color: rgba(160, 141, 116, 0.8);
   border-radius: 3px;
   box-sizing: border-box;
 }
 
 input[type="text"]:focus {
-  width: 50%;
+  width: 200px;
   border: none;
-  background-color: rgba(160, 141, 116, 0.733);
+  background-color: rgba(160, 141, 116, 0.8);
   border-radius: 3px;
 }
 
 input[type="number"] {
   border: none;
-  background-color: rgba(160, 141, 116, 0.733);
+  background-color: rgba(160, 141, 116, 0.8);
   border-radius: 3px;
   color: white;
   box-sizing: border-box;
@@ -235,7 +236,7 @@ select:hover {
 }
 
 select {
-  background-color: rgba(160, 141, 116, 0.76);
+  background-color: rgba(160, 141, 116, 0.8);
   border: none;
   color: white;
   border-radius: 3px;
@@ -245,7 +246,7 @@ select {
 .btn {
   margin-top: 5%;
   margin-left: 30%;
-  background-color: rgba(160, 141, 116, 0.733);
+  background-color: rgba(160, 141, 116, 0.9);
   border: none;
   color: white;
   padding: 15px 35px;
@@ -256,6 +257,7 @@ select {
   border-radius: 10px;
   font-weight: bold;
   box-sizing: border-box;
+  border: black 1px solid;
 }
 
 .btn:hover {
