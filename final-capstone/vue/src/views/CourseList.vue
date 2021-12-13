@@ -31,7 +31,8 @@ export default {
       course: {
         courseName: "",
         coursePar: 0,
-        coordinate: "",
+        lat: 0,
+        lng: 0,
         address: "",
         city: "",
         state: "",
