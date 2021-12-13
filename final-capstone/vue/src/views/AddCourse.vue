@@ -21,7 +21,11 @@
       </div>
       <div id="coor" class="form-group">
         <label for="course-coordinate">Course Coordinate</label>
-        <input type="text" id="course-coordinate" v-model="course.courseCoordinate">
+        <input
+          type="text"
+          id="course-coordinate"
+          v-model="course.courseCoordinate"
+        />
       </div>
       <div id="add" class="form-group">
         <label for="address">Street Address</label>
@@ -40,7 +44,9 @@
         <input type="text" id="zip" v-model="course.courseZip" />
       </div>
       <button id="subm" class="btn" type="submit">Submit</button>
-      <button id="can" class="btn" type="cancel" v-on:click="cancelForm">Cancel</button>
+      <button id="can" class="btn" type="cancel" v-on:click="cancelForm">
+        Cancel
+      </button>
     </form>
   </div>
 </template>
@@ -80,19 +86,19 @@ export default {
         address: this.course.courseAddress,
         city: this.course.courseCity,
         state: this.course.courseState,
-        zip: this.course.courseZip
+        zip: this.course.courseZip,
       };
       if (this.courseId === 0) {
         CourseService.addCourse(newCourse).then((response) => {
           if (response.status === 201) {
-            this.$router.push("/")
+            this.$router.push("/course-list");
           }
-        })
+        });
       }
     },
     cancelForm() {
-      this.$router.push("/");
-    }
+      this.$router.push("/course-list");
+    },
   },
 };
 </script>
@@ -157,13 +163,13 @@ h1 {
   padding: 5%;
   border-radius: 30px;
   grid-template-columns: 1fr 1fr;
-  grid-template-areas: 
-      "h1-ga    h1-ga"
-      "name     par"
-      "length   coor"
-      "addr     cit"
-      "sta      zi"
-      "subm     can";
+  grid-template-areas:
+    "h1-ga    h1-ga"
+    "name     par"
+    "length   coor"
+    "addr     cit"
+    "sta      zi"
+    "subm     can";
   justify-items: end;
   box-sizing: border-box;
 }
