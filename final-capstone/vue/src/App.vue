@@ -17,9 +17,10 @@
       <router-link
         class="links"
         style="text-decoration: none; color: inherit"
-        v-bind:to="{ name: 'add-course' }"
-        >Add Course</router-link
+        v-bind:to="{ name: 'course-list' }"
+        >View All Courses</router-link
       >
+     
       <router-link
         class="links"
         style="text-decoration: none; color: inherit"

@@ -10,6 +10,8 @@ import LeagueForm from '../components/LeagueForm'
 import AddGolfer from "../views/AddGolfer.vue"
 import AddCourse from "../views/AddCourse.vue"
 import LeagueDetails from "../components/LeagueDetails"
+import CourseList from "../views/CourseList"
+import CourseDetails from "../components/CourseDetails"
 
 Vue.use(Router)
 
@@ -97,7 +99,24 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
-    }
+    },
+    {
+      path: "/course-list",
+      name: "course-list",
+      component: CourseList,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/course/id/:courseId",
+      name: "course-details",
+      component: CourseDetails,
+      meta: {
+        requiresAuth: true
+      }
+    },
+
   ]
 })
 
