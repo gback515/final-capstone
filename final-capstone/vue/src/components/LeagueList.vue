@@ -1,6 +1,6 @@
 <template>
   <div class="leagues">
-    <h1 class="head">My Leagues</h1>
+    <h1 class="head">All Leagues</h1>
     <div v-for="league in leagues" :key="league.id">
       <router-link
         class="league-link"
@@ -45,7 +45,7 @@ export default {
   },
 
   created() {
-    LeagueService.getMyLeagues(this.$store.state.user.id)
+    LeagueService.getAllLeagues()
       .then((response) => {
         if (response.status === 200) {
           this.leagues = response.data;
@@ -73,10 +73,11 @@ export default {
 }
 
 .league-link {
+  display: flex;
+  flex-direction: column;
   background-color: rgba(250, 135, 123, 0.7);
   text-align: center;
   font-size: 30px;
-  padding: 40%;
   border-radius: 30px;
 }
 
