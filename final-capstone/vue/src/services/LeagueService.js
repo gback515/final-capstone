@@ -22,4 +22,8 @@ export default {
         return axios.get(`/league/${leagueName}`)
     },
 
+    getAllLeagues() {
+        return axios.get(`/leagues`)
+    }
+
 }
