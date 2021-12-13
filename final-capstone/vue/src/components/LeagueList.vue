@@ -39,15 +39,9 @@ export default {
   },
 
   methods: {
-<<<<<<< HEAD
     viewLeague(leagueId) {
       this.$route.push(`league/${leagueId}`);
     },
-=======
-    viewLeague() {
-      this.$route.push(`league/${this.league.leagueId}`);
-    }
->>>>>>> c6dc49c84283515da2ee5f297dc621fd1456fc5d
   },
 
   created() {
