@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class JdbcCourseDao implements CourseDao {
@@ -22,20 +23,21 @@ public class JdbcCourseDao implements CourseDao {
         String courseName = course.getCourseName();
         int coursePar = course.getCoursePar();
         int courseLength = course.getCourseLength();
-        String courseCoordinate = course.getCourseCoordinate();
+        double courseLat = course.getCourseLat();
+        double courseLng = course.getCourseLng();
         String courseAddress = course.getCourseAddress();
         String courseCity = course.getCourseCity();
         String courseState = course.getCourseState();
         String courseZip = course.getCourseZip();
-        String sql = "INSERT INTO courses (course_name, course_par, course_length, coordinate, address, city, state, zip)" +
-                " VALUES (?,?,?,?,?,?,?,?) RETURNING course_id;";
-        return jdbcTemplate.queryForObject(sql, Long.class, courseName, coursePar, courseLength, courseCoordinate, courseAddress, courseCity, courseState, courseZip);
+        String sql = "INSERT INTO courses (course_name, course_par, course_length, lat, lng, address, city, state, zip)" +
+                " VALUES (?,?,?,?,?,?,?,?,?) RETURNING course_id;";
+        return jdbcTemplate.queryForObject(sql, Long.class, courseName, coursePar, courseLength, courseLat, courseLng, courseAddress, courseCity, courseState, courseZip);
     }
 
     @Override
     public List<Course> findAll() {
         List<Course> courses = new ArrayList<Course>();
-        String sql = "SELECT course_id, course_name, course_par, course_length, coordinate, address, city, state, zip FROM courses;";
+        String sql = "SELECT course_id, course_name, course_par, course_length, lat, lng, address, city, state, zip FROM courses;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
             Course course = mapRowToCourse(results);
@@ -46,7 +48,7 @@ public class JdbcCourseDao implements CourseDao {
 
     @Override
     public Course findCourseById(long courseId) {
-        String sql = "SELECT course_id, course_name, course_par, course_length, coordinate, address, city, state, zip FROM courses WHERE course_id = ?;";
+        String sql = "SELECT course_id, course_name, course_par, course_length, lat, lng, address, city, state, zip FROM courses WHERE course_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, courseId);
         if (results.next()) {
             return mapRowToCourse(results);
@@ -58,7 +60,7 @@ public class JdbcCourseDao implements CourseDao {
     @Override
     public List<Course> findCourseByPar(int coursePar) {
         List<Course> courses = new ArrayList<Course>();
-        String sql = "SELECT course_id, course_name, course_length, coordinate, address, city, state, zip FROM courses WHERE course_par = ?;";
+        String sql = "SELECT course_id, course_name, course_length, lat, lng, address, city, state, zip FROM courses WHERE course_par = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, coursePar);
         while (results.next()) {
             Course course = mapRowToCourse(results);
@@ -69,7 +71,7 @@ public class JdbcCourseDao implements CourseDao {
 
     @Override
     public Course findCourseByName(String courseName) {
-        String sql = "SELECT course_id, course_name, course_length, coordinate, address, city, state, zip FROM courses WHERE course_name = ?;";
+        String sql = "SELECT course_id, course_name, course_length, lat, lng, address, city, state, zip FROM courses WHERE course_name = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, courseName);
         if (results.next()) {
             return mapRowToCourse(results);
@@ -80,7 +82,7 @@ public class JdbcCourseDao implements CourseDao {
 
     @Override
     public Course findCourseByCoordinate(String courseCoordinate) {
-        String sql = "SELECT course_id, course_name, course_length, coordinate, address, city, state, zip FROM courses WHERE coordinate = ?;";
+        String sql = "SELECT course_id, course_name, course_length, lat, lng, address, city, state, zip FROM courses WHERE coordinate = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, courseCoordinate);
         if (results.next()) {
             return mapRowToCourse(results);
@@ -91,7 +93,7 @@ public class JdbcCourseDao implements CourseDao {
 
     @Override
     public Course findCourseByAddress(String courseAddress) {
-        String sql = "SELECT course_id, course_name, course_length, coordinate, address, city, state, zip FROM courses WHERE address = ?;";
+        String sql = "SELECT course_id, course_name, course_length, lat, lng, address, city, state, zip FROM courses WHERE address = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, courseAddress);
         if (results.next()) {
             return mapRowToCourse(results);
@@ -103,7 +105,7 @@ public class JdbcCourseDao implements CourseDao {
     @Override
     public List<Course> findCourseByState(String courseState) {
         List<Course> courses = new ArrayList<Course>();
-        String sql = "SELECT course_id, course_name, course_length, coordinate, address, city, state, zip FROM courses WHERE state = ?;";
+        String sql = "SELECT course_id, course_name, course_length, lat, lng, address, city, state, zip FROM courses WHERE state = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, courseState);
         while (results.next()) {
             Course course = mapRowToCourse(results);
@@ -115,7 +117,7 @@ public class JdbcCourseDao implements CourseDao {
     @Override
     public List<Course> findCourseByCity(String courseCity) {
         List<Course> courses = new ArrayList<Course>();
-        String sql = "SELECT course_id, course_name, course_length, coordinate, address, city, state, zip FROM courses WHERE city = ?;";
+        String sql = "SELECT course_id, course_name, course_length, lat, lng, address, city, state, zip FROM courses WHERE city = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, courseCity);
         while (results.next()) {
             Course course = mapRowToCourse(results);
@@ -127,7 +129,7 @@ public class JdbcCourseDao implements CourseDao {
     @Override
     public List<Course> findCourseByZip(String courseZip) {
         List<Course> courses = new ArrayList<Course>();
-        String sql = "SELECT course_id, course_name, course_length, coordinate, address, city, state, zip FROM courses WHERE zip = ?;";
+        String sql = "SELECT course_id, course_name, course_length, lat, lng, address, city, state, zip FROM courses WHERE zip = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, courseZip);
         while (results.next()) {
             Course course = mapRowToCourse(results);
@@ -142,7 +144,14 @@ public class JdbcCourseDao implements CourseDao {
         course.setCourseName(results.getString("course_name"));
         course.setCoursePar(results.getInt("course_par"));
         course.setCourseLength(results.getInt("course_length"));
-        course.setCourseCoordinate(results.getString("coordinate"));
+        String courseLatStr = results.getString("lat");
+        assert courseLatStr != null;
+        double courseLat = Double.parseDouble(courseLatStr);
+        course.setCourseLat(courseLat);
+        String courseLngStr = results.getString("lng");
+        assert courseLngStr != null;
+        double courseLng = Double.parseDouble(courseLngStr);
+        course.setCourseLng(courseLng);
         course.setCourseAddress(results.getString("address"));
         course.setCourseCity(results.getString("city"));
         course.setCourseState(results.getString("state"));

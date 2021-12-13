@@ -11,8 +11,10 @@ public class Course {
     private int coursePar;
     @JsonProperty("course_length")
     private int courseLength; // In yards, change to array for scratch, senior, women
-    @JsonProperty("coordinate")
-    private String courseCoordinate;
+    @JsonProperty("lat")
+    private double courseLat;
+    @JsonProperty("lng")
+    private double courseLng;
     @JsonProperty("address")
     private String courseAddress; // Consider unique restraint in database
     @JsonProperty("city")
@@ -33,10 +35,11 @@ public class Course {
         this.coursePar = coursePar;
     }
 
-    public Course (String courseName, int coursePar, String courseCoordinate) {
+    public Course (String courseName, int coursePar, double courseLat, double courseLng) {
         this.courseName = courseName;
         this.coursePar = coursePar;
-        this.courseCoordinate = courseCoordinate;
+        this.courseLat = courseLat;
+        this.courseLng = courseLng;
     }
 
     public Long getCourseId() {
@@ -71,12 +74,20 @@ public class Course {
         this.courseLength = courseLength;
     }
 
-    public String getCourseCoordinate() {
-        return courseCoordinate;
+    public double getCourseLat() {
+        return courseLat;
     }
 
-    public void setCourseCoordinate(String courseCoordinate) {
-        this.courseCoordinate = courseCoordinate;
+    public void setCourseLat(double courseLat) {
+        this.courseLat = courseLat;
+    }
+
+    public double getCourseLng() {
+        return courseLng;
+    }
+
+    public void setCourseLng(double courseLng) {
+        this.courseLng = courseLng;
     }
 
     public String getCourseAddress() {
