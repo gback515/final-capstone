@@ -12,7 +12,12 @@ import AddCourse from "../views/AddCourse.vue"
 import LeagueDetails from "../components/LeagueDetails"
 import CourseList from "../views/CourseList"
 import CourseDetails from "../components/CourseDetails"
+<<<<<<< HEAD
 import LeaderboardDetails from "@/views/LeaderboardDetails"
+=======
+import SearchCourses from "../components/SearchCourses"
+import MatchScore from "../components/MatchScore"
+>>>>>>> 9c4120c6665a1d3b8909c301f02e1952046732a8
 
 Vue.use(Router)
 
@@ -102,6 +107,14 @@ const router = new Router({
       }
     },
     {
+      path: "/search-courses",
+      name: "search-courses",
+      component: SearchCourses,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
       path: "/course-list",
       name: "course-list",
       component: CourseList,
@@ -113,6 +126,14 @@ const router = new Router({
       path: "/course/id/:courseId",
       name: "course-details",
       component: CourseDetails,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/league/:leagueId",
+      name: "match-score",
+      component: MatchScore,
       meta: {
         requiresAuth: true
       }

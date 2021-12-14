@@ -8,9 +8,10 @@
     <p>Course State: {{ course.state }}</p>
     <p>Course Zip: {{ course.zip }}</p>
     <GmapMap
+      id="map"
       :center="center"
       :zoom="15"
-      style="width: 80%; height: 300px; border-radius: 10px"
+      style="width: 80%; height: 350px;"
     />
   </div>
 </template>
@@ -66,5 +67,14 @@ export default {
   width: 50%;
   height: 90%;
   margin: 2% 25% 2% 25%;
+}
+
+#map {
+  align-self: center;
+  border: Black 1px solid;
+}
+
+p {
+  margin: 2%;
 }
 </style>
