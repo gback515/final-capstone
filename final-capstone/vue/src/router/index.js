@@ -12,6 +12,7 @@ import AddCourse from "../views/AddCourse.vue"
 import LeagueDetails from "../components/LeagueDetails"
 import CourseList from "../views/CourseList"
 import CourseDetails from "../components/CourseDetails"
+import LeaderboardDetails from "@/views/LeaderboardDetails"
 import SearchCourses from "../components/SearchCourses"
 import MatchScore from "../components/MatchScore"
 
@@ -130,6 +131,14 @@ const router = new Router({
       path: "/league/:leagueId/match",
       name: "match-score",
       component: MatchScore,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/leaderboard/:leagueId",
+      name: "leaderboard-details",
+      component: LeaderboardDetails,
       meta: {
         requiresAuth: true
       }
