@@ -1,4 +1,5 @@
 <template>
+<div class="details-main">
   <div class="course-details">
     <p>Course Name: {{ course.course_name }}</p>
     <p>Course Par: {{ course.course_par }}</p>
@@ -13,6 +14,7 @@
       :zoom="15"
       style="width: 80%; height: 350px;"
     />
+  </div>
   </div>
 </template>
 
@@ -34,7 +36,7 @@ export default {
         state: "",
         zip: "",
       },
-      center: { lat: 0, Lng: 0 },
+      center: { lat: 0, lng: 0 },
     };
   },
   created() {
@@ -55,7 +57,11 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+
+.details-main {
+  width: 80%;
+}
 .course-details {
   display: flex;
   flex-direction: column;
@@ -64,7 +70,6 @@ export default {
   background-color: rgba(250, 135, 123, 0.7);
   padding: 2px;
   border-radius: 30px;
-  width: 50%;
   height: 90%;
   margin: 2% 25% 2% 25%;
 }

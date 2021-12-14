@@ -13,18 +13,20 @@
           >{{ course.course_name }}</router-link
         >
       </div>
-      <router-link
-      class="search-for-courses"
-      style="text-decoration: none; color: inherit;"
-      v-bind:to="{ name: 'search-courses' }"
-      >Search for Courses
-      </router-link>
-      <router-link
-        class="add-course-link"
-        style="text-decoration: none; color: inherit"
-        v-bind:to="{ name: 'add-course' }"
-        >Add Course
-      </router-link>
+      <nav>
+        <router-link
+          class="search-for-courses"
+          style="text-decoration: none; color: inherit"
+          v-bind:to="{ name: 'search-courses' }"
+          >Search for Courses
+        </router-link>
+        <router-link
+          class="add-course-link"
+          style="text-decoration: none; color: inherit"
+          v-bind:to="{ name: 'add-course' }"
+          >Add Course
+        </router-link>
+      </nav>
     </div>
   </div>
 </template>
@@ -79,7 +81,6 @@ export default {
   flex-direction: column;
   margin: 5% 10% 10% 12%;
   background-color: rgba(250, 135, 123, 0.8);
-  padding: 5px;
   border-radius: 30px;
   width: 75%;
   height: 80%;
@@ -88,11 +89,18 @@ export default {
 }
 
 .course-list {
-  height: 100%;
+  height: 7%;
+
+}
+
+nav {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
 }
 
 .course-link {
-  margin-bottom: 3px;
+  margin-bottom: 1%;
 }
 
 .course-link:hover {
@@ -103,9 +111,9 @@ export default {
 .add-course-link {
   background-color: rgb(255, 168, 168);
   border: solid black 1px;
-  margin-top: 5%;
+  margin: 5%;
   padding: 2%;
-  height: 5%;
+  height: 17%;
   width: 30%;
   text-align: center;
   border-radius: 5px;
@@ -113,6 +121,22 @@ export default {
 }
 
 .add-course-link:hover {
+  background-color: rgb(250, 137, 137);
+}
+
+.search-for-courses {
+  background-color: rgb(255, 168, 168);
+  border: solid black 1px;
+  margin: 5%;
+  padding: 2%;
+  height: 17%;
+  width: 30%;
+  text-align: center;
+  border-radius: 5px;
+  justify-self: flex-end;
+}
+
+.search-for-courses:hover {
   background-color: rgb(250, 137, 137);
 }
 </style>
