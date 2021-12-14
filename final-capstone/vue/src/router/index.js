@@ -13,6 +13,7 @@ import LeagueDetails from "../components/LeagueDetails"
 import CourseList from "../views/CourseList"
 import CourseDetails from "../components/CourseDetails"
 import SearchCourses from "../components/SearchCourses"
+import MatchScore from "../components/MatchScore"
 
 Vue.use(Router)
 
@@ -125,6 +126,14 @@ const router = new Router({
         requiresAuth: true
       }
     },
+    {
+      path: "/league/:leagueId",
+      name: "match-score",
+      component: MatchScore,
+      meta: {
+        requiresAuth: true
+      }
+    }
 
   ]
 })
