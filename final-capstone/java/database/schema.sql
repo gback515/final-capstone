@@ -64,7 +64,7 @@ CREATE TABLE courses (
 CREATE TABLE tee_times (
     tee_time_id int DEFAULT nextval('seq_tee_time_id'::regclass) NOT NULL,
     user_id int NOT NULL,
-    course_id int NOT NULL,
+    league_id int NOT NULL,
     tee_time_date varchar(50) NOT NULL,
     tee_time varchar(50) NOT NULL,
     CONSTRAINT PK_tee_time_id PRIMARY KEY(tee_time_id)

@@ -7,24 +7,24 @@ public class TeeTime {
     private Long teeTimeId;
     @JsonProperty("user_id")
     private Long userId;
-    @JsonProperty("course_id")
-    private Long courseId;
+    @JsonProperty("league_id")
+    private Long leagueId;
     @JsonProperty("tee_time_date")
     private String teeTimeDate;
     @JsonProperty("tee_time")
     private String time;
 
-    public TeeTime(Long teeTimeId, Long userId, Long courseId, String teeTimeDate, String time) {
+    public TeeTime(Long teeTimeId, Long userId, Long leagueId, String teeTimeDate, String time) {
         this.teeTimeId = teeTimeId;
         this.userId = userId;
-        this.courseId = courseId;
+        this.leagueId = this.leagueId;
         this.teeTimeDate = teeTimeDate;
         this.time = time;
     }
 
-    public TeeTime(Long userId, Long courseId, String teeTimeDate, String time) {
+    public TeeTime(Long userId, Long leagueId, String teeTimeDate, String time) {
         this.userId = userId;
-        this.courseId = courseId;
+        this.leagueId = leagueId;
         this.teeTimeDate = teeTimeDate;
         this.time = time;
     }
@@ -47,12 +47,12 @@ public class TeeTime {
         this.userId = userId;
     }
 
-    public Long getCourseId() {
-        return courseId;
+    public Long getLeagueId() {
+        return leagueId;
     }
 
-    public void setCourseId(Long courseId) {
-        this.courseId = courseId;
+    public void setLeagueId(Long leagueId) {
+        this.leagueId = leagueId;
     }
 
     public String getTeeTimeDate() {

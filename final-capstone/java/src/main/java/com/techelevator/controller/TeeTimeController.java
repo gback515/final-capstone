@@ -32,7 +32,7 @@ public class TeeTimeController {
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "/create-teetime", method = RequestMethod.POST)
     public long createTeeTime(@Valid @RequestBody TeeTime newTeeTime) {
-        TeeTime teeTime = teeTimeDao.create(newTeeTime.getUserId(), newTeeTime.getCourseId(), newTeeTime.getTeeTimeDate(), newTeeTime.getTime());
+        TeeTime teeTime = teeTimeDao.create(newTeeTime.getUserId(), newTeeTime.getLeagueId(), newTeeTime.getTeeTimeDate(), newTeeTime.getTime());
         return teeTime.getTeeTimeId();
     }
 }
