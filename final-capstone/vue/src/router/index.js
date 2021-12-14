@@ -127,7 +127,7 @@ const router = new Router({
       }
     },
     {
-      path: "/league/:leagueId",
+      path: "/league/:leagueId/match",
       name: "match-score",
       component: MatchScore,
       meta: {

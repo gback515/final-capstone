@@ -1,7 +1,9 @@
 <template>
   <div class="league-members">
     <h1>League Members:</h1>
-    <p>Username: {{ user.username }}</p>
+    <div v-for="member in league" :key="member.id"></div>
+    <p>Golfer Name: {{ user.username }}</p>
+    <p>Score: {{ scores.score }}</p>
   </div>
 </template>
 
@@ -11,14 +13,21 @@ import MatchService from "@/services/MatchService.js";
 export default {
   data() {
     return {
-      users: {
+      users: [],
+      user: {
         userId: this.$route.params.userId,
         username: "",
+      },
+      scores: {
+        course_id: "",
+        league_id: "",
+        score: "",
+        date_played: "",
       },
     };
   },
   created() {
-    MatchService.getMatches(this.user.userId)
+   MatchService.getScores(this.score.matchId)
       .then((response) => {
         if (response.status === 200) {
           this.user = response.data;
@@ -30,6 +39,20 @@ export default {
           this.$router.push("/league-list");
         }
       });
+
+
+    // MatchService.getMatches(this.match.matchId)
+    //   .then((response) => {
+    //     if (response.status === 200) {
+    //       this.user = response.data;
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     if (error.response && error.response.status === 404) {
+    //       alert("Golfer not in match.");
+    //       this.$router.push("/league-list");
+    //     }
+    //   });
   },
 };
 </script>

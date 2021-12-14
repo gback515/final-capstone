@@ -7,6 +7,15 @@
       <p>Day Of Week: {{ league.day_of_week }}</p>
     </div>
     <div>
+      <!-- 
+      path: "/league/:leagueId/match",
+      name: "match-score",
+      component: MatchScore, -->
+
+      <router-link class="match-link" v-bind:to="{ name: 'match-score' }"
+        >Match Scores
+      </router-link>
+
       <button class="btn" v-on:click="isHidden = !isHidden">
         Add New Golfer
       </button>
