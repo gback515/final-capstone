@@ -4,8 +4,12 @@ DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS user_league;
 DROP TABLE IF EXISTS leagues;
 DROP TABLE IF EXISTS courses;
+DROP TABLE IF EXISTS tee_times;
+DROP TABLE IF EXISTS user_tee_time;
+DROP TABLE IF EXISTS scores;
 DROP SEQUENCE IF EXISTS seq_user_id;
 DROP SEQUENCE IF EXISTS seq_league_id;
+DROP SEQUENCE IF EXISTS seq_tee_time_id;
 DROP SEQUENCE IF EXISTS seq_course_id;
 
 CREATE SEQUENCE seq_user_id
@@ -21,6 +25,13 @@ CREATE SEQUENCE seq_league_id
   CACHE 1;
 
 CREATE SEQUENCE seq_course_id
+  INCREMENT BY 1
+  NO MAXVALUE
+  MINVALUE 0
+  CACHE 1
+  START WITH 0;
+
+CREATE SEQUENCE seq_tee_time_id
   INCREMENT BY 1
   NO MAXVALUE
   MINVALUE 0
@@ -50,6 +61,8 @@ CREATE TABLE courses (
     CONSTRAINT PK_course PRIMARY KEY (course_id)
 );
 
+
+
 CREATE TABLE leagues (
     league_id int DEFAULT nextval('seq_league_id'::regclass) NOT NULL,
     league_name varchar(50) NOT NULL,
@@ -60,6 +73,22 @@ CREATE TABLE leagues (
     CONSTRAINT PK_league PRIMARY KEY (league_id),
     CONSTRAINT FK_leagues_league_course FOREIGN KEY(league_course) REFERENCES courses(course_id),
     CONSTRAINT FK_league_league_admin FOREIGN KEY(league_admin) REFERENCES users(user_id)
+);
+
+CREATE TABLE tee_times (
+    tee_time_id int DEFAULT nextval('seq_tee_time_id'::regclass) NOT NULL,
+    tee_time_date varchar(50) NOT NULL,
+    tee_time varchar(50) NOT NULL,
+    CONSTRAINT PK_tee_time_id PRIMARY KEY(tee_time_id),
+    CONSTRAINT FK_league_tee_time FOREIGN KEY(tee_time_id) REFERENCES Leagues(league_id)
+);
+
+CREATE TABLE user_tee_time (
+    user_id int NOT NULL,
+    tee_time_id int NOT NULL,
+    CONSTRAINT PK_user_tee_time PRIMARY KEY(user_id, tee_time_id),
+    CONSTRAINT FK_user_tee_time_user FOREIGN KEY(user_id) REFERENCES users(user_id),
+    CONSTRAINT FK_user_tee_time_tee_time FOREIGN KEY(tee_time_id) REFERENCES tee_times(tee_time_id)
 );
 
 CREATE TABLE user_league (
