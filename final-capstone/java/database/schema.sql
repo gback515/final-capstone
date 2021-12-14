@@ -61,14 +61,7 @@ CREATE TABLE courses (
     CONSTRAINT PK_course PRIMARY KEY (course_id)
 );
 
-CREATE TABLE tee_times (
-    tee_time_id int DEFAULT nextval('seq_tee_time_id'::regclass) NOT NULL,
-    user_id int NOT NULL,
-    league_id int NOT NULL,
-    tee_time_date varchar(50) NOT NULL,
-    tee_time varchar(50) NOT NULL,
-    CONSTRAINT PK_tee_time_id PRIMARY KEY(tee_time_id)
-);
+
 
 CREATE TABLE leagues (
     league_id int DEFAULT nextval('seq_league_id'::regclass) NOT NULL,
@@ -80,6 +73,14 @@ CREATE TABLE leagues (
     CONSTRAINT PK_league PRIMARY KEY (league_id),
     CONSTRAINT FK_leagues_league_course FOREIGN KEY(league_course) REFERENCES courses(course_id),
     CONSTRAINT FK_league_league_admin FOREIGN KEY(league_admin) REFERENCES users(user_id)
+);
+
+CREATE TABLE tee_times (
+    tee_time_id int DEFAULT nextval('seq_tee_time_id'::regclass) NOT NULL,
+    tee_time_date varchar(50) NOT NULL,
+    tee_time varchar(50) NOT NULL,
+    CONSTRAINT PK_tee_time_id PRIMARY KEY(tee_time_id),
+    CONSTRAINT FK_league_tee_time FOREIGN KEY(tee_time_id) REFERENCES Leagues(league_id)
 );
 
 CREATE TABLE user_tee_time (
