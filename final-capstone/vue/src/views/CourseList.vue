@@ -14,6 +14,12 @@
         >
       </div>
       <router-link
+      class="search-for-courses"
+      style="text-decoration: none; color: inherit;"
+      v-bind:to="{ name: 'search-courses' }"
+      >Search for Courses
+      </router-link>
+      <router-link
         class="add-course-link"
         style="text-decoration: none; color: inherit"
         v-bind:to="{ name: 'add-course' }"

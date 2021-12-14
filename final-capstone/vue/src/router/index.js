@@ -12,6 +12,7 @@ import AddCourse from "../views/AddCourse.vue"
 import LeagueDetails from "../components/LeagueDetails"
 import CourseList from "../views/CourseList"
 import CourseDetails from "../components/CourseDetails"
+import SearchCourses from "../components/SearchCourses"
 
 Vue.use(Router)
 
@@ -96,6 +97,14 @@ const router = new Router({
       path: "/add-course",
       name: "add-course",
       component: AddCourse,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/search-courses",
+      name: "search-courses",
+      component: SearchCourses,
       meta: {
         requiresAuth: true
       }
