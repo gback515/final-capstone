@@ -12,6 +12,7 @@ import AddCourse from "../views/AddCourse.vue"
 import LeagueDetails from "../components/LeagueDetails"
 import CourseList from "../views/CourseList"
 import CourseDetails from "../components/CourseDetails"
+import LeaderboardDetails from "@/views/LeaderboardDetails"
 
 Vue.use(Router)
 
@@ -116,6 +117,14 @@ const router = new Router({
         requiresAuth: true
       }
     },
+    {
+      path: "/leaderboard/:leagueId",
+      name: "leaderboard-details",
+      component: LeaderboardDetails,
+      meta: {
+        requiresAuth: true
+      }
+    }
 
   ]
 })
