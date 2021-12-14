@@ -82,9 +82,4 @@ body {
 .links:hover {
   background-color: rgb(250, 137, 137);
 }
-
-.links:visited {
-  color: grey;
-  font-weight: bold;
-}
 </style>
