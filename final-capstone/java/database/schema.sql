@@ -100,15 +100,25 @@ CREATE TABLE user_league (
 );
 
 CREATE TABLE scores (
-    user_id int NOT NULL,
-    course_id int NOT NULL,
-    league_id int,
+    score_id int NOT NULL,
     score int NOT NULL,
-    date_played date NOT NULL,
-    CONSTRAINT FK_scores_user FOREIGN KEY(user_id) REFERENCES users(user_id),
-    CONSTRAINT FK_scores_course FOREIGN KEY(course_id) REFERENCES courses(course_id),
-    CONSTRAINT FK_scores_league FOREIGN KEY(league_id) REFERENCES leagues(league_id)
+    CONSTRAINT PK_scores_user PRIMARY KEY(score_id)
+);
 
+CREATE TABLE league_scores (
+    league_id int NOT NULL,
+    score_id int NOT NULL,
+     CONSTRAINT PK_league_scores PRIMARY KEY(league_id, score_id),
+     CONSTRAINT FK_league_scores_league FOREIGN KEY(league_id) REFERENCES leagues(league_id),
+     CONSTRAINT FK_league_scores_score FOREIGN KEY(score_id) REFERENCES scores(score_id)
+);
+
+CREATE TABLE user_scores (
+    user_id int NOT NULL,
+    score_id int NOT NULL,
+     CONSTRAINT PK_user_scores PRIMARY KEY(user_id, score_id),
+     CONSTRAINT FK_user_scores_user FOREIGN KEY(user_id) REFERENCES users(user_id),
+     CONSTRAINT FK_user_scores_score FOREIGN KEY(score_id) REFERENCES scores(score_id)
 );
 
 
