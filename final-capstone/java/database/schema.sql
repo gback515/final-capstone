@@ -105,12 +105,12 @@ CREATE TABLE scores (
     CONSTRAINT PK_scores_user PRIMARY KEY(score_id)
 );
 
-CREATE TABLE league_scores (
-    league_id int NOT NULL,
+CREATE TABLE tee_times_scores (
+    tee_time_id int NOT NULL,
     score_id int NOT NULL,
-     CONSTRAINT PK_league_scores PRIMARY KEY(league_id, score_id),
-     CONSTRAINT FK_league_scores_league FOREIGN KEY(league_id) REFERENCES leagues(league_id),
-     CONSTRAINT FK_league_scores_score FOREIGN KEY(score_id) REFERENCES scores(score_id)
+     CONSTRAINT PK_tee_times_scores PRIMARY KEY(tee_time_id, score_id),
+     CONSTRAINT FK_tee_times_scores_tee_time FOREIGN KEY(tee_time_id) REFERENCES tee_times(tee_time_id),
+     CONSTRAINT FK_tee_times_scores_score FOREIGN KEY(score_id) REFERENCES scores(score_id)
 );
 
 CREATE TABLE user_scores (
