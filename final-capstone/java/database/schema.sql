@@ -61,8 +61,6 @@ CREATE TABLE courses (
     CONSTRAINT PK_course PRIMARY KEY (course_id)
 );
 
-
-
 CREATE TABLE leagues (
     league_id int DEFAULT nextval('seq_league_id'::regclass) NOT NULL,
     league_name varchar(50) NOT NULL,
