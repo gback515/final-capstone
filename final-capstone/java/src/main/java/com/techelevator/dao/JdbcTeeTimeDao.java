@@ -42,7 +42,7 @@ public class JdbcTeeTimeDao implements TeeTimeDao {
     @Override
     public TeeTime create( String teeTimeDate, String time) {
         TeeTime teeTime = new TeeTime(teeTimeDate, time);
-        String sql = "INSERT INTO tee_times (tee_time_id, tee_time_date, tee_time) VALUES(?,?,?,?,?) RETURNING tee_time_id";
+        String sql = "INSERT INTO tee_times (tee_time_date, tee_time) VALUES(?,?) RETURNING tee_time_id";
         Long newTeeTimeId = jdbcTemplate.queryForObject(sql, Long.class, teeTimeDate, time);
         teeTime.setTeeTimeId(newTeeTimeId);
         return teeTime;

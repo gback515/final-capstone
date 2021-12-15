@@ -108,11 +108,14 @@ export default {
 
 .new-league {
   margin: 28%;
-  background-color: rgba(250, 135, 123, 0.8);
+  background-color: rgb(255, 168, 168);
   border: black 1px solid;
   text-align: center;
   font-size: 20px;
   padding: 2%;
   border-radius: 10px;
+}
+.new-league:hover {
+  background-color: rgb(250, 137, 137);
 }
 </style>

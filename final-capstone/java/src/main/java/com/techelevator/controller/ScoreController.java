@@ -44,11 +44,10 @@ public class ScoreController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(value = "/teetimes/add-score", method = RequestMethod.POST)
-    public void addScoreToUser(@Valid @RequestBody Score newScore) {
-//        Score score = scoreDao.create(newScore.getUserId(), newScore.getTeeTimeId(), newScore.getScore());
-//        return score.getScore();
-//        }
+
+    @RequestMapping(value = "/teetimes/{teeTimeId}/add-score", method = RequestMethod.POST)
+    public void addScoreToUser(@RequestBody Score score, @PathVariable Long teeTimeId) {
+        scoreDao.addScore(score.getUserId(), teeTimeId, score.getScore());
     }
 }
 
