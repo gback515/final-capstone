@@ -129,6 +129,11 @@ INSERT INTO courses ( course_name, course_par, course_length, lat, lng, address,
 INSERT INTO leagues (league_id, league_name, league_admin, league_course, day_of_week, active) VALUES (0, 'Test', 1, 0, 'Friday', true);
 INSERT INTO user_league (user_id, league_id) VALUES (1,0);
 
+INSERT INTO tee_times (tee_time_date, tee_time)
+    VALUES ('20211230', '3:15');
+
+INSERT INTO user_tee_time_score (user_id, tee_time_id, score)
+    VALUES (1, 0, 72);
 
 
 COMMIT TRANSACTION;
