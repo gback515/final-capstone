@@ -37,7 +37,9 @@ export default {
   },
   data() {
     return {
-      scores: {
+      score: {
+        user_id: "",
+        tee_time_id: "",
         score: "",
       },
     };
