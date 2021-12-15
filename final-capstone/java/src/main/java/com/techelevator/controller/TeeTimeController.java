@@ -23,11 +23,11 @@ public class TeeTimeController {
         return teeTimeDao.findAll();
     }
 
-//    @ResponseStatus(HttpStatus.OK)
-//    @RequestMapping(value = "/teetimes/{userId}", method = RequestMethod.GET)
-//    public List<TeeTime> getMyTeeTimes(@PathVariable("userId") long userId) {
-//        return teeTimeDao.findTeeTimeByUser(userId);
-//    }
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value = "/teetimes/{userId}", method = RequestMethod.GET)
+    public List<TeeTime> getMyTeeTimes(@PathVariable("userId") long userId) {
+        return teeTimeDao.findTeeTimeByUser(userId);
+    }
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "/create-teetime", method = RequestMethod.POST)
