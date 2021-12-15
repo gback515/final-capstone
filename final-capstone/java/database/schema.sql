@@ -81,9 +81,10 @@ CREATE TABLE tee_times (
     CONSTRAINT FK_league_tee_time FOREIGN KEY(tee_time_id) REFERENCES Leagues(league_id)
 );
 
-CREATE TABLE user_tee_time (
+CREATE TABLE user_tee_time_score (
     user_id int NOT NULL,
     tee_time_id int NOT NULL,
+    score int NOT NULL,
     CONSTRAINT PK_user_tee_time PRIMARY KEY(user_id, tee_time_id),
     CONSTRAINT FK_user_tee_time_user FOREIGN KEY(user_id) REFERENCES users(user_id),
     CONSTRAINT FK_user_tee_time_tee_time FOREIGN KEY(tee_time_id) REFERENCES tee_times(tee_time_id)
@@ -97,34 +98,11 @@ CREATE TABLE user_league (
     CONSTRAINT FK_user_league_league FOREIGN KEY(league_id) REFERENCES leagues(league_id)
 );
 
-CREATE TABLE scores (
-    score_id int NOT NULL,
-    score int NOT NULL,
-    CONSTRAINT PK_scores_user PRIMARY KEY(score_id)
-);
-
-CREATE TABLE league_scores (
-    league_id int NOT NULL,
-    score_id int NOT NULL,
-     CONSTRAINT PK_league_scores PRIMARY KEY(league_id, score_id),
-     CONSTRAINT FK_league_scores_league FOREIGN KEY(league_id) REFERENCES leagues(league_id),
-     CONSTRAINT FK_league_scores_score FOREIGN KEY(score_id) REFERENCES scores(score_id)
-);
-
-CREATE TABLE user_scores (
-    user_id int NOT NULL,
-    score_id int NOT NULL,
-     CONSTRAINT PK_user_scores PRIMARY KEY(user_id, score_id),
-     CONSTRAINT FK_user_scores_user FOREIGN KEY(user_id) REFERENCES users(user_id),
-     CONSTRAINT FK_user_scores_score FOREIGN KEY(score_id) REFERENCES scores(score_id)
-);
-
-
 
 INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
 
-INSERT INTO scores (score_id, score) VALUES (0, 69);
+
 
 INSERT INTO courses ( course_name, course_par, course_length, lat, lng, address, city, state, zip )
 	VALUES ( 'Top Golf - West Chester', 0, 215, '39.316124235753335' ,'-84.42551718231664', '9568 Water Front Dr', 'West Chester', 'OH', '45069' );
