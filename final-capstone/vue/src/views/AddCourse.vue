@@ -202,6 +202,7 @@ h1 {
 input[type="text"] {
   width: 100px;
   transition: width 0.5s;
+  color: white;
   border: none;
   background-color: rgba(160, 141, 116, 0.8);
   border-radius: 3px;
@@ -210,6 +211,7 @@ input[type="text"] {
 
 input[type="text"]:focus {
   width: 200px;
+  color: white;
   border: none;
   background-color: rgba(160, 141, 116, 0.8);
   border-radius: 3px;
@@ -246,7 +248,7 @@ select {
 .btn {
   margin-top: 5%;
   margin-left: 30%;
-  background-color: rgba(160, 141, 116, 0.9);
+  background-color: rgb(255, 168, 168);
   border: none;
   color: white;
   padding: 15px 35px;
