@@ -37,7 +37,9 @@ export default {
   },
   data() {
     return {
-      scores: {
+      score: {
+        user_id: "",
+        tee_time_id: "",
         score: "",
       },
     };
@@ -46,6 +48,8 @@ export default {
   methods: {
     submitScore() {
       const newScore = {
+        user_id: this.score.user_id,
+        tee_time_id: this.score.tee_time_id,
         scores: this.score.score,
         // score: parseInt(this.scores.score),
       };
