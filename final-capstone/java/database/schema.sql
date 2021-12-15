@@ -98,6 +98,14 @@ CREATE TABLE user_league (
     CONSTRAINT FK_user_league_league FOREIGN KEY(league_id) REFERENCES leagues(league_id)
 );
 
+CREATE TABLE tee_time_league (
+    tee_time_id int NOT NULL,
+    league_id int NOT NULL,
+    CONSTRAINT PK_tee_time_league PRIMARY KEY(tee_time_id, league_id),
+    CONSTRAINT FK_tee_time_league_tee_time FOREIGN KEY(tee_time_id) REFERENCES tee_times(tee_time_id),
+    CONSTRAINT FK_tee_time_league_league FOREIGN KEY(league_id) REFERENCES leagues(league_id)
+);
+
 
 INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
