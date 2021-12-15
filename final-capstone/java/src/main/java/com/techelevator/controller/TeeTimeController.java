@@ -23,16 +23,16 @@ public class TeeTimeController {
         return teeTimeDao.findAll();
     }
 
-    @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(value = "/teetimes/{userId}", method = RequestMethod.GET)
-    public List<TeeTime> getMyTeeTimes(@PathVariable("userId") long userId) {
-        return teeTimeDao.findTeeTimeByUser(userId);
-    }
+//    @ResponseStatus(HttpStatus.OK)
+//    @RequestMapping(value = "/teetimes/{userId}", method = RequestMethod.GET)
+//    public List<TeeTime> getMyTeeTimes(@PathVariable("userId") long userId) {
+//        return teeTimeDao.findTeeTimeByUser(userId);
+//    }
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "/create-teetime", method = RequestMethod.POST)
     public long createTeeTime(@Valid @RequestBody TeeTime newTeeTime) {
-        TeeTime teeTime = teeTimeDao.create(newTeeTime.getUserId(), newTeeTime.getLeagueId(), newTeeTime.getTeeTimeDate(), newTeeTime.getTime());
+        TeeTime teeTime = teeTimeDao.create(newTeeTime.getTeeTimeDate(), newTeeTime.getTime());
         return teeTime.getTeeTimeId();
     }
 }

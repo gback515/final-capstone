@@ -8,10 +8,8 @@ import java.util.List;
 public interface TeeTimeDao {
     List<TeeTime> findAll();
 
-    List<TeeTime> findTeeTimeByUser (long usserId);
+    //List<TeeTime> findTeeTimeByUser (long usserId);
 
-    TeeTime create(long userId, long courseId, String teeTimeDate, String time);
-
-
+    TeeTime create(String teeTimeDate, String time);
 
 }
