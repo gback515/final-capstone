@@ -42,11 +42,11 @@ public class ScoreController {
         return scoreDao.findScoresByTeeTimeId(teeTimeId);
     }
 
-    @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(value = "/teetimes/${teeTimeId}/add-score", method = RequestMethod.POST)
-    public void addScoreToUser(@PathVariable("userId") Long userId, @PathVariable("teeTimeId") Long teeTimeId) {
-        scoreDao.addScore(userId, teeTimeId);
-    }
+//    @ResponseStatus(HttpStatus.CREATED)
+//    @RequestMapping(value = "/teetimes/${teeTimeId}/add-score", method = RequestMethod.POST)
+//    public void addScoreToUser(@PathVariable("userId") Long userId, @PathVariable("teeTimeId") Long teeTimeId) {
+//        scoreDao.addScore(userId, teeTimeId);
+//    }
 
 
 
