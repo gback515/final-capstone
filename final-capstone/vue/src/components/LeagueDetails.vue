@@ -12,13 +12,14 @@
       name: "match-score",
       component: MatchScore, -->
 
-      <router-link class="match-link" v-bind:to="{ name: 'match-score' }"
-        >Match Scores
+      <router-link class="score-link" v-bind:to="{ name: 'add-score' }"
+        >Input Scores
       </router-link>
 
       <button class="btn" v-on:click="isHidden = !isHidden">
         Add New Golfer
       </button>
+
       <add-golfer v-if="!isHidden" />
     </div>
     <ul>

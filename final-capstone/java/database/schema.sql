@@ -126,6 +126,8 @@ CREATE TABLE user_scores (
 INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
 
+INSERT INTO scores (score_id, score) VALUES (0, 69);
+
 INSERT INTO courses ( course_name, course_par, course_length, lat, lng, address, city, state, zip )
 	VALUES ( 'Top Golf - West Chester', 0, 215, '39.316124235753335' ,'-84.42551718231664', '9568 Water Front Dr', 'West Chester', 'OH', '45069' );
 INSERT INTO courses ( course_name, course_par, course_length, lat, lng, address, city, state, zip )
