@@ -66,7 +66,7 @@ public class JdbcScoreDao implements ScoreDao {
     }
 
     @Override
-    public boolean addScore(Long userId, Long teeTimeId, Long score) {
+    public boolean create(Long userId, Long teeTimeId, Long score) {
         String sql = "INSERT INTO user_tee_time_score (user_id, tee_time_id, score) VALUES (?, ?, ?);";
         jdbcTemplate.update(sql, userId, teeTimeId, score);
         return true;

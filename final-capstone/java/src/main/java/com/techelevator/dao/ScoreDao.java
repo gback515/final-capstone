@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.League;
 import com.techelevator.model.Score;
 
 import java.util.List;
@@ -14,6 +15,8 @@ public interface ScoreDao {
 
     List<Score> findScoresByTeeTimeId(Long teeTimeId);
 
-    boolean addScore(Long userId, Long teeTimeId, Long score);
+//    Score create(Long userId, Long teeTimeId, Long score);
+
+    boolean create(Long userId, Long teeTimeId, Long score);
 
 }
