@@ -15,7 +15,11 @@
                     :key="index"
                     v-for="(m, index) in markers"
                     :position="m.position"
-                    @click="center=m.position"/>
+                    :clickable="true"
+                    @click="center=m.position; setPlace(m); setMarker(m); toggleInfoWindow(m, index)"
+                  >
+                </GmapMarker>
+                <gmap-info-window :options="infoOptions" :position="infoWindowPos" :opened="infoWinOpen" @closeclick="infoWinOpen=false" />
             </GmapMap>
       </div>
   </div>
@@ -23,45 +27,73 @@
 
 <script>
 import CourseService from "../services/CourseService.js"
+import {gmapApi} from 'vue2-google-maps'
+
 export default {
     data() {
         return {
             center: { lat: 39.1556302, lng: -84.4262227 },
             currentPlace: null,
             markers: [],
+            currentMarker: {
+              infoText: ""
+            },
             places: [],
             place: "",
             lat: 0,
-            lng: 0,
+            lng: 0, 
+            infoWindowPos: null,
+            infoWinOpen: false,
+            currentMidx: false,
+            infoOptions: {
+              content: '',
+              pixelOffset: {
+                width: 0,
+                height: -35
+            }
+          },
         }
     },
     mounted() {
     this.geolocate();
   },
   methods: {
+    toggleInfoWindow(marker, index) {
+      this.infoWindowPos = marker.position;
+      this.infoOptions.content = this.currentMarker.infoText;
+
+      if (this.currentMidx == index) {
+        this.infoWinOpen = !this.infoWinOpen;
+      }
+      else {
+        this.infoWinOpen = true;
+        this.currentMidx = index;
+      }
+    },
     setPlace(place) {
       this.currentPlace = place;
     },
+    setMarker(marker) {
+      console.log(marker);
+      this.currentMarker = marker;
+     //this.currentMarker.infoText = marker.infoText;
+    },
     addMarker() {
       if (this.currentPlace) {
+        console.log(this.currentPlace);
         const marker = {
-          lat: this.currentPlace.geometry.location.lat(),
-          lng: this.currentPlace.geometry.location.lng(),
+        position: {
+            lat: this.currentPlace.geometry.location.lat(),
+            lng: this.currentPlace.geometry.location.lng(),
+         },
+          infoText: `<strong>${this.currentPlace.name}</strong>`
         };
-        this.markers.push({ position: marker });
+        this.markers.push(marker);
         this.places.push(this.currentPlace);
+        this.setMarker(marker);
         this.center = marker;
         this.currentPlace = null;
       }
-    },
-    addCourses() {
-        this.places.array.forEach(course => {
-            const marker = {
-                lat: this.lat = course.lat,
-                lng: this.lng = course.lng
-            }
-            this.markers.push({ position: marker });
-        });
     },
     geolocate: function() {
       navigator.geolocation.getCurrentPosition(position => {
@@ -71,20 +103,38 @@ export default {
         };
       });
     },
+    markerClicked(m) {
+      m
+    },
+    showInfo() {
+      const infoWindow = new this.google.maps.InfoWindow({
+        content: `<h3>${this.currentPlace.label}</h3>`
+      });
+      infoWindow.open({
+        //anchor: marker,
+        shouldFocus: false,
+      });
+    }
   },
+  computed: {
+    google: gmapApi
+  }, 
   created() {
         CourseService.getCourses().then(response => {
         for (let course of response.data) {
             const marker = {
+              position: {
                 lat: this.lat = parseFloat(course.lat),
-                lng: this.lng = parseFloat(course.lng)
+                lng: this.lng = parseFloat(course.lng),
+              },
+                infoText: `<strong>${course.course_name}</strong>`
             }
-            this.markers.push({ position: marker });
+            this.markers.push(marker);
             this.places.push(marker);
         }
         }).catch(error => {
             console.log("caught error" + error)
-        })
+        });
   }
 }
 </script>
