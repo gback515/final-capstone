@@ -22,7 +22,7 @@
         v-model="leagueId"
       />
     </div>
-    <button type="submit">Submit</button>
+    <button class="btn" type="submit">Submit</button>
   </form>
 </template>
 
@@ -51,4 +51,19 @@ export default {
 </script>
 
 <style>
+/* .btn {
+  display: flex;
+  justify-content: center;
+  margin: 3% 10% 2%;
+  width: 30%;
+  background-color: rgba(160, 141, 116, 0.8);
+  border: black 1px solid;
+  color: white;
+  padding: 15px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 10px;
+  font-weight: bold;
+} */
 </style>
