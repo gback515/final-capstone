@@ -140,7 +140,11 @@ public class JdbcCourseDao implements CourseDao {
 
     @Override
     public Course findCourseByTeeTimeId(Long teeTimeId){
-        String sql = "SELECT course_id, course_name, course_par, course_length, lat, lng, address, city, state, zip FROM courses JOIN leagues ON courses.course_id = leagues.league_course JOIN tee_times ON leagues.league_id = tee_times.tee_time_id WHERE tee_times.tee_time_id = ?;";
+        String sql = "SELECT course_id, course_name, course_par, course_length, lat, lng, address, city, state, zip " +
+                "FROM courses JOIN leagues ON courses.course_id = leagues.league_course " +
+                "JOIN tee_time_league ON leagues.league_id = tee_time_league.league_id " +
+                "JOIN tee_times ON tee_time_league.tee_time_id = tee_times.tee_time_id " +
+                "WHERE tee_times.tee_time_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, teeTimeId);
         if (results.next()) {
             return mapRowToCourse(results);
