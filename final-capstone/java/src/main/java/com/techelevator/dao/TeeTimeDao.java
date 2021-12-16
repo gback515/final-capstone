@@ -12,4 +12,6 @@ public interface TeeTimeDao {
 
     TeeTime create(String teeTimeDate, String time);
 
+    boolean addScoreToTeeTime(Long teeTimeId, Long score);
+
 }

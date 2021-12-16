@@ -35,4 +35,9 @@ public class TeeTimeController {
         TeeTime teeTime = teeTimeDao.create(newTeeTime.getTeeTimeDate(), newTeeTime.getTime());
         return teeTime.getTeeTimeId();
     }
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value = "/tee-time/{teeTimeId}/score/{score}", method = RequestMethod.POST)
+    public void addScoreToTeeTime(@Valid @PathVariable("teeTimeId") long teeTimeId, @PathVariable("add-score") long score) {
+        teeTimeDao.addScoreToTeeTime(teeTimeId, score);
+    }
 }

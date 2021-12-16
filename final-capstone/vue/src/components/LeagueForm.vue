@@ -56,7 +56,7 @@
     </div>
     <router-link
       class="link"
-      style="color: white; text-decoration: none;"
+      style="color: white; text-decoration: none"
       v-bind:to="{ name: 'add-course' }"
       >Add New Course</router-link
     >
@@ -87,7 +87,7 @@ export default {
         leagueName: "",
         leagueAdmin: this.$store.state.user.id,
         leagueCourse: 0,
-        dayOfWeek: ""
+        dayOfWeek: "",
       },
     };
   },
@@ -103,7 +103,7 @@ export default {
         league_name: this.league.leagueName,
         league_admin: this.league.leagueAdmin,
         league_course: parseInt(this.league.leagueCourse),
-        day_of_week: this.league.dayOfWeek
+        day_of_week: this.league.dayOfWeek,
       };
       if (this.leagueId === 0) {
         leagueService
@@ -122,9 +122,9 @@ export default {
     },
     addGolfer() {
       leagueService.addUserToLeague(
-              parseInt(this.league.leagueId),
-              parseInt(this.$store.state.user.id)
-      )
+        parseInt(this.league.leagueId),
+        parseInt(this.$store.state.user.id)
+      );
     },
     cancelForm() {
       this.$router.push("/");

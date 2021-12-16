@@ -12,7 +12,7 @@
       />
 
       <div class="buttons">
-        <button type="submit" class="btn btn-submit">Submit</button>
+        <button class="btn btn-submit">Submit</button>
         <button
           class="btn btn-cancel"
           v-on:click.prevent="cancelForm"
@@ -36,43 +36,50 @@ import ScoreService from "../services/ScoreService";
 import TeeTimeService from "../services/TeeTimeService";
 
 export default {
-  // name: "add-score",
-  // props: {
-  //   scores: {
-  //     type: Number,
-  //     default: 0,
-  //   },
-  // },
+  name: "create-score",
+  props: {
+    teeTimeId: {
+      type: Number,
+      default: 0,
+    },
+  },
   data() {
     return {
+      tee_times: [
+        {
+          tee_time_id: 0,
+          tee_time_date: "",
+          tee_time: "",
+        },
+      ],
       score: {
-        user_id: this.$store.state.user.id,
-        tee_time_id: 0,
+        userId: this.$store.state.user.id,
+        tee_timeId: 0,
         score: "",
       },
     };
   },
 
-   created() {
-    let teeTimePromise = TeeTimeService.getCourses();
+  created() {
+    let teeTimePromise = TeeTimeService.getTeeTimes();
     teeTimePromise.then((response) => {
-      this.courses = response.data;
+      this.tee_times = response.data;
     });
   },
 
   methods: {
     submitScore() {
       const newScore = {
-        user_id: this.score.user_id,
-        tee_time_id: this.score.tee_time_id,
-        score: "",
+        user_id: this.score.userId,
+        tee_time_id: this.score.teeTimeId,
+        score: this.score.score,
         // this.score.score,
         // score: parseInt(this.scores.score),
       };
-      if (this.scoreId === 0) {
+      if (this.teeTimeid === 0) {
         ScoreService.addScore(newScore).then((response) => {
           if (response.status === 201) {
-            this.score.score = response.data;
+            this.score.userId = response.data;
             this.$router.push("/");
           }
         });

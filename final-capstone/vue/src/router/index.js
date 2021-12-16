@@ -137,15 +137,15 @@ const router = new Router({
       }
     },
     {
-      path: "/add-score",
-      name: "add-score",
+      path: "/create-score/:teeTimeId",
+      name: "create-score",
       component: ScoresForm,
       meta: {
         requiresAuth: true
       }
     },
     {
-      path: "/tee-time/:teeTimeId",
+      path: "/tee-time",
       name: "tee-time",
       component: TeeTimeDetails,
       meta: {

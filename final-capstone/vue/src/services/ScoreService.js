@@ -2,10 +2,10 @@ import axios from 'axios';
 
 export default {
     addScore(newScore) {
-        return axios.post(`/add-score`, newScore);
+        return axios.post('/create-score', newScore);
     },
     getScore() {
-        return axios.get(`/score`)
+        return axios.get('/score')
     },
     getScoreByUserId(userId) {
         return axios.get(`/score/user/${userId}`)

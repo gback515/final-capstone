@@ -48,6 +48,13 @@ public class JdbcTeeTimeDao implements TeeTimeDao {
         return teeTime;
     }
 
+    @Override
+    public boolean addScoreToTeeTime(Long teeTimeId, Long score) {
+        String sql = "INSERT INTO user_tee_time_score (tee_time_id, score) VALUES (?,?)";
+        jdbcTemplate.update(sql, teeTimeId, score);
+        return true;
+    }
+
 
     private TeeTime mapRowToTeeTime(SqlRowSet results) {
         TeeTime teeTime = new TeeTime();

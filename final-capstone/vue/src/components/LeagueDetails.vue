@@ -11,8 +11,12 @@
       path: "/league/:leagueId/match",
       name: "match-score",
       component: MatchScore, -->
-      <router-link class="score-link" v-bind:to="{ name: 'add-score' }"
+      <router-link class="score-link" v-bind:to="{ name: 'create-score' }"
         >Input Scores
+      </router-link>
+
+      <router-link class="score-link" v-bind:to="{ name: 'tee-time' }"
+        >Tee Times
       </router-link>
 
       <button class="btn" v-on:click="isHidden = !isHidden">

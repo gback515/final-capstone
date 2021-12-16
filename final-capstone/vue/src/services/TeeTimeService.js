@@ -9,5 +9,8 @@ export default {
     },
     getTeeTimeByUser(userId) {
         return axios.get(`/tee-time/${userId}`);
+    },
+    addScoreToTeeTime(teeTimeId, score) {
+        return axios.post(`/tee-time/${teeTimeId}/score/${score}`)
     }
 }
