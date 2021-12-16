@@ -127,7 +127,7 @@ export default {
       );
     },
     cancelForm() {
-      this.$router.push("/");
+      this.$router.push("/leagues");
     },
   },
 };

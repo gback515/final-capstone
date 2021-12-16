@@ -1,11 +1,10 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.LeagueDao;
-import com.techelevator.model.League;
-import com.techelevator.model.LeagueMemberDTO;
-import com.techelevator.model.LeagueNameAlreadyExistsException;
+import com.techelevator.model.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import com.techelevator.dao.UserDao;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
@@ -16,9 +15,11 @@ import java.util.List;
 public class LeagueController {
 
     private LeagueDao leagueDao;
+    private UserDao userDao;
 
-    public LeagueController(LeagueDao leagueDao) {
+    public LeagueController(LeagueDao leagueDao, UserDao userDao) {
         this.leagueDao = leagueDao;
+        this.userDao = userDao;
     }
 
     @ResponseStatus(HttpStatus.OK)
@@ -59,8 +60,14 @@ public class LeagueController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(value = "/league/{leagueId}/addUser/{userId}", method = RequestMethod.POST)
-    public void addUserToLeague(@Valid @PathVariable("leagueId") long leagueId, @PathVariable("userId") long userId) {
-        leagueDao.addUser(userId, leagueId);
+    @RequestMapping(value = "/league/addUser", method = RequestMethod.POST)
+    public void addUserToLeague(@Valid @RequestBody AddUserToLeagueDTO userLeague) {
+            leagueDao.addUser(userLeague.getUserName(), userLeague.getLeagueId());
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value = "/league/{leagueId}/get-members", method = RequestMethod.GET)
+    public List<User> getMembersByLeague(@Valid @PathVariable("leagueId") long leagueId) {
+        return userDao.getMembersByLeagueId(leagueId);
     }
 }

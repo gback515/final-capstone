@@ -6,6 +6,12 @@
       <p>Course: {{ league.league_course }}</p>
       <p>Day Of Week: {{ league.day_of_week }}</p>
     </div>
+    <div class="member-list">
+      <h3>Members: </h3>
+      <ul>
+        <li id="members" v-for="member in members" :key="member.id">{{ member.username }}</li>
+      </ul>
+    </div>
     <div class="tee-time-list">
       <h3>Tee times:</h3>
       <div v-for="teeTime in teeTimes" v-bind:key="teeTime.tee_time_id">
@@ -26,10 +32,6 @@
         v-bind:to="{ path: `/tee-time/league/${league.id}` }"
         >Create Tee Time
       </router-link>
-
-      <!-- <button class="btn" v-on:click="isHidden = !isHidden">
-        Add New Golfer
-      </button> -->
       <h3>Add Golfer:</h3>
       <add-golfer />
     </div>
@@ -46,6 +48,7 @@ import TeeTimeService from "../services/TeeTimeService";
 export default {
   data() {
     return {
+      members: [],
       teeTimes: [],
       league: {
         leagueId: this.$route.params.leagueId,
@@ -72,6 +75,12 @@ export default {
     TeeTimeService.getTeeTimeByLeague(this.league.leagueId).then((response) => {
       this.teeTimes = response.data;
     });
+    LeagueService.getMembersByLeague(this.league.leagueId)
+    .then((response) => {
+      if (response.status === 200) {
+        this.members = response.data;
+      }
+    })
   },
 
   isHidden: true,

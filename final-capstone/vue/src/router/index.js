@@ -153,7 +153,6 @@ const router = new Router({
         requiresAuth: true
       }
     },
-
     {
       path: "/tee-time/:teeTimeId",
       name: "teeTimeDetails",

@@ -2,7 +2,9 @@ package com.techelevator.dao;
 
 import com.techelevator.model.League;
 import com.techelevator.model.LeagueMemberDTO;
+import com.techelevator.model.User;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public interface LeagueDao {
@@ -23,6 +25,6 @@ public interface LeagueDao {
 
     League create(String leagueName, Long leagueAdmin, Long courseName, String dayOfWeek);
 
-    boolean addUser(Long userId, Long leagueId);
+    boolean addUser(String userName, Long leagueId);
 
 }

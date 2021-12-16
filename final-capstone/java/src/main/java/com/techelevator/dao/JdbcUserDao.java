@@ -85,6 +85,18 @@ public class JdbcUserDao implements UserDao {
         return userCreated;
     }
 
+    @Override
+    public List<User> getMembersByLeagueId(long leagueId) {
+        List<User> userList = new ArrayList<>();
+        String sql = "SELECT * FROM users JOIN user_league ON user_league.user_id = users.user_id WHERE league_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, leagueId);
+        while(results.next()) {
+            User user = mapRowToUser(results);
+            userList.add(user);
+        }
+        return userList;
+    }
+
     private User mapRowToUser(SqlRowSet rs) {
         User user = new User();
         user.setId(rs.getLong("user_id"));
