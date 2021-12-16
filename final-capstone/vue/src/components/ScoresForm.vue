@@ -24,7 +24,7 @@
       <div class="form-scores">
         <h1 class="header">All Scores</h1>
         <li v-for="score in scores" v-bind:key="score">
-          {{ score.tee_time_id }}
+          {{ score.tee_timeId }}
         </li>
       </div>
     </div>
@@ -36,22 +36,9 @@ import ScoreService from "../services/ScoreService";
 import TeeTimeService from "../services/TeeTimeService";
 
 export default {
-  name: "create-score",
-  props: {
-    teeTimeId: {
-      type: Number,
-      default: 0,
-    },
-  },
   data() {
     return {
-      tee_times: [
-        {
-          tee_time_id: 0,
-          tee_time_date: "",
-          tee_time: "",
-        },
-      ],
+      tee_timeId: parseInt(this.$route.params.tee_timeId),
       score: {
         userId: this.$store.state.user.id,
         tee_timeId: 0,
@@ -59,19 +46,17 @@ export default {
       },
     };
   },
-
   created() {
     let teeTimePromise = TeeTimeService.getTeeTimes();
     teeTimePromise.then((response) => {
       this.tee_times = response.data;
     });
   },
-
   methods: {
     submitScore() {
       const newScore = {
         user_id: this.score.userId,
-        tee_time_id: this.score.teeTimeId,
+        tee_time_id: this.score.tee_timeId,
         score: this.score.score,
         // this.score.score,
         // score: parseInt(this.scores.score),
@@ -79,7 +64,7 @@ export default {
       if (this.teeTimeid === 0) {
         ScoreService.addScore(newScore).then((response) => {
           if (response.status === 201) {
-            this.score.userId = response.data;
+            this.score.tee_timeId = response.data;
             this.$router.push("/");
           }
         });
@@ -109,5 +94,25 @@ export default {
     leaguePromise.then((response) => {
       this.league = response.data;
     });
+  },
+
+
+
+      userId: this.$route.params,
+      tee_times: [
+        {
+          tee_time_id: 0,
+          tee_time_date: "",
+          tee_time: "",
+        },
+      ],
+
+
+   name: "create-score",
+  props: {
+    teeTimeId: {
+      type: Number,
+      default: 0,
+    },
   },
   -->

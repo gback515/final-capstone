@@ -13,8 +13,8 @@ export default {
     getScoreByTeeTimeId(teeTimeId) {
         return axios.get(`/score/${teeTimeId}`)
     },
-    addScoreToUser(userId) {
-        return axios.post(`/add-score/user/${userId}`)
+    addScoreToTeeTime(teeTimeId) {
+        return axios.post(`/create=score/${teeTimeId}`)
     },
     getScoreByLeagueId(leagueId) {
         return axios.get(`/score/league/${leagueId}`)
