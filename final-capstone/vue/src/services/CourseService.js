@@ -11,6 +11,6 @@ export default {
         return axios.get(`/course/id/${courseId}`)
     },
     getCourseByTeeTimeId(teeTimeId) {
-        return axios.get(`/courses/tee-time/${teeTimeId}`)
+        return axios.get(`/course/tee-time/${teeTimeId}`)
     }
 }
