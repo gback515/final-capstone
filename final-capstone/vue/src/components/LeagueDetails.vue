@@ -9,12 +9,14 @@
     <div class="tee-time-list">
       <h3>Tee times:</h3>
       <div v-for="teeTime in teeTimes" v-bind:key="teeTime.tee_time_id">
-        <router-link
+        <!-- <router-link
           v-bind:to="{
             name: 'teeTimeDetails',
             params: { teeTimeId: teeTime.tee_time_id },
           }"
-        >
+        > -->
+
+        <router-link v-bind:to="{ path: `/tee-time/${teeTime.tee_time_id}` }">
           {{ teeTime.tee_time }} on {{ teeTime.tee_time_date }}
         </router-link>
       </div>
@@ -70,7 +72,9 @@ export default {
         }
       });
     TeeTimeService.getTeeTimeByLeague(this.league.leagueId).then((response) => {
-      this.teeTimes = response.data;
+      if (response.status === 200) {
+        this.teeTimes = response.data;
+      }
     });
   },
 

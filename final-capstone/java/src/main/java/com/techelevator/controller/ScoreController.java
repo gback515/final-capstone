@@ -39,7 +39,7 @@ public class ScoreController {
 
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/score/{teeTimeId}", method = RequestMethod.GET)
-    public List<Score> getScoresByTeeTime(long teeTimeId) {
+    public List<Score> getScoresByTeeTime(Long teeTimeId) {
         return scoreDao.findScoresByTeeTimeId(teeTimeId);
     }
 
@@ -51,10 +51,9 @@ public class ScoreController {
 
 
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(value = "/create-score/{teeTimeId}", method = RequestMethod.POST)
-    public long addScoreToUser(@RequestBody Score newScore) {
-       Score score = scoreDao.create(newScore.getUserId(), newScore.getTeeTimeId(), newScore.getScore());
-        return score.getScore();
+    @RequestMapping(value = "/create-score", method = RequestMethod.POST)
+    public void addScore(@Valid @RequestBody Score newScore) {
+       scoreDao.create(newScore.getUserId(), newScore.getTeeTimeId(), newScore.getScore());
     }
 }
 

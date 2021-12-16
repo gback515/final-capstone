@@ -31,7 +31,7 @@ public class TeeTimeController {
 
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/tee-time/league/{leagueId}", method = RequestMethod.GET)
-    public List<TeeTime> getTeeTimesByLeagueId(@PathVariable("leagueId") long leagueId) {
+    public List<TeeTime> getTeeTimesByLeagueId(@PathVariable("leagueId") Long leagueId) {
         return teeTimeDao.findTeeTimeByLeagueId(leagueId);
     }
 
@@ -48,7 +48,7 @@ public class TeeTimeController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(value = "/tee-time/{teeTimeId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/tee-time/id/{teeTimeId}", method = RequestMethod.GET)
     public TeeTime getTeeTimesById(@PathVariable("teeTimeId") long teeTimeId) {
         return teeTimeDao.findTeeTimeByTeeTimeId(teeTimeId);
     }

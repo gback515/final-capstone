@@ -1,28 +1,27 @@
 <template>
   <div>
     <h1>Tee Time Details</h1>
-    <div
+    <!-- <div
       class="tee-time"
-      v-for="teeTime in times"
-      :key="teeTime.teeTimeId"
+      v-for="time in times"
+      :key="time.teeTimeId"
       {{teeTimeId:
-      teeTime.tee_time}}
-    ></div>
-    <ul class="tee-time">
-      <p>Tee Time Date: {{ teeTime.tee_time_date }}</p>
-      <p>Tee Time: {{ teeTime.tee_time }}</p>
-    </ul>
-    <router-link class="score-link" v-bind:to="{ name: 'create-score' }"
-      >Input Scores
-    </router-link>
+      time.tee_time}}
+    > -->
+    <p>Tee Time Date: {{ teeTime.tee_time_date }}</p>
+    <p>Tee Time: {{ teeTime.tee_time }}</p>
+    <!-- </div> -->
+    <scores-form v-bind:teeTimeId="teeTimeId" />
   </div>
 </template>
 
 <script>
 import TeeTimeService from "@/services/TeeTimeService.js";
+import ScoresForm from "./ScoresForm.vue";
 // import ScoreService from "@/services/ScoreService.js";
 
 export default {
+  components: { ScoresForm },
   data() {
     return {
       times: [],
@@ -43,7 +42,7 @@ export default {
       })
       .catch((error) => {
         if (error.response && error.response.status === 404) {
-          alert("Tee Time not available.");
+          console.log("Tee Time not available.");
           this.$router.push("/tee-time/:teeTimeId");
         }
       });
