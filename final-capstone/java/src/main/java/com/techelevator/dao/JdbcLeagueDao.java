@@ -1,12 +1,12 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.League;
-import com.techelevator.model.LeagueMemberDTO;
-import com.techelevator.model.LeagueNameAlreadyExistsException;
-import com.techelevator.model.User;
+import com.techelevator.model.*;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Service;
+
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -104,9 +104,16 @@ public class JdbcLeagueDao implements LeagueDao {
     }
 
     @Override
-    public boolean addUser(Long userId, Long leagueId) {
-        String sql = "INSERT INTO user_league (user_id, league_id) VALUES (?,?)";
-        jdbcTemplate.update(sql, userId, leagueId);
+    public boolean addUser(String userName, Long leagueId) {
+        long userId = 0L;
+        try {
+            String sql1 = "SELECT user_id FROM users WHERE username = ?";
+            userId = jdbcTemplate.queryForObject(sql1, Long.class, userName);
+        } catch (DataAccessException e) {
+            throw new UserDoesNotExistException();
+        }
+        String sql2 = "INSERT INTO user_league (user_id, league_id) VALUES (?, ?);";
+        jdbcTemplate.update(sql2, userId, leagueId);
         return true;
     }
 

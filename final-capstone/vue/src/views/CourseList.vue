@@ -13,21 +13,21 @@
           >{{ course.course_name }}</router-link
         >
       </div>
-      <nav>
-        <router-link
-          class="search-for-courses"
-          style="text-decoration: none; color: inherit"
-          v-bind:to="{ name: 'search-courses' }"
-          >Search for Courses
-        </router-link>
-        <router-link
-          class="add-course-link"
-          style="text-decoration: none; color: inherit"
-          v-bind:to="{ name: 'add-course' }"
-          >Add Course
-        </router-link>
-      </nav>
     </div>
+    <nav class="buttons">
+      <router-link
+        class="search-for-courses"
+        style="text-decoration: none; color: inherit"
+        v-bind:to="{ name: 'search-courses' }"
+        >Search for Courses
+      </router-link>
+      <router-link
+        class="add-course-link"
+        style="text-decoration: none; color: inherit"
+        v-bind:to="{ name: 'add-course' }"
+        >Add Course
+      </router-link>
+    </nav>
   </div>
 </template>
 
@@ -76,13 +76,14 @@ export default {
 
 .course-form {
   display: flex;
+  padding: 2%;
   align-items: center;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   flex-direction: column;
-  margin: 5% 10% 10% 12%;
+  margin: 5% 10% 10% 15%;
   background-color: rgba(250, 135, 123, 0.8);
   border-radius: 30px;
-  width: 75%;
+  width: 70%;
   height: 80%;
   box-sizing: border-box;
   resize: both;
@@ -90,7 +91,12 @@ export default {
 
 .course-list {
   height: 7%;
+}
 
+.buttons {
+  margin-top: -25%;
+  margin-left: 15%;
+  width: 70%;
 }
 
 nav {

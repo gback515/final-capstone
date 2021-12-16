@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
+    <h1 id="header">Bogeys & Buddies</h1>
     <h2>Your Recent Scores</h2>
     <ul>
       <!--<li v-for="score in scores" v-bind:key="score.user.id">
@@ -53,7 +53,7 @@ export default {
     getCourse(teeTimeId) {
       let coursePromise = CourseService.getCourseByTeeTimeId(teeTimeId);
       coursePromise.then((response) => {
-        if (response.status === 2000) {
+        if (response.status === 200) {
           this.course = response.data;
         }
       });
@@ -84,4 +84,13 @@ export default {
 };
 </script>
 <style>
+.home {
+  height: 50vh;
+  margin-top: 5%;
+  margin-left: 23%;
+  padding: 5%;
+  padding-top: 2%;
+  border-radius: 8px;
+  background-color: rgba(250, 135, 123, 0.8);
+}
 </style>

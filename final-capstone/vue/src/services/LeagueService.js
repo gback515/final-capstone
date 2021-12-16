@@ -14,8 +14,8 @@ export default {
         return axios.get(`/league/${leagueId}`)
     },
 
-    addUserToLeague(leagueId, userId) {
-        return axios.post(`/league/${leagueId}/addUser/${userId}`)
+    addUserToLeague(userLeague) {
+        return axios.post(`/league/addUser`, userLeague)
     },
 
     getLeagueByLeagueName(leagueName) {
@@ -24,6 +24,9 @@ export default {
 
     getAllLeagues() {
         return axios.get(`/leagues`)
-    }
+    },
 
+    getMembersByLeague(leagueId) {
+        return axios.get(`/league/${leagueId}/get-members`)
+    },
 }
