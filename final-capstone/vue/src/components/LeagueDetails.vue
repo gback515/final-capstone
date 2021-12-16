@@ -35,9 +35,6 @@
       </router-link>
       <h3>Add Golfer:</h3>
       <add-golfer />
-      <ul>
-        <!-- <li v-for="user in members" :key="user.userId">{{ user.username }}</li> -->
-      </ul>
     </div>
   </div>
 </template>
@@ -97,7 +94,6 @@ export default {
   padding: 10%;
   border-radius: 10px;
   margin-top: 5%;
-  margin-left: 30%;
   grid-area: detail-ga;
 }
 
@@ -116,19 +112,18 @@ export default {
   padding: 10%;
   border-radius: 10px;
   margin-top: 5%;
-  margin-left: 30%;
   margin-bottom: 40%;
-  grid-area: create-ga;
+  grid-area: add-ga;
 }
 
-.add-golfer {
+.member-list {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   background-color: rgba(250, 135, 123, 0.7);
   padding: 10%;
   border-radius: 10px;
   margin-top: 5%;
-  margin-bottom: 50%;
-  grid-area: add-ga;
+  margin-bottom: 40%;
+  grid-area: member-ga;
 }
 
 input[type="text"] {
@@ -145,30 +140,33 @@ button {
   justify-content: center;
   margin: 5% 25% 5%;
   width: 30%;
-  background-color: rgba(160, 141, 116, 0.8);
+  background-color: rgb(255, 168, 168);
   border: black 1px solid;
-  color: white;
+  color: black;
   padding: 5px 30px;
   text-align: center;
   text-decoration: none;
   font-size: 15px;
-  border-radius: 10px;
+  border-radius: 5px;
   font-weight: bold;
 }
 
-.button:hover {
-  background-color: rgba(129, 114, 95, 0.8);
+button:hover {
+  background-color: rgb(250, 137, 137);
   cursor: pointer;
 }
 
 .container {
+  width: 85vw;
+  height: 100vh;
+  margin: 0% 10% 10% 10%;
   display: grid;
-  grid-template-columns: 55% 45%;
-  row-gap: 10px;
-  column-gap: 30px;
-  margin-left: 15%;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  row-gap: 20px;
+  column-gap: 20px;
   grid-template-areas:
     "detail-ga list-ga"
-    "create-ga add-ga";
+    "member-ga add-ga";
 }
 </style>
