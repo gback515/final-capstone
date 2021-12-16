@@ -53,7 +53,7 @@ export default {
     getCourse(teeTimeId) {
       let coursePromise = CourseService.getCourseByTeeTimeId(teeTimeId);
       coursePromise.then((response) => {
-        if (response.status === 2000) {
+        if (response.status === 200) {
           this.course = response.data;
         }
       });
@@ -84,7 +84,13 @@ export default {
 };
 </script>
 <style>
-#header {
-  margin-left: 25%;
+.home {
+  height: 50vh;
+  margin-top: 5%;
+  margin-left: 23%;
+  padding: 5%;
+  padding-top: 2%;
+  border-radius: 8px;
+  background-color: rgba(250, 135, 123, 0.8);
 }
 </style>
