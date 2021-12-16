@@ -18,19 +18,19 @@ public class TeeTimeController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(value = "/teetimes", method = RequestMethod.GET)
+    @RequestMapping(value = "/tee-time", method = RequestMethod.GET)
     public List<TeeTime> getAllTeeTimes() {
         return teeTimeDao.findAll();
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(value = "/teetimes/{userId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/tee-time/{userId}", method = RequestMethod.GET)
     public List<TeeTime> getMyTeeTimes(@PathVariable("userId") long userId) {
         return teeTimeDao.findTeeTimeByUser(userId);
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(value = "/create-teetime", method = RequestMethod.POST)
+    @RequestMapping(value = "/create-tee-time/{teeTimeId}", method = RequestMethod.POST)
     public long createTeeTime(@Valid @RequestBody TeeTime newTeeTime) {
         TeeTime teeTime = teeTimeDao.create(newTeeTime.getTeeTimeDate(), newTeeTime.getTime());
         return teeTime.getTeeTimeId();

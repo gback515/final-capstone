@@ -20,7 +20,14 @@
         v-bind:to="{ name: 'course-list' }"
         >Courses</router-link
       >
-     
+
+      <!-- <router-link
+        class="links"
+        style="text-decoration: none; color: inherit"
+        v-bind:to="{ path: `/teetimes` }"
+        >Tee Times</router-link
+      > -->
+
       <router-link
         class="links"
         style="text-decoration: none; color: inherit"

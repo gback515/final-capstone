@@ -67,10 +67,10 @@ export default {
     teeTimePromise.then((response) => {
       this.teeTimes = response.data;
     });
-    // let coursePromise = CourseService.getCourseByTeeTimeId(this.teeTimeId);
-    // coursePromise.then((response) => {
-    //   this.course = response.data;
-    // });
+    let scorePromise = ScoreService.getScoreByUserId(this.$store.state.user.id);
+    scorePromise.then((response) => {
+      this.score = response.data;
+    });
   },
 };
 </script>

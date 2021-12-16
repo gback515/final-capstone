@@ -1,7 +1,7 @@
 <template>
   <form v-on:submit.prevent="submitScore" class="score-form">
     <h1>Input Final Round Scores</h1>
-    <div id="name" class="form-scores">
+    <div id="name" class="form-score">
       <label for="score-card">Score</label>
       <input
         id="score-card"
@@ -10,31 +10,33 @@
         v-model="score.score"
         autocomplete="off"
       />
-    </div>
-    <div class="buttons">
-      <button type="submit" class="btn btn-submit">Submit</button>
-      <button
-        class="btn btn-cancel"
-        v-on:click.prevent="cancelForm"
-        type="cancel"
-      >
-        Cancel
-      </button>
+
+      <div class="buttons">
+        <button type="submit" class="btn btn-submit">Submit</button>
+        <button
+          class="btn btn-cancel"
+          v-on:click.prevent="cancelForm"
+          type="cancel"
+        >
+          Cancel
+        </button>
+      </div>
       <div class="form-scores">
         <h1 class="header">All Scores</h1>
-        <div v-for="score in score" v-bind:key="score.score">
-        </div>
-       
-        </div>
+        <li v-for="score in scores" v-bind:key="score">
+          {{ score.tee_time_id }}
+        </li>
+      </div>
     </div>
   </form>
 </template>
 
 <script>
 import ScoreService from "../services/ScoreService";
+import TeeTimeService from "../services/TeeTimeService";
 
 export default {
- // name: "add-score",
+  // name: "add-score",
   // props: {
   //   scores: {
   //     type: Number,
@@ -45,10 +47,17 @@ export default {
     return {
       score: {
         user_id: this.$store.state.user.id,
-        tee_time_id: "",
+        tee_time_id: 0,
         score: "",
       },
     };
+  },
+
+   created() {
+    let teeTimePromise = TeeTimeService.getCourses();
+    teeTimePromise.then((response) => {
+      this.courses = response.data;
+    });
   },
 
   methods: {
