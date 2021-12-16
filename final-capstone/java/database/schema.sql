@@ -134,7 +134,9 @@ INSERT INTO tee_times (tee_time_date, tee_time)
 
 INSERT INTO user_tee_time_score (user_id, tee_time_id, score)
     VALUES (1, 0, 72);
-
+    
+INSERT INTO tee_time_league (tee_time_id, league_id)
+    VALUES (0, 0);
 
 COMMIT TRANSACTION;
 
