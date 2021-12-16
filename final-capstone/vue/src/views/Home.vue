@@ -16,7 +16,7 @@
     <h2>Tee Times</h2>
     <ul>
       <li v-for="teeTime in teeTimes" v-bind:key="teeTime.tee_time_id">
-        {{ teeTime.tee_time }} @ {{ getCourse(teeTime.tee_time_id) }} on
+        {{ teeTime.tee_time }} at {{ getCourse(teeTime.tee_time_id) }} on
         {{ teeTime.tee_time_date }}
       </li>
     </ul>
@@ -27,7 +27,7 @@
 import LeagueService from "../services/LeagueService";
 import TeeTimeService from "../services/TeeTimeService";
 import CourseService from "../services/CourseService";
-import ScoreService from "../services/ScoreService.js";
+//import ScoreService from "../services/ScoreService.js";
 export default {
   name: "home",
   data() {
@@ -53,7 +53,9 @@ export default {
     getCourse(teeTimeId) {
       let coursePromise = CourseService.getCourseByTeeTimeId(teeTimeId);
       coursePromise.then((response) => {
-        this.course = response.data;
+        if (response.status === 2000) {
+          this.course = response.data;
+        }
       });
       return this.course.course_name;
     },
@@ -61,18 +63,23 @@ export default {
   created() {
     let leaguePromise = LeagueService.getMyLeagues(this.$store.state.user.id);
     leaguePromise.then((response) => {
-      this.leagues = response.data;
+      if (response.status === 200) {
+        this.leagues = response.data;
+      }
     });
+
     let teeTimePromise = TeeTimeService.getTeeTimeByUser(
       this.$store.state.user.id
     );
     teeTimePromise.then((response) => {
-      this.teeTimes = response.data;
+      if (response.status === 200) {
+        this.teeTimes = response.data;
+      }
     });
-    let scorePromise = ScoreService.getScoreByUserId(this.$store.state.user.id);
-    scorePromise.then((response) => {
-      this.score = response.data;
-    });
+    //let scorePromise = ScoreService.getScoreByUserId(this.$store.state.user.id);
+    //scorePromise.then((response) => {
+    //  this.score = response.data;
+    //});
   },
 };
 </script>
