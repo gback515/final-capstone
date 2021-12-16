@@ -3,7 +3,9 @@
     <h1>Home</h1>
     <h2>Your Recent Scores</h2>
     <ul>
-      <li></li>
+      <li v-for="score in scores" v-bind:key="score.user.id">
+        {{ score.score }}
+      </li>
     </ul>
     <h2>League Games</h2>
     <ul>
@@ -25,12 +27,14 @@
 import LeagueService from "../services/LeagueService";
 import TeeTimeService from "../services/TeeTimeService";
 import CourseService from "../services/CourseService";
+import ScoreService from "../services/ScoreService.js";
 export default {
   name: "home",
   data() {
     return {
       leagues: [],
       teeTimes: [],
+      scores: [],
       course: {
         courseId: this.$route.params.courseId,
         course_name: "",
@@ -57,6 +61,10 @@ export default {
     let coursePromise = CourseService.getCourseByTeeTimeId(this.teeTimeId);
     coursePromise.then((response) => {
       this.courses = response.data;
+    });
+    let scorePromise = ScoreService.getScoreByUserId(this.$store.state.user.id);
+    scorePromise.then((response) => {
+      this.scores = response.data;
     });
   },
 };

@@ -2,12 +2,12 @@ import axios from 'axios';
 
 export default {
     getTeeTimes() {
-        return axios.get(`/teetimes`);
+        return axios.get(`/tee-time`);
     },
     addTeeTime(teeTime) {
-        return axios.post(`/create-teetime/${teeTime}`);
+        return axios.post(`/create-tee-time/${teeTime}`);
     },
     getTeeTimeByUser(userId) {
-        return axios.get(`/teetimes/${userId}`);
+        return axios.get(`/tee-time/${userId}`);
     }
 }

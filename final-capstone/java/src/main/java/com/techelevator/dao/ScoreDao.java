@@ -15,6 +15,8 @@ public interface ScoreDao {
 
     List<Score> findScoresByTeeTimeId(Long teeTimeId);
 
+    Score create(Long userId, Long teeTimeId, Long Score);
+
     boolean addScore(Long userId, Long teeTimeId, Long score);
 
 }

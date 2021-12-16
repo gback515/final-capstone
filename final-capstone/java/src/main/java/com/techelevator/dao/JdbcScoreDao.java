@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.League;
 import com.techelevator.model.Score;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -44,7 +45,7 @@ public class JdbcScoreDao implements ScoreDao {
     @Override
     public List<Score> findScoresByLeagueId(Long leagueId) {
         List<Score> scores = new ArrayList<Score>();
-        String sql = "SELECT user_id, tee_time_id, score FROM user_tee_time_score WHERE league_id = ?;";
+        String sql = "SELECT user_tee_time_score.user_id, tee_time_id, score FROM user_tee_time_score JOIN users ON users.user_id = user_tee_time_score.user_id WHERE league_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, leagueId);
         while (results.next()) {
             Score score = mapRowToScore(results);
@@ -62,6 +63,15 @@ public class JdbcScoreDao implements ScoreDao {
             Score score = mapRowToScore(results);
             scores.add(score);
         }
+        return scores;
+    }
+
+    @Override
+    public Score create(Long userId, Long teeTimeId, Long score) {
+        Score scores = new Score(userId, teeTimeId, score);
+        String sql = "INSERT INTO user_tee_time_score (user_id, tee_time_id, score) VALUES(?,?,?);";
+        Long newScore = jdbcTemplate.queryForObject(sql, Long.class, userId, teeTimeId, score);
+        scores.setScore(newScore);
         return scores;
     }
 

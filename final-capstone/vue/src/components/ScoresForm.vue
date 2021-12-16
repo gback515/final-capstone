@@ -20,6 +20,12 @@
       >
         Cancel
       </button>
+      <div class="form-scores">
+        <h1 class="header">All Scores</h1>
+        <div v-for="score in score" v-bind:key="score.score">
+        </div>
+       
+        </div>
     </div>
   </form>
 </template>
@@ -28,13 +34,13 @@
 import ScoreService from "../services/ScoreService";
 
 export default {
-  name: "AddScore",
-  props: {
-    scoreId: {
-      type: Number,
-      default: 0,
-    },
-  },
+ // name: "add-score",
+  // props: {
+  //   scores: {
+  //     type: Number,
+  //     default: 0,
+  //   },
+  // },
   data() {
     return {
       score: {
@@ -50,12 +56,14 @@ export default {
       const newScore = {
         user_id: this.score.user_id,
         tee_time_id: this.score.tee_time_id,
-        score: this.score.score,
+        score: "",
+        // this.score.score,
         // score: parseInt(this.scores.score),
       };
       if (this.scoreId === 0) {
         ScoreService.addScore(newScore).then((response) => {
           if (response.status === 201) {
+            this.score.score = response.data;
             this.$router.push("/");
           }
         });

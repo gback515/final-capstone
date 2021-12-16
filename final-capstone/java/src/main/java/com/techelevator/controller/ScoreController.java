@@ -21,18 +21,18 @@ public class ScoreController {
 
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/score", method = RequestMethod.GET)
-    public List<Score> getAllScores() {
+    public List<Score> getScores() {
         return scoreDao.findAllScores();
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(value = "/score/{userId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/score/user/{userId}", method = RequestMethod.GET)
     public List<Score> getScoresByUser(long userId) {
         return scoreDao.findScoresByUserId(userId);
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(value = "/score/{leagueId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/score/league/{leagueId}", method = RequestMethod.GET)
     public List<Score> getScoresByLeague(long leagueId) {
         return scoreDao.findScoresByLeagueId(leagueId);
     }
@@ -44,10 +44,9 @@ public class ScoreController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-
-    @RequestMapping(value = "/teetimes/{teeTimeId}/add-score", method = RequestMethod.POST)
-    public void addScoreToUser(@RequestBody Score score, @PathVariable Long teeTimeId) {
-        scoreDao.addScore(score.getUserId(), teeTimeId, score.getScore());
+    @RequestMapping(value = "/add-score/user/{userId}", method = RequestMethod.POST)
+    public void addScoreToUser(@RequestBody Score newScore, @PathVariable Long teeTimeId) {
+        scoreDao.addScore(newScore.getUserId(), teeTimeId, newScore.getScore());
     }
 }
 
