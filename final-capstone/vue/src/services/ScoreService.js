@@ -6,6 +6,6 @@ export default {
     },
     addScoreToUser(scoreId, userId) {
         return axios.post(`/score/${scoreId}/user/${userId}`)
-    }
+    },
 
 }
