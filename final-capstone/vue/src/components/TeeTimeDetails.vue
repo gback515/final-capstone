@@ -12,7 +12,7 @@
       <p>Tee Time Date: {{ teeTime.tee_time_date }}</p>
       <p>Tee Time: {{ teeTime.tee_time }}</p>
     </ul>
-    <router-link class="score-link" v-bind:to="{ name: 'tee-time' }"
+    <router-link class="score-link" v-bind:to="{ name: 'create-score' }"
       >Input Scores
     </router-link>
   </div>

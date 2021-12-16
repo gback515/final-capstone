@@ -30,11 +30,16 @@ export default {
         tee_time: this.teeTime.tee_time,
       };
       if (this.teeTime.tee_time_id === 0) {
-        TeeTimeService.addTeeTime(this.leagueId, newTeeTime).then(
-          (response) => {
+        TeeTimeService.addTeeTime(
+          this.leagueId,
+          this.$store.state.user.id,
+          newTeeTime
+        ).then((response) => {
+          if (response.status === 201) {
             this.teeTime.tee_time_id = parseInt(response.data);
+            this.$router.push(`/league/${this.leagueId}`);
           }
-        );
+        });
       }
     },
   },

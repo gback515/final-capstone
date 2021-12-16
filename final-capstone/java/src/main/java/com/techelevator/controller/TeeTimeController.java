@@ -36,9 +36,9 @@ public class TeeTimeController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(value = "/create-tee-time/{leagueId}", method = RequestMethod.POST)
-    public long createTeeTime(@Valid @RequestBody TeeTime newTeeTime, @PathVariable long leagueId) {
-        TeeTime teeTime = teeTimeDao.create(newTeeTime.getTeeTimeDate(), newTeeTime.getTime(), leagueId);
+    @RequestMapping(value = "/create-tee-time/{leagueId}/{userId}", method = RequestMethod.POST)
+    public long createTeeTime(@Valid @RequestBody TeeTime newTeeTime, @PathVariable long leagueId, @PathVariable long userId) {
+        TeeTime teeTime = teeTimeDao.create(newTeeTime.getTeeTimeDate(), newTeeTime.getTime(), leagueId, userId);
         return teeTime.getTeeTimeId();
     }
     @ResponseStatus(HttpStatus.OK)

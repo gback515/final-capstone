@@ -58,13 +58,17 @@ public class JdbcTeeTimeDao implements TeeTimeDao {
     }
 
     @Override
-    public TeeTime create(String teeTimeDate, String time, long leagueId) {
+    public TeeTime create(String teeTimeDate, String time, long leagueId, long userId) {
         TeeTime teeTime = new TeeTime(teeTimeDate, time);
         String sql = "INSERT INTO tee_times (tee_time_date, tee_time) VALUES(?,?) RETURNING tee_time_id";
         Long newTeeTimeId = jdbcTemplate.queryForObject(sql, Long.class, teeTimeDate, time);
         teeTime.setTeeTimeId(newTeeTimeId);
         String sql2 = "INSERT INTO tee_time_league (tee_time_id, league_id) VALUES (?,?)";
         jdbcTemplate.update(sql2, newTeeTimeId, leagueId);
+        int defaultScore = 0;
+        String sql3 = "INSERT INTO user_tee_time_score (user_id, tee_time_id, score)" +
+                " VALUES (?,?,?);";
+        jdbcTemplate.update(sql3, userId, newTeeTimeId, defaultScore);
         return teeTime;
     }
 

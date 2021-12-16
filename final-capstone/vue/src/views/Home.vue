@@ -3,9 +3,9 @@
     <h1>Home</h1>
     <h2>Your Recent Scores</h2>
     <ul>
-      <li v-for="score in scores" v-bind:key="score.user.id">
+      <!--<li v-for="score in scores" v-bind:key="score.user.id">
         {{ score.score }}
-      </li>
+      </li> -->
     </ul>
     <h2>League Games</h2>
     <ul>

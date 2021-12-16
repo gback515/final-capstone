@@ -8,27 +8,29 @@
     </div>
     <div class="tee-time-list">
       <h3>Tee times:</h3>
-      <ul>
-        <li v-for="teeTime in teeTimes" v-bind:key="teeTime.tee_time_id">
+      <div v-for="teeTime in teeTimes" v-bind:key="teeTime.tee_time_id">
+        <router-link
+          v-bind:to="{
+            name: 'teeTimeDetails',
+            params: { teeTimeId: teeTime.tee_time_id },
+          }"
+        >
           {{ teeTime.tee_time }} on {{ teeTime.tee_time_date }}
-        </li>
-      </ul>
+        </router-link>
+      </div>
     </div>
+    <h3>Create Tee Time:</h3>
     <div>
-      <router-link class="score-link" v-bind:to="{ name: 'create-score' }"
-        >Input Scores
-      </router-link>
-
       <router-link
         class="score-link"
-        v-bind:to="{ path: `/tee-time/${league.id}` }"
+        v-bind:to="{ path: `/tee-time/league/${league.id}` }"
         >Create Tee Time
       </router-link>
 
       <!-- <button class="btn" v-on:click="isHidden = !isHidden">
         Add New Golfer
       </button> -->
-
+      <h3>Add Golfer:</h3>
       <add-golfer />
     </div>
     <ul>

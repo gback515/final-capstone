@@ -10,7 +10,7 @@ public interface TeeTimeDao {
 
     List<TeeTime> findTeeTimeByUser (long userId);
 
-    TeeTime create(String teeTimeDate, String time, long leagueId);
+    TeeTime create(String teeTimeDate, String time, long leagueId, long userId);
 
     List<TeeTime> findTeeTimeByLeagueId(Long leagueId);
 
