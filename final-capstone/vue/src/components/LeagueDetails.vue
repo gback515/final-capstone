@@ -6,11 +6,13 @@
       <p>Course: {{ league.league_course }}</p>
       <p>Day Of Week: {{ league.day_of_week }}</p>
     </div>
+    <div class="tee-time-list">
+      <h3>Tee times: </h3>
+      <ul>
+        <li class="tee-times" v-for="teeTime in teeTimes" :key="teeTime.teeTimeId" >{{ teeTime.tee_time }} {{ tee_time.tee_time_date }}</li>
+      </ul>
+    </div>
     <div>
-      <!-- 
-      path: "/league/:leagueId/match",
-      name: "match-score",
-      component: MatchScore, -->
       <router-link class="score-link" v-bind:to="{ name: 'create-score' }"
         >Input Scores
       </router-link>
@@ -34,9 +36,11 @@
 <script>
 import LeagueService from "@/services/LeagueService.js";
 import AddGolfer from "../views/AddGolfer.vue";
+import TeeTimeService from '../services/TeeTimeService';
 export default {
   data() {
     return {
+      teeTimes: [],
       league: {
         leagueId: this.$route.params.leagueId,
         league_name: "",
@@ -59,6 +63,10 @@ export default {
           this.$router.push("/league-list");
         }
       });
+    TeeTimeService.getTeeTimeByLeague(this.league.leagueId)
+      .then((response) => {
+        this.teeTimes.push(response);
+      })
   },
 
   isHidden: true,

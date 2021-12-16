@@ -12,5 +12,8 @@ export default {
     },
     addScoreToTeeTime(teeTimeId, score) {
         return axios.post(`/tee-time/${teeTimeId}/score/${score}`)
+    },
+    getTeeTimeByLeague(leagueId) {
+        return axios.get(`tee-time/${leagueId}`)
     }
 }
