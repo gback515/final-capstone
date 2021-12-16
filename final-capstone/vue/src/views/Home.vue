@@ -14,7 +14,7 @@
     <h2>Tee Times</h2>
     <ul>
       <li v-for="teeTime in teeTimes" v-bind:key="teeTime.tee_time_id">
-        {{ teeTime.tee_time }} @ {{ course.course_name }}
+        {{ teeTime.tee_time }} @ {{ getCourse(teeTime.tee_time_id) }}
         {{ teeTime.tee_time_date }}
       </li>
     </ul>
@@ -31,8 +31,9 @@ export default {
     return {
       leagues: [],
       teeTimes: [],
+      courses: [],
       course: {
-        courseId: this.$route.params.courseId,
+        courseId: 0,
         course_name: "",
         course_par: 0,
         course_length: 0,
@@ -45,6 +46,15 @@ export default {
       },
     };
   },
+  methods: {
+    getCourse(teeTimeId) {
+      let coursePromise = CourseService.getCourseByTeeTimeId(teeTimeId);
+      coursePromise.then((response) => {
+        this.course = response.data;
+      })
+      return this.course.course_name;
+  }
+  },
   created() {
     let leaguePromise = LeagueService.getMyLeagues(this.$store.state.user.id);
     leaguePromise.then((response) => {
@@ -54,10 +64,10 @@ export default {
     teeTimePromise.then((response) => {
       this.teeTimes = response.data;
     });
-    let coursePromise = CourseService.getCourseByTeeTimeId(this.teeTimeId);
-    coursePromise.then((response) => {
-      this.courses = response.data;
-    });
+    // let coursePromise = CourseService.getCourseByTeeTimeId(this.teeTimeId);
+    // coursePromise.then((response) => {
+    //   this.course = response.data;
+    // });
   },
 };
 </script>
