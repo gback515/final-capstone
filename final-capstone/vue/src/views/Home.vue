@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
+    <h1 id="header">Bogeys & Buddies</h1>
     <h2>Your Recent Scores</h2>
     <ul>
       <!--<li v-for="score in scores" v-bind:key="score.user.id">
@@ -77,4 +77,7 @@ export default {
 };
 </script>
 <style>
+#header {
+  margin-left: 25%;
+}
 </style>
