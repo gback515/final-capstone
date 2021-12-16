@@ -75,6 +75,18 @@ public class JdbcTeeTimeDao implements TeeTimeDao {
         return true;
     }
 
+    @Override
+    public TeeTime findTeeTimeByTeeTimeId(Long teeTimeId) {
+        String sql = "SELECT tee_time_id, tee_time, tee_time_date FROM tee_times " +
+                "WHERE tee_time_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql,teeTimeId);
+        if (results.next()) {
+            TeeTime teeTime = mapRowToTeeTime(results);
+            return teeTime;
+        }
+        else return null; // change to teeTime doesn't exist exception
+    }
+
 
     private TeeTime mapRowToTeeTime(SqlRowSet results) {
         TeeTime teeTime = new TeeTime();

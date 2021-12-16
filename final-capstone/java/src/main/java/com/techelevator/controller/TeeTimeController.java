@@ -24,7 +24,7 @@ public class TeeTimeController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(value = "/tee-time/{userId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/tee-time/user/{userId}", method = RequestMethod.GET)
     public List<TeeTime> getMyTeeTimes(@PathVariable("userId") long userId) {
         return teeTimeDao.findTeeTimeByUser(userId);
     }
@@ -45,5 +45,11 @@ public class TeeTimeController {
     @RequestMapping(value = "/tee-time/{teeTimeId}/score/{score}", method = RequestMethod.POST)
     public void addScoreToTeeTime(@Valid @PathVariable("teeTimeId") long teeTimeId, @PathVariable("add-score") long score) {
         teeTimeDao.addScoreToTeeTime(teeTimeId, score);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value = "/tee-time/{teeTimeId}", method = RequestMethod.GET)
+    public TeeTime getTeeTimesById(@PathVariable("teeTimeId") long teeTimeId) {
+        return teeTimeDao.findTeeTimeByTeeTimeId(teeTimeId);
     }
 }

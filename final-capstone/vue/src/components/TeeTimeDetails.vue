@@ -2,13 +2,13 @@
   <div>
     <h1>Tee Time Details</h1>
     <div
-      class="tee-time1"
+      class="tee-time"
       v-for="teeTime in times"
       :key="teeTime.teeTimeId"
       {{teeTimeId:
       teeTime.tee_time}}
     ></div>
-    <ul class="tee-time1">
+    <ul class="tee-time">
       <p>Tee Time Date: {{ teeTime.tee_time_date }}</p>
       <p>Tee Time: {{ teeTime.tee_time }}</p>
     </ul>
@@ -26,6 +26,7 @@ export default {
   data() {
     return {
       times: [],
+      teeTimeId: parseInt(this.$route.params.teeTimeId),
       teeTime: {
         tee_time_date: "",
         tee_time: "",
@@ -33,7 +34,7 @@ export default {
     };
   },
   created() {
-    let teeTimePromise = TeeTimeService.getTeeTimes();
+    let teeTimePromise = TeeTimeService.getTeeTimeById(this.teeTimeId);
     teeTimePromise
       .then((response) => {
         if (response.status === 200) {

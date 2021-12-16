@@ -14,6 +14,8 @@ public interface TeeTimeDao {
 
     List<TeeTime> findTeeTimeByLeagueId(Long leagueId);
 
+    TeeTime findTeeTimeByTeeTimeId(Long teeTimeId);
+
     boolean addScoreToTeeTime(Long teeTimeId, Long score);
 
 }
