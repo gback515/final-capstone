@@ -249,16 +249,14 @@ select {
   margin-top: 5%;
   margin-left: 30%;
   background-color: rgb(255, 168, 168);
-  border: none;
-  color: white;
-  padding: 15px 35px;
+  color: black;
+  padding: 5%;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  border-radius: 10px;
+  border-radius: 5px;
   font-weight: bold;
-  box-sizing: border-box;
   border: black 1px solid;
 }
 

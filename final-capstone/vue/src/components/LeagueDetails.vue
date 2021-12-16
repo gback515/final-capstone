@@ -157,9 +157,9 @@ button:hover {
 }
 
 .container {
-  width: 85vw;
+  width: 65vw;
   height: 100vh;
-  margin: 0% 10% 10% 10%;
+  margin: 1% 10% 10% 8%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
