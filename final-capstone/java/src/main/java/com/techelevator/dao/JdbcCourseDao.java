@@ -138,6 +138,17 @@ public class JdbcCourseDao implements CourseDao {
         return courses;
     }
 
+    @Override
+    public Course findCourseByTeeTimeId(Long teeTimeId){
+        String sql = "SELECT course_id, course_name, course_par, course_length, lat, lng, address, city, state, zip FROM courses JOIN leagues ON courses.course_id = leagues.league_course JOIN tee_times ON leagues.league_id = tee_times.tee_time_id WHERE tee_times.tee_time_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, teeTimeId);
+        if (results.next()) {
+            return mapRowToCourse(results);
+        } else {
+            throw new RuntimeException("tee time " + teeTimeId + " was not found.");
+        }
+    }
+
     private Course mapRowToCourse(SqlRowSet results) {
         Course course = new Course();
         course.setCourseId(results.getLong("course_id"));

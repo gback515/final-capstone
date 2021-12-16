@@ -7,12 +7,12 @@
         id="score-card"
         type="number"
         class="form-score"
-        v-model="score"
+        v-model="score.score"
         autocomplete="off"
       />
     </div>
     <div class="buttons">
-      <button class="btn btn-submit">Submit</button>
+      <button type="submit" class="btn btn-submit">Submit</button>
       <button
         class="btn btn-cancel"
         v-on:click.prevent="cancelForm"
@@ -38,7 +38,7 @@ export default {
   data() {
     return {
       score: {
-        user_id: "",
+        user_id: this.$store.state.user.id,
         tee_time_id: "",
         score: "",
       },
@@ -50,7 +50,7 @@ export default {
       const newScore = {
         user_id: this.score.user_id,
         tee_time_id: this.score.tee_time_id,
-        scores: this.score.score,
+        score: this.score.score,
         // score: parseInt(this.scores.score),
       };
       if (this.scoreId === 0) {

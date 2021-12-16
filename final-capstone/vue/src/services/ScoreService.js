@@ -1,11 +1,19 @@
 import axios from 'axios';
 
 export default {
-    addScore(teeTimeId, newScore) {
-        return axios.post(`/teetimes/${teeTimeId}/add-score`, newScore);
+    addScore(newScore) {
+        return axios.post(`/teetimes/add-score`, newScore);
     },
-    addScoreToUser(scoreId, userId) {
-        return axios.post(`/score/${scoreId}/user/${userId}`)
+    getScore() {
+        return axios.get(`/teetimes/score`)
     },
-
+    getScoreByUserId(userId) {
+        return axios.get(`/teetimes/score/user/${userId}`)
+    },
+    getScoreByTeeTimeId(teeTimeId) {
+        return axios.get(`/teetimes/score/${teeTimeId}`)
+    },
+    addScoreToUser(teeTimeId, userId) {
+        return axios.post(`/teetimes/${teeTimeId}/addScore/user/${userId}`)
+    }
 }

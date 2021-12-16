@@ -6,6 +6,7 @@ import com.techelevator.model.Score;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -43,29 +44,10 @@ public class ScoreController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
+
     @RequestMapping(value = "/teetimes/{teeTimeId}/add-score", method = RequestMethod.POST)
     public void addScoreToUser(@RequestBody Score score, @PathVariable Long teeTimeId) {
         scoreDao.addScore(score.getUserId(), teeTimeId, score.getScore());
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
+

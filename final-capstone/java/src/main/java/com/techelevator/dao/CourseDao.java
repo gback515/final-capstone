@@ -25,4 +25,6 @@ public interface CourseDao {
     List<Course> findCourseByCity(String courseCity);
 
     List<Course> findCourseByZip(String courseZip);
+
+    Course findCourseByTeeTimeId(Long teeTimeId);
 }

@@ -9,5 +9,8 @@ export default {
     },
     getCourseById(courseId) {
         return axios.get(`/course/id/${courseId}`)
+    },
+    getCourseByTeeTimeId(teeTimeId) {
+        return axios.get(`/courses/teetime/${teeTimeId}`)
     }
 }

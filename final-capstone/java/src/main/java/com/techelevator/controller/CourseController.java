@@ -46,4 +46,10 @@ public class CourseController {
     public Course getCourseByName(@Valid @PathVariable("courseName") String courseName) {
         return courseDao.findCourseByName(courseName);
     }
+
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value = "/course/teetime/{teetimeid}", method = RequestMethod.GET)
+    public Course getCourseByTeeTimeId(@Valid @PathVariable("teetimeid") Long teetimeid){
+        return courseDao.findCourseByTeeTimeId(teetimeid);
+    }
 }
