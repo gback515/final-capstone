@@ -15,7 +15,7 @@ import CourseDetails from "../components/CourseDetails"
 import LeaderboardDetails from "@/views/LeaderboardDetails"
 import SearchCourses from "../components/SearchCourses"
 import ScoresForm from "../components/ScoresForm"
-import TeeTimeDetails from "../components/TeeTimeDetails.vue"
+import CreateTeeTime from "../components/CreateTeeTime"
 
 Vue.use(Router)
 
@@ -145,13 +145,14 @@ const router = new Router({
       }
     },
     {
-      path: "/tee-time",
+      path: "/tee-time/:leagueId",
       name: "tee-time",
-      component: TeeTimeDetails,
+      component: CreateTeeTime,
       meta: {
         requiresAuth: true
       }
-    }
+    },
+
 
   ]
 })

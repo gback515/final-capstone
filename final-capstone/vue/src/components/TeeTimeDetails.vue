@@ -23,7 +23,7 @@ import TeeTimeService from "@/services/TeeTimeService.js";
 // import ScoreService from "@/services/ScoreService.js";
 
 export default {
-  date() {
+  data() {
     return {
       times: [],
       teeTime: {

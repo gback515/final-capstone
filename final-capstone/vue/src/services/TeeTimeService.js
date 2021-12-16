@@ -4,8 +4,8 @@ export default {
     getTeeTimes() {
         return axios.get(`/tee-time`);
     },
-    addTeeTime(teeTimeId) {
-        return axios.post(`/create-tee-time/${teeTimeId}`);
+    addTeeTime(leagueId, newTeeTime) {
+        return axios.post(`/create-tee-time/${leagueId}`, newTeeTime);
     },
     getTeeTimeByUser(userId) {
         return axios.get(`/tee-time/${userId}`);
@@ -14,6 +14,6 @@ export default {
         return axios.post(`/tee-time/${teeTimeId}/score/${score}`)
     },
     getTeeTimeByLeague(leagueId) {
-        return axios.get(`tee-time/${leagueId}`)
+        return axios.get(`tee-time/league/${leagueId}`)
     }
 }

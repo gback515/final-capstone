@@ -16,7 +16,7 @@
     <h2>Tee Times</h2>
     <ul>
       <li v-for="teeTime in teeTimes" v-bind:key="teeTime.tee_time_id">
-        {{ teeTime.tee_time }} @ {{ getCourse(teeTime.tee_time_id) }}
+        {{ teeTime.tee_time }} @ {{ getCourse(teeTime.tee_time_id) }} on
         {{ teeTime.tee_time_date }}
       </li>
     </ul>
@@ -54,16 +54,18 @@ export default {
       let coursePromise = CourseService.getCourseByTeeTimeId(teeTimeId);
       coursePromise.then((response) => {
         this.course = response.data;
-      })
+      });
       return this.course.course_name;
-  }
+    },
   },
   created() {
     let leaguePromise = LeagueService.getMyLeagues(this.$store.state.user.id);
     leaguePromise.then((response) => {
       this.leagues = response.data;
     });
-    let teeTimePromise = TeeTimeService.getTeeTimes();
+    let teeTimePromise = TeeTimeService.getTeeTimeByUser(
+      this.$store.state.user.id
+    );
     teeTimePromise.then((response) => {
       this.teeTimes = response.data;
     });

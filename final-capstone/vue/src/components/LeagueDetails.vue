@@ -7,9 +7,11 @@
       <p>Day Of Week: {{ league.day_of_week }}</p>
     </div>
     <div class="tee-time-list">
-      <h3>Tee times: </h3>
+      <h3>Tee times:</h3>
       <ul>
-        <li class="tee-times" v-for="teeTime in teeTimes" :key="teeTime.teeTimeId" >{{ teeTime.tee_time }} {{ tee_time.tee_time_date }}</li>
+        <li v-for="teeTime in teeTimes" v-bind:key="teeTime.tee_time_id">
+          {{ teeTime.tee_time }} on {{ teeTime.tee_time_date }}
+        </li>
       </ul>
     </div>
     <div>
@@ -17,18 +19,20 @@
         >Input Scores
       </router-link>
 
-      <router-link class="score-link" v-bind:to="{ name: 'tee-time' }"
-        >Tee Times
+      <router-link
+        class="score-link"
+        v-bind:to="{ path: `/tee-time/${league.id}` }"
+        >Create Tee Time
       </router-link>
 
-      <button class="btn" v-on:click="isHidden = !isHidden">
+      <!-- <button class="btn" v-on:click="isHidden = !isHidden">
         Add New Golfer
-      </button>
+      </button> -->
 
-      <add-golfer v-if="!isHidden" />
+      <add-golfer />
     </div>
     <ul>
-      <li v-for="user in members" :key="user.userId">{{ user.username }}</li>
+      <!-- <li v-for="user in members" :key="user.userId">{{ user.username }}</li> -->
     </ul>
   </div>
 </template>
@@ -36,7 +40,7 @@
 <script>
 import LeagueService from "@/services/LeagueService.js";
 import AddGolfer from "../views/AddGolfer.vue";
-import TeeTimeService from '../services/TeeTimeService';
+import TeeTimeService from "../services/TeeTimeService";
 export default {
   data() {
     return {
@@ -63,10 +67,9 @@ export default {
           this.$router.push("/league-list");
         }
       });
-    TeeTimeService.getTeeTimeByLeague(this.league.leagueId)
-      .then((response) => {
-        this.teeTimes.push(response);
-      })
+    TeeTimeService.getTeeTimeByLeague(this.league.leagueId).then((response) => {
+      this.teeTimes = response.data;
+    });
   },
 
   isHidden: true,

@@ -77,8 +77,7 @@ CREATE TABLE tee_times (
     tee_time_id int DEFAULT nextval('seq_tee_time_id'::regclass) NOT NULL,
     tee_time_date varchar(50) NOT NULL,
     tee_time varchar(50) NOT NULL,
-    CONSTRAINT PK_tee_time_id PRIMARY KEY(tee_time_id),
-    CONSTRAINT FK_league_tee_time FOREIGN KEY(tee_time_id) REFERENCES Leagues(league_id)
+    CONSTRAINT PK_tee_time_id PRIMARY KEY(tee_time_id)
 );
 
 CREATE TABLE user_tee_time_score (

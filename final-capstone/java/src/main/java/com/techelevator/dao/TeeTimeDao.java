@@ -10,7 +10,9 @@ public interface TeeTimeDao {
 
     List<TeeTime> findTeeTimeByUser (long userId);
 
-    TeeTime create(String teeTimeDate, String time);
+    TeeTime create(String teeTimeDate, String time, long leagueId);
+
+    List<TeeTime> findTeeTimeByLeagueId(Long leagueId);
 
     boolean addScoreToTeeTime(Long teeTimeId, Long score);
 
