@@ -156,10 +156,6 @@ export default {
 .form-group {
   display: flex;
   flex-shrink: 1;
-  /* flex-wrap: wrap;
-  row-gap: 10px;
-  column-gap: 2em;
- */
 }
 
 .buttons {
@@ -173,75 +169,10 @@ export default {
   font-weight: bold;
 }
 
-/*
- position: relative; 
-margin: 3% 10% 2%;
-  width: 30%;
-   padding: 15px 20px;
-    font-size: 16px;
-  border-radius: 10px; 
-
-.btn-cancel {
-  display: flex;
-  justify-content: center;
-  flex-shrink: 2;
-  background-color: rgba(160, 141, 116, 0.8);
-  border: black 1px solid;
-  color: white;
-  text-align: center;
-  text-decoration: none;
- 
-}
-
- margin: 3% 10% 2%;
-  width: 30%;
-   font-size: 16px;
-  border-radius: 10px;
-  font-weight: bold;
-   padding: 15px 20px;
-
-
-.form-control {
-  display: flex;
-  flex-direction: column;
-  flex-shrink: 2;
-  align-items: center;
-  flex-shrink: unset;
-  flex-wrap: wrap;
-  margin: 5% 10% 0% 5%;
-  padding-bottom: 5px;
-  width: 70%;
-  height: 85%;
-  justify-content: space-around;
-  justify-items: center;
-}
-
-
-.btn {
-  display: flex;
-  align-items: flex-end; 
-  justify-content: center;
-  margin: 3% 10% 2%;
-  width: 30%;
-  background-color: rgba(160, 141, 116, 0.8);
-  border: black 1px solid;
-  color: white;
-  padding: 15px 20px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;
-  border-radius: 10px;
-  font-weight: bold;
-}
-
-*/
-
 .link {
   display: flex;
   flex-shrink: 2;
   align-content: center;
-  /* flex-direction: row; */
-  /* margin: 0% 5% 2%; */
   background-color: rgba(160, 141, 116, 0.8);
   border: black 1px solid;
   padding: 15px 20px;
@@ -251,15 +182,6 @@ margin: 3% 10% 2%;
   font-weight: bold;
   width: 10%;
 }
-
-/* #name {
-  display: flex;
-  width: 
-}
-
-#league-course {
-  display: flex;
-} */
 
 .link:hover {
   background-color: rgb(250, 137, 137);
@@ -303,13 +225,6 @@ select {
   border-radius: 3px;
   width: 200px;
 }
-/* 
-.buttons {
-  display: flex;
-  flex-direction: column; 
-}
-
- */
 
 .btn:hover {
   background-color: rgb(250, 137, 137);
