@@ -1,18 +1,18 @@
 <template>
   <div class="container">
-    <div class="league-details">
+    <div class="block" id="league-details">
       <p>League Name: {{ league.league_name }}</p>
       <p>League Admin: {{ league.league_admin }}</p>
       <p>Course: {{ league.league_course }}</p>
       <p>Day Of Week: {{ league.day_of_week }}</p>
     </div>
-    <div class="member-list">
+    <div class="block" id="member-list">
       <h3>Members: </h3>
-      <ul>
+      <ul class="list">
         <li id="members" v-for="member in members" :key="member.id">{{ member.username }}</li>
       </ul>
     </div>
-    <div class="tee-time-list">
+    <div class="block" id="tee-time-list">
       <h3>Tee times:</h3>
       <div v-for="teeTime in teeTimes" v-bind:key="teeTime.tee_time_id">
         <!-- <router-link
@@ -28,7 +28,7 @@
       </div>
     </div>
 
-    <div class="create">
+    <div class="block" id="create">
       <h3>Create Tee Time:</h3>
       <router-link
         class="score-link"
@@ -92,7 +92,11 @@ export default {
 </script>
 
 <style>
-.league-details {
+.block {
+  text-align: center;
+}
+
+#league-details {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   background-color: rgba(250, 135, 123, 0.7);
   padding: 10%;
@@ -101,7 +105,7 @@ export default {
   grid-area: detail-ga;
 }
 
-.tee-time-list {
+#tee-time-list {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   background-color: rgba(250, 135, 123, 0.7);
   padding: 10%;
@@ -110,7 +114,7 @@ export default {
   grid-area: list-ga;
 }
 
-.create {
+#create {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   background-color: rgba(250, 135, 123, 0.7);
   padding: 10%;
@@ -120,7 +124,7 @@ export default {
   grid-area: add-ga;
 }
 
-.member-list {
+#member-list {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   background-color: rgba(250, 135, 123, 0.7);
   padding: 10%;
@@ -128,6 +132,15 @@ export default {
   margin-top: 5%;
   margin-bottom: 40%;
   grid-area: member-ga;
+}
+
+ul {
+
+}
+
+.list {
+  list-style-type: none;
+  text-align: left;
 }
 
 input[type="text"] {
@@ -162,8 +175,7 @@ button:hover {
 
 .container {
   width: 65vw;
-  height: 100vh;
-  margin: 1% 10% 10% 8%;
+  margin: 0% 10% 20% 10%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;

@@ -104,7 +104,7 @@ public class JdbcLeagueDao implements LeagueDao {
     }
 
     @Override
-    public boolean addUser(String userName, Long leagueId) {
+    public long addUser(String userName, Long leagueId) {
         long userId = 0L;
         try {
             String sql1 = "SELECT user_id FROM users WHERE username = ?";
@@ -114,7 +114,7 @@ public class JdbcLeagueDao implements LeagueDao {
         }
         String sql2 = "INSERT INTO user_league (user_id, league_id) VALUES (?, ?);";
         jdbcTemplate.update(sql2, userId, leagueId);
-        return true;
+        return userId;
     }
 
     private League mapRowToLeague(SqlRowSet results) {

@@ -98,9 +98,8 @@ export default {
 .league-link {
   display: flex;
   flex-direction: column;
-  height: 5px;
-  padding: 8px;
-  margin: 0 0 30% 0;
+  height: 2px;
+  margin: 0 0 25% 0;
   font-size: 25px;
   justify-content: center;
   align-items: center;

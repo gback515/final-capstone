@@ -108,7 +108,25 @@ CREATE TABLE tee_time_league (
 
 INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
-
+INSERT INTO users (username,password_hash,role) VALUES ('Tiger','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
+INSERT INTO users (username,password_hash,role) VALUES ('Phil','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
+INSERT INTO users (username,password_hash,role) VALUES ('Arnold','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
+INSERT INTO users (username,password_hash,role) VALUES ('Jack','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
+INSERT INTO users (username,password_hash,role) VALUES ('Ben','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
+INSERT INTO users (username,password_hash,role) VALUES ('Rory','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
+INSERT INTO users (username,password_hash,role) VALUES ('Gary','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
+INSERT INTO users (username,password_hash,role) VALUES ('John','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
+INSERT INTO users (username,password_hash,role) VALUES ('Walter','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
+INSERT INTO users (username,password_hash,role) VALUES ('Jordan','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
+INSERT INTO users (username,password_hash,role) VALUES ('Rickey','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
+INSERT INTO users (username,password_hash,role) VALUES ('Bubba','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
+INSERT INTO users (username,password_hash,role) VALUES ('Ernie','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
+INSERT INTO users (username,password_hash,role) VALUES ('Zach','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
+INSERT INTO users (username,password_hash,role) VALUES ('Brian','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
+INSERT INTO users (username,password_hash,role) VALUES ('Gavin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
+INSERT INTO users (username,password_hash,role) VALUES ('Andrew','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
+INSERT INTO users (username,password_hash,role) VALUES ('Harry','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
+INSERT INTO users (username,password_hash,role) VALUES ('Darth','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 
 
 INSERT INTO courses ( course_name, course_par, course_length, lat, lng, address, city, state, zip )
@@ -125,11 +143,73 @@ INSERT INTO courses ( course_name, course_par, course_length, lat, lng, address,
 	VALUES ('Shaker Run Golf Club', 72, 6070, '39.45399919680888' ,' -84.29617164014978', '1320 Golf Club Dr', 'Lebanon', 'OH', '45036' );
 INSERT INTO courses ( course_name, course_par, course_length, lat, lng, address, city, state, zip )	
 	VALUES ('Pebble Beach Golf Links', 72, 6094, '36.56982404634914' ,' -121.94966420217276', '1700 17-Mile Dr', 'Pebble Beach', 'CA', '93953' );
-INSERT INTO leagues (league_id, league_name, league_admin, league_course, day_of_week, active) VALUES (0, 'Test', 1, 0, 'Friday', true);
-INSERT INTO user_league (user_id, league_id) VALUES (1,0);
 
-INSERT INTO tee_times (tee_time_date, tee_time)
-    VALUES ('20211230', '3:15');
+INSERT INTO leagues (league_id, league_name, league_admin, league_course, day_of_week, active) VALUES (0, 'Senior Sundays', 1, 1, 'Sunday', true);
+INSERT INTO leagues (league_id, league_name, league_admin, league_course, day_of_week, active) VALUES (1, 'Bro league', 2, 2, 'Friday', true);
+INSERT INTO leagues (league_id, league_name, league_admin, league_course, day_of_week, active) VALUES (2, 'The Semi Semi Pros', 3, 3, 'Thursday', true);
+INSERT INTO leagues (league_id, league_name, league_admin, league_course, day_of_week, active) VALUES (3, 'Ladies Only', 4, 4, 'Wednesday', true);
+INSERT INTO leagues (league_id, league_name, league_admin, league_course, day_of_week, active) VALUES (4, 'Bobs League', 5, 5, 'Tuesday', true);
+INSERT INTO leagues (league_id, league_name, league_admin, league_course, day_of_week, active) VALUES (5, 'The Rookies', 6, 6, 'Saturday', true);
+
+INSERT INTO user_league (user_id, league_id) VALUES (20,0);
+INSERT INTO user_league (user_id, league_id) VALUES (19,0);
+INSERT INTO user_league (user_id, league_id) VALUES (2,0);
+INSERT INTO user_league (user_id, league_id) VALUES (3,0);
+INSERT INTO user_league (user_id, league_id) VALUES (4,0);
+INSERT INTO user_league (user_id, league_id) VALUES (5,0);
+INSERT INTO user_league (user_id, league_id) VALUES (6,1);
+INSERT INTO user_league (user_id, league_id) VALUES (7,1);
+INSERT INTO user_league (user_id, league_id) VALUES (8,1);
+INSERT INTO user_league (user_id, league_id) VALUES (9,1);
+INSERT INTO user_league (user_id, league_id) VALUES (10,1);
+INSERT INTO user_league (user_id, league_id) VALUES (11,2);
+INSERT INTO user_league (user_id, league_id) VALUES (12,2);
+INSERT INTO user_league (user_id, league_id) VALUES (13,2);
+INSERT INTO user_league (user_id, league_id) VALUES (14,2);
+INSERT INTO user_league (user_id, league_id) VALUES (15,2);
+INSERT INTO user_league (user_id, league_id) VALUES (16,3);
+INSERT INTO user_league (user_id, league_id) VALUES (17,3);
+INSERT INTO user_league (user_id, league_id) VALUES (18,3);
+INSERT INTO user_league (user_id, league_id) VALUES (19,3);
+INSERT INTO user_league (user_id, league_id) VALUES (20,3);
+INSERT INTO user_league (user_id, league_id) VALUES (1,4);
+INSERT INTO user_league (user_id, league_id) VALUES (2,4);
+INSERT INTO user_league (user_id, league_id) VALUES (3,4);
+INSERT INTO user_league (user_id, league_id) VALUES (4,4);
+INSERT INTO user_league (user_id, league_id) VALUES (5,5);
+INSERT INTO user_league (user_id, league_id) VALUES (6,5);
+INSERT INTO user_league (user_id, league_id) VALUES (7,5);
+INSERT INTO user_league (user_id, league_id) VALUES (8,5);
+INSERT INTO user_league (user_id, league_id) VALUES (9,5);
+
+INSERT INTO tee_times (tee_time_id, tee_time_date, tee_time)
+    VALUES (0, '12-16-2021', '7:15am');
+INSERT INTO tee_times (tee_time_id, tee_time_date, tee_time)
+    VALUES (1, '12-16-2021', '8:00am');
+INSERT INTO tee_times (tee_time_id, tee_time_date, tee_time)
+    VALUES (2, '12-16-2021', '8:25am');
+INSERT INTO tee_times (tee_time_id, tee_time_date, tee_time)
+    VALUES (3, '12-16-2021', '8:45am');
+INSERT INTO tee_times (tee_time_id, tee_time_date, tee_time)
+    VALUES (4, '12-16-2021', '9:10am');
+INSERT INTO tee_times (tee_time_id, tee_time_date, tee_time)
+    VALUES (5, '12-17-2021', '7:25am');
+INSERT INTO tee_times (tee_time_id, tee_time_date, tee_time)
+    VALUES (6, '12-17-2021', '7:50am');
+INSERT INTO tee_times (tee_time_id, tee_time_date, tee_time)
+    VALUES (7, '12-17-2021', '8:05am');
+INSERT INTO tee_times (tee_time_id, tee_time_date, tee_time)
+    VALUES (8, '12-17-2021', '8:35am');
+INSERT INTO tee_times (tee_time_id, tee_time_date, tee_time)
+    VALUES (9, '12-17-2021', '8:50am');
+INSERT INTO tee_times (tee_time_id, tee_time_date, tee_time)
+    VALUES (10, '12-18-2021', '7:15am');
+INSERT INTO tee_times (tee_time_id, tee_time_date, tee_time)
+    VALUES (11, '12-18-2021', '7:35am');
+INSERT INTO tee_times (tee_time_id, tee_time_date, tee_time)
+    VALUES (12, '12-18-2021', '8:00am');
+INSERT INTO tee_times (tee_time_id, tee_time_date, tee_time)
+    VALUES (13, '12-18-2021', '8:35am');
 
 INSERT INTO user_tee_time_score (user_id, tee_time_id, score)
     VALUES (1, 0, 72);

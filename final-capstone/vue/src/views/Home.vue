@@ -67,7 +67,6 @@ export default {
         this.leagues = response.data;
       }
     });
-
     let teeTimePromise = TeeTimeService.getTeeTimeByUser(
       this.$store.state.user.id
     );

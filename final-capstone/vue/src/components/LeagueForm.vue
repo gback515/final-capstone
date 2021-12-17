@@ -83,7 +83,7 @@ export default {
         },
       ],
       league: {
-        leagueId: 0,
+        leagueId: 1,
         leagueName: "",
         leagueAdmin: this.$store.state.user.id,
         leagueCourse: 0,
