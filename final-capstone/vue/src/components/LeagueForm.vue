@@ -190,7 +190,7 @@ export default {
 
 h1 {
   display: flex;
-  justify-content: ;
+  /* justify-content: ; */
   margin-left: 18%;
   margin-bottom: 0;
 }

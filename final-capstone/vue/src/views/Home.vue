@@ -88,7 +88,7 @@ export default {
 </script>
 <style>
 .home {
-  height: 70vh;
+  height: 80vh;
   margin-top: 5%;
   margin-left: 23%;
   padding: 5%;
