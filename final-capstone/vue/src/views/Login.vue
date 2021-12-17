@@ -15,7 +15,7 @@
       <label for="username" class="u-label">Username</label>
       <input
         type="text"
-        id="username"
+        id="name"
         class="form-control"
         placeholder="Username"
         v-model="user.username"
@@ -31,7 +31,7 @@
         v-model="user.password"
         required
       />
-      <router-link :to="{ name: 'register' }" id="create"
+      <router-link style="text-decoration: none; color: inherit" :to="{ name: 'register' }" id="register"
         >Need an account?</router-link
       >
       <button type="submit" id="submit">Sign in</button>
@@ -81,8 +81,10 @@ export default {
   grid-area: header-ga;
 }
 
-#username {
+#name {
   grid-area: username-ga;
+  background-color: white;
+  border: black 2px solid;
 }
 
 .u-label {
@@ -95,23 +97,38 @@ export default {
 
 #password {
   grid-area: password-ga;
+  border-radius: 5px;
 }
 
-#create {
+#register {
+  background-color: rgb(255, 168, 168);
+  border: solid black 1px;
+  margin-top: 5%;
+  padding: 1%;
+  width: 50%;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  justify-self: center;
   grid-area: create-ga;
+}
+
+#register:hover {
+  background-color: rgb(250, 137, 137);
 }
 
 #submit {
   grid-area: submit-ga;
+  width: 50%;
 }
 .form-signin {
-  width: 50%;
+  width: 100%;
   font-size: 1.5rem;
-  justify-content: center;
   display: grid;
   width: auto;
   margin-top: 30%;
-  display: inline;
+  grid-template-columns: 1fr 1fr;
   grid-template-areas:
     "header-ga   header-ga"
     "u-label-ga  username-ga"
