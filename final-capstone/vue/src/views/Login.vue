@@ -84,26 +84,29 @@ export default {
 #name {
   grid-area: username-ga;
   background-color: white;
-  border: black 2px solid;
+  border: grey 2px inset;
 }
 
 .u-label {
   grid-area: u-label-ga;
+  justify-self: flex-end;
+  margin-right: 6%;
 }
 
 .p-label {
   grid-area: p-label-ga;
+  justify-self: flex-end;
+  margin-right: 6%;
 }
 
 #password {
   grid-area: password-ga;
-  border-radius: 5px;
+  border-radius: 3px;
 }
 
 #register {
   background-color: rgb(255, 168, 168);
   border: solid black 1px;
-  margin-top: 5%;
   padding: 1%;
   width: 50%;
   text-align: center;
@@ -127,7 +130,7 @@ export default {
   font-size: 1.5rem;
   display: grid;
   width: auto;
-  margin-top: 30%;
+  grid-row-gap: 2%;
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
     "header-ga   header-ga"

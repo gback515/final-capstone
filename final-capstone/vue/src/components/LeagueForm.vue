@@ -1,10 +1,11 @@
 <template>
   <form v-on:submit.prevent="submitLeague" class="league-form">
     <h1>Create New League</h1>
+    <div id="input-box">
     <div class="form-group">
       <label for="name">League Name</label>
       <input
-        id="name"
+        id="league-name"
         type="text"
         class="form-control"
         v-model="league.leagueName"
@@ -43,6 +44,7 @@
         <option value="Friday">Friday</option>
         <option value="Saturday">Saturday</option>
       </select>
+    </div>
     </div>
     <div class="buttons">
       <button class="btn btn-submit">Submit</button>
@@ -148,9 +150,15 @@ export default {
   padding: 5px;
   border-radius: 30px;
   width: 50%;
-  height: 75%;
+  height: 80%;
   box-sizing: border-box;
   resize: both;
+}
+
+#input-box {
+  height: 100%;
+  margin-bottom: 10%;
+  margin-top: 0%;
 }
 
 .link {
@@ -177,11 +185,7 @@ h1 {
 
 .form-group {
   display: flex;
-  flex: 50%;
-  flex-shrink: unset;
-  flex-wrap: wrap;
-  margin: 5% 10% 0% 5%;
-  padding-bottom: 5px;
+  margin: 5% 10% 10% 5%;
   width: 70%;
   justify-content: space-around;
   justify-items: center;

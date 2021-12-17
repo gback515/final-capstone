@@ -130,7 +130,7 @@ INSERT INTO users (username,password_hash,role) VALUES ('Darth','$2a$08$UkVvwpUL
 
 
 INSERT INTO courses ( course_name, course_par, course_length, lat, lng, address, city, state, zip )
-	VALUES ( 'Top Golf - West Chester', 0, 215, '39.316124235753335' ,'-84.42551718231664', '9568 Water Front Dr', 'West Chester', 'OH', '45069' );
+	VALUES ( 'Hyde Park Country Club', 71, 6449, '39.145647' ,'-84.414353', '3740 Erie Ave', 'Cincinnati', 'OH', '45008' );
 INSERT INTO courses ( course_name, course_par, course_length, lat, lng, address, city, state, zip )
 	VALUES ('Jamaica Run Golf Club', 72, 6094, '39.617206321639166' ,' -84.33192808915973', '8781 Jamaica Rd', 'Germantown', 'OH', '45327' );
 INSERT INTO courses ( course_name, course_par, course_length, lat, lng, address, city, state, zip )	

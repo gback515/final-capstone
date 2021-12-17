@@ -2,7 +2,7 @@
   <div class="useles">
     <form v-on:submit.prevent="submitCourse" class="course-form">
       <h1>Add New Course</h1>
-      <div id="name" class="form-group">
+      <div id="course-name" class="form-group">
         <label for="course-name">Course Name</label>
         <input
           id="couse-name"
