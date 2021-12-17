@@ -5,6 +5,7 @@ import com.techelevator.model.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import com.techelevator.dao.UserDao;
+import com.techelevator.model.AddUserToLeagueDTO;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
@@ -62,7 +63,7 @@ public class LeagueController {
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/league/addUser", method = RequestMethod.POST)
     public long addUserToLeague(@Valid @RequestBody AddUserToLeagueDTO userLeague) {
-            return leagueDao.addUser(userLeague.getUserName(), userLeague.getLeagueId());
+        return leagueDao.addUser(userLeague.getUserName(), userLeague.getLeagueId());
     }
 
     @ResponseStatus(HttpStatus.OK)

@@ -1,8 +1,12 @@
 package com.techelevator.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class AddUserToLeagueDTO {
 
+    @JsonProperty("league_id")
     private long LeagueId;
+    @JsonProperty("userName")
     private String userName;
 
     public long getLeagueId() {

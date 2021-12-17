@@ -22,21 +22,21 @@ CREATE SEQUENCE seq_league_id
   INCREMENT BY 1
   NO MAXVALUE
   MINVALUE 0
+  START WITH 6
   CACHE 1;
 
 CREATE SEQUENCE seq_course_id
   INCREMENT BY 1
   NO MAXVALUE
   MINVALUE 0
-  CACHE 1
-  START WITH 0;
+  CACHE 1;
 
 CREATE SEQUENCE seq_tee_time_id
   INCREMENT BY 1
   NO MAXVALUE
   MINVALUE 0
   CACHE 1
-  START WITH 0;
+  START WITH 14;
 
 
 CREATE TABLE users (
@@ -210,12 +210,6 @@ INSERT INTO tee_times (tee_time_id, tee_time_date, tee_time)
     VALUES (12, '12-18-2021', '8:00am');
 INSERT INTO tee_times (tee_time_id, tee_time_date, tee_time)
     VALUES (13, '12-18-2021', '8:35am');
-
-INSERT INTO user_tee_time_score (user_id, tee_time_id, score)
-    VALUES (1, 0, 72);
-    
-INSERT INTO tee_time_league (tee_time_id, league_id)
-    VALUES (0, 0);
 
 COMMIT TRANSACTION;
 

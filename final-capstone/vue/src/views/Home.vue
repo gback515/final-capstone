@@ -3,9 +3,9 @@
     <h1 id="header">Bogeys & Buddies</h1>
     <h2>Your Recent Scores</h2>
     <ul>
-      <!--<li v-for="score in scores" v-bind:key="score.user.id">
+      <li v-for="score in scores" v-bind:key="score.user_id">
         {{ score.score }}
-      </li> -->
+      </li>
     </ul>
     <h2>League Games</h2>
     <ul>
@@ -16,8 +16,7 @@
     <h2>Tee Times</h2>
     <ul>
       <li v-for="teeTime in teeTimes" v-bind:key="teeTime.tee_time_id">
-        {{ teeTime.tee_time }} at {{ getCourse(teeTime.tee_time_id) }} on
-        {{ teeTime.tee_time_date }}
+        {{ teeTime.tee_time }} on {{ teeTime.tee_time_date }}
       </li>
     </ul>
   </div>
@@ -27,11 +26,12 @@
 import LeagueService from "../services/LeagueService";
 import TeeTimeService from "../services/TeeTimeService";
 import CourseService from "../services/CourseService";
-//import ScoreService from "../services/ScoreService.js";
+import ScoreService from "../services/ScoreService.js";
 export default {
   name: "home",
   data() {
     return {
+      scores: [],
       leagues: [],
       teeTimes: [],
       courses: [],
@@ -75,10 +75,14 @@ export default {
         this.teeTimes = response.data;
       }
     });
-    //let scorePromise = ScoreService.getScoreByUserId(this.$store.state.user.id);
-    //scorePromise.then((response) => {
-    //  this.score = response.data;
-    //});
+
+    ScoreService.getScoreByUserId(this.$store.state.user.id).then(
+      (response) => {
+        if (response.status === 200) {
+          this.scores = response.data;
+        }
+      }
+    );
   },
 };
 </script>

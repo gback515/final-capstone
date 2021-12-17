@@ -30,7 +30,7 @@ export default {
       userRepeated: false,
       userLeague: {
         userName: "",
-        leagueId: this.$router.leagueId,
+        leagueId: this.$route.params.leagueId,
       },
       username: "",
       userId: 0,

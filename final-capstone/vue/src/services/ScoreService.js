@@ -11,7 +11,7 @@ export default {
         return axios.get(`/score/user/${userId}`)
     },
     getScoreByTeeTimeId(teeTimeId) {
-        return axios.get(`/score/${teeTimeId}`)
+        return axios.get(`/score/id/${teeTimeId}`)
     },
     addScoreToTeeTime(teeTimeId) {
         return axios.post(`/create-score/${teeTimeId}`)
