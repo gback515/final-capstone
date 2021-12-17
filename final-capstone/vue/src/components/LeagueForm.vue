@@ -83,11 +83,14 @@ export default {
         },
       ],
       league: {
-        leagueId: 0,
         leagueName: "",
-        leagueAdmin: this.$store.state.user.id,
+        leagueAdmin: parseInt(this.$store.state.user.id),
         leagueCourse: 0,
         dayOfWeek: "",
+      },
+      userDTO: {
+        league_id: 0,
+        user_id: 0,
       },
     };
   },
@@ -105,26 +108,23 @@ export default {
         league_course: parseInt(this.league.leagueCourse),
         day_of_week: this.league.dayOfWeek,
       };
-      if (this.leagueId === 0) {
-        leagueService
-          .addLeague(newLeague)
-          .then((response) => {
-            if (response.status === 201) {
-              this.league.leagueId = response.data;
-              this.addGolfer();
-              this.$router.push(`/league/${this.league.leagueId}`);
-            }
-          })
-          .catch((error) => {
-            this.handleErrorResponse(error, "adding");
-          });
-      }
+      leagueService
+        .addLeague(newLeague)
+        .then((response) => {
+          if (response.status === 201) {
+            this.league.leagueId = response.data;
+            this.addGolfer();
+            this.$router.push(`/league/${this.league.leagueId}`);
+          }
+        })
+        .catch((error) => {
+          this.handleErrorResponse(error, "adding");
+        });
     },
     addGolfer() {
-      leagueService.addUserToLeague(
-        parseInt(this.league.leagueId),
-        parseInt(this.$store.state.user.id)
-      );
+      this.userDTO.league_id = this.league.leagueId;
+      this.userDTO.user_id = this.$store.state.user.id;
+      leagueService.addUserToLeague(this.userDTO);
     },
     cancelForm() {
       this.$router.push("/leagues");

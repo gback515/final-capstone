@@ -30,10 +30,9 @@ public class JdbcTeeTimeDao implements TeeTimeDao {
     @Override
     public List<TeeTime> findTeeTimeByUser(long userId) {
         List<TeeTime> teeTimes = new ArrayList<>();
-        String sql = "SELECT tee_times.tee_time_id, tee_time, tee_time_date FROM tee_times " +
-                "JOIN user_tee_time_score ON user_tee_time_score.tee_time_id = tee_times.tee_time_id  " +
-                "JOIN users ON users.user_id = user_tee_time_score.user_id " +
-                "WHERE users.user_id = ?;";
+        String sql = "SELECT tee_times.tee_time_id, tee_time_date, tee_time FROM tee_times " +
+                "JOIN user_tee_time_score ON user_tee_time_score.tee_time_id = tee_times.tee_time_id " +
+                "WHERE user_tee_time_score.user_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql,userId);
         while (results.next()) {
             TeeTime teeTime = mapRowToTeeTime(results);

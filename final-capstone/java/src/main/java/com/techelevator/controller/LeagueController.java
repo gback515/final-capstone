@@ -61,8 +61,8 @@ public class LeagueController {
 
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/league/addUser", method = RequestMethod.POST)
-    public void addUserToLeague(@Valid @RequestBody AddUserToLeagueDTO userLeague) {
-            leagueDao.addUser(userLeague.getUserName(), userLeague.getLeagueId());
+    public void addUserToLeague(@Valid @RequestBody AddUserToLeagueDTO userDTO) {
+            leagueDao.addUser(userDTO.getUserId(), userDTO.getLeagueId());
     }
 
     @ResponseStatus(HttpStatus.OK)

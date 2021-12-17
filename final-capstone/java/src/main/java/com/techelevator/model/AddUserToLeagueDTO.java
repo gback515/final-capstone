@@ -1,9 +1,13 @@
 package com.techelevator.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class AddUserToLeagueDTO {
 
+    @JsonProperty("league_id")
     private long LeagueId;
-    private String userName;
+    @JsonProperty("user_id")
+    private long userId;
 
     public long getLeagueId() {
         return LeagueId;
@@ -13,11 +17,11 @@ public class AddUserToLeagueDTO {
         LeagueId = leagueId;
     }
 
-    public String getUserName() {
-        return userName;
+    public long getUserId() {
+        return userId;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 }
