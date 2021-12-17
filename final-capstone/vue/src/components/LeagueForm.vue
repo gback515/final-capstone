@@ -112,26 +112,23 @@ export default {
         league_course: parseInt(this.league.leagueCourse),
         day_of_week: this.league.dayOfWeek,
       };
-      leagueService
-        .addLeague(newLeague)
-        .then((response) => {
-          if (response.status === 201) {
-            this.league.leagueId = response.data;
-            this.addGolfer();
-            this.$router.push(`/league/${this.league.leagueId}`);
-          }
-        })
+      leagueService.addLeague(newLeague).then((response) => {
+        if (response.status === 201) {
+          this.league.leagueId = response.data;
+          this.addGolfer();
+          this.$router.push(`/league/${this.league.leagueId}`);
+        }
+      });
     },
     addGolfer() {
       this.userLeague.userName = this.$store.state.user.username;
       this.userLeague.leagueId = this.league.leagueId;
-      leagueService.addUserToLeague(this.userLeague)
-      .then((response) => {
+      leagueService.addUserToLeague(this.userLeague).then((response) => {
         if (response.status === 201) {
           this.userId = response.data;
           location.reload();
         }
-      })
+      });
     },
     cancelForm() {
       this.$router.push("/leagues");
@@ -140,9 +137,12 @@ export default {
 };
 </script>
 
+
+
 <style scoped>
 .league-form {
   display: flex;
+  justify-content: space-evenly;
   flex-direction: column;
   margin-left: 16%;
   margin-top: 5%;
@@ -150,19 +150,31 @@ export default {
   padding: 5px;
   border-radius: 30px;
   width: 50%;
-  height: 80%;
+  height: 85%;
   box-sizing: border-box;
   resize: both;
 }
 
-#input-box {
-  height: 100%;
-  margin-bottom: 10%;
-  margin-top: 0%;
+.form-group {
+  display: flex;
+  flex-shrink: 1;
+}
+
+.buttons {
+  display: flex;
+  align-self: flex-end;
+  flex-direction: column;
+  flex-shrink: 2;
+  align-items: flex-end;
+  color: white;
+  text-align: center;
+  font-weight: bold;
 }
 
 .link {
-  margin: 0% 32% 2%;
+  display: flex;
+  flex-shrink: 2;
+  align-content: center;
   background-color: rgba(160, 141, 116, 0.8);
   border: black 1px solid;
   padding: 15px 20px;
@@ -170,7 +182,7 @@ export default {
   font-size: 16px;
   border-radius: 10px;
   font-weight: bold;
-  width: 30%;
+  width: 10%;
 }
 
 .link:hover {
@@ -179,16 +191,10 @@ export default {
 }
 
 h1 {
+  display: flex;
+  /* justify-content: ; */
   margin-left: 18%;
   margin-bottom: 0;
-}
-
-.form-group {
-  display: flex;
-  margin: 5% 10% 10% 5%;
-  width: 70%;
-  justify-content: space-around;
-  justify-items: center;
 }
 
 input[type="text"] {
@@ -220,27 +226,6 @@ select {
   color: white;
   border-radius: 3px;
   width: 200px;
-}
-
-.buttons {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.btn {
-  display: flex;
-  justify-content: center;
-  margin: 3% 10% 2%;
-  width: 30%;
-  background-color: rgba(160, 141, 116, 0.8);
-  border: black 1px solid;
-  color: white;
-  padding: 15px 20px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;
-  border-radius: 10px;
-  font-weight: bold;
 }
 
 .btn:hover {

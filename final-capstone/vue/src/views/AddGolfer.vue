@@ -1,6 +1,6 @@
 <template>
   <form ref="anyName" v-on:submit.prevent="submitGolfer" class="golfer-form">
-    <div  id="user-not-found" v-if="userNotFound">
+    <div id="user-not-found" v-if="userNotFound">
       <strong>Username Not Found!</strong>
     </div>
     <div id="user-repeated" v-if="userRepeated">
@@ -12,7 +12,10 @@
         id="username"
         type="text"
         class="form-username"
-        v-on:click="userNotFound = false; userRepeated = false"
+        v-on:click="
+          userNotFound = false;
+          userRepeated = false;
+        "
         v-model="userLeague.userName"
       />
     </div>
@@ -40,22 +43,24 @@ export default {
 
   methods: {
     submitGolfer() {
-      leagueService.addUserToLeague(
-        this.userLeague
-      ).then((response) => {
-        if (response.status === 200) {
-          this.$refs.anyName.reset();
-        }
-        }).catch((error) => {
+      leagueService
+        .addUserToLeague(this.userLeague)
+        .then((response) => {
+          if (response.status === 200) {
+            this.$refs.anyName.reset();
+            location.reload();
+          }
+        })
+        .catch((error) => {
           const response = error.response;
 
-        if (response.status === 400) {
-          this.userNotFound = true;
-        }
-        if (response.status === 500) {
-          this.userRepeated = true;
-        }
-      })
+          if (response.status === 400) {
+            this.userNotFound = true;
+          }
+          if (response.status === 500) {
+            this.userRepeated = true;
+          }
+        });
     },
   },
 };
