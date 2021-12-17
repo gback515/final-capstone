@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div class="score">
     <h2>Input Final Round Scores</h2>
-    <div>
-      <form v-on:submit.prevent="submitScore" class="score-form">
-        <div id="score">
+    <div class="score">
+      <form v-on:submit.prevent="submitScore" class="score">
+        <div class="score">
           <label for="score-card">Score: </label>
           <input
             id="score-card"
@@ -12,7 +12,7 @@
             autocomplete="off"
           />
         </div>
-        <div class="buttons">
+        <div class="score">
           <div>
             <button type="submit" class="btn">Submit</button>
           </div>
@@ -77,4 +77,8 @@ export default {
 </script>
 
 <style>
+.score {
+  display: flex;
+  flex-direction: column;
+}
 </style>
