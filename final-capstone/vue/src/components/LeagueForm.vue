@@ -110,26 +110,23 @@ export default {
         league_course: parseInt(this.league.leagueCourse),
         day_of_week: this.league.dayOfWeek,
       };
-      leagueService
-        .addLeague(newLeague)
-        .then((response) => {
-          if (response.status === 201) {
-            this.league.leagueId = response.data;
-            this.addGolfer();
-            this.$router.push(`/league/${this.league.leagueId}`);
-          }
-        })
+      leagueService.addLeague(newLeague).then((response) => {
+        if (response.status === 201) {
+          this.league.leagueId = response.data;
+          this.addGolfer();
+          this.$router.push(`/league/${this.league.leagueId}`);
+        }
+      });
     },
     addGolfer() {
       this.userLeague.userName = this.$store.state.user.username;
       this.userLeague.leagueId = this.league.leagueId;
-      leagueService.addUserToLeague(this.userLeague)
-      .then((response) => {
+      leagueService.addUserToLeague(this.userLeague).then((response) => {
         if (response.status === 201) {
           this.userId = response.data;
           location.reload();
         }
-      })
+      });
     },
     cancelForm() {
       this.$router.push("/leagues");
@@ -138,9 +135,12 @@ export default {
 };
 </script>
 
+
+
 <style scoped>
 .league-form {
   display: flex;
+  justify-content: space-evenly;
   flex-direction: column;
   margin-left: 16%;
   margin-top: 5%;
@@ -148,13 +148,100 @@ export default {
   padding: 5px;
   border-radius: 30px;
   width: 50%;
-  height: 75%;
+  height: 85%;
   box-sizing: border-box;
   resize: both;
 }
 
+.form-group {
+  display: flex;
+  flex-shrink: 1;
+  /* flex-wrap: wrap;
+  row-gap: 10px;
+  column-gap: 2em;
+ */
+}
+
+.buttons {
+  display: flex;
+  align-self: flex-end;
+  flex-direction: column;
+  flex-shrink: 2;
+  align-items: flex-end;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+}
+
+/*
+ position: relative; 
+margin: 3% 10% 2%;
+  width: 30%;
+   padding: 15px 20px;
+    font-size: 16px;
+  border-radius: 10px; 
+
+.btn-cancel {
+  display: flex;
+  justify-content: center;
+  flex-shrink: 2;
+  background-color: rgba(160, 141, 116, 0.8);
+  border: black 1px solid;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+ 
+}
+
+ margin: 3% 10% 2%;
+  width: 30%;
+   font-size: 16px;
+  border-radius: 10px;
+  font-weight: bold;
+   padding: 15px 20px;
+
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 2;
+  align-items: center;
+  flex-shrink: unset;
+  flex-wrap: wrap;
+  margin: 5% 10% 0% 5%;
+  padding-bottom: 5px;
+  width: 70%;
+  height: 85%;
+  justify-content: space-around;
+  justify-items: center;
+}
+
+
+.btn {
+  display: flex;
+  align-items: flex-end; 
+  justify-content: center;
+  margin: 3% 10% 2%;
+  width: 30%;
+  background-color: rgba(160, 141, 116, 0.8);
+  border: black 1px solid;
+  color: white;
+  padding: 15px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+*/
+
 .link {
-  margin: 0% 32% 2%;
+  display: flex;
+  flex-shrink: 2;
+  align-content: center;
+  /* flex-direction: row; */
+  /* margin: 0% 5% 2%; */
   background-color: rgba(160, 141, 116, 0.8);
   border: black 1px solid;
   padding: 15px 20px;
@@ -162,8 +249,17 @@ export default {
   font-size: 16px;
   border-radius: 10px;
   font-weight: bold;
-  width: 30%;
+  width: 10%;
 }
+
+/* #name {
+  display: flex;
+  width: 
+}
+
+#league-course {
+  display: flex;
+} */
 
 .link:hover {
   background-color: rgb(250, 137, 137);
@@ -171,20 +267,10 @@ export default {
 }
 
 h1 {
+  display: flex;
+  justify-content: ;
   margin-left: 18%;
   margin-bottom: 0;
-}
-
-.form-group {
-  display: flex;
-  flex: 50%;
-  flex-shrink: unset;
-  flex-wrap: wrap;
-  margin: 5% 10% 0% 5%;
-  padding-bottom: 5px;
-  width: 70%;
-  justify-content: space-around;
-  justify-items: center;
 }
 
 input[type="text"] {
@@ -217,27 +303,13 @@ select {
   border-radius: 3px;
   width: 200px;
 }
-
+/* 
 .buttons {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column; 
 }
 
-.btn {
-  display: flex;
-  justify-content: center;
-  margin: 3% 10% 2%;
-  width: 30%;
-  background-color: rgba(160, 141, 116, 0.8);
-  border: black 1px solid;
-  color: white;
-  padding: 15px 20px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;
-  border-radius: 10px;
-  font-weight: bold;
-}
+ */
 
 .btn:hover {
   background-color: rgb(250, 137, 137);
