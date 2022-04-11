@@ -7,9 +7,11 @@
       <p>Day Of Week: {{ league.day_of_week }}</p>
     </div>
     <div class="block" id="member-list">
-      <h3>Members: </h3>
+      <h3>Members:</h3>
       <ul class="list">
-        <li id="members" v-for="member in members" :key="member.id">{{ member.username }}</li>
+        <li id="members" v-for="member in members" :key="member.id">
+          {{ member.username }}
+        </li>
       </ul>
     </div>
     <div class="block" id="tee-time-list">
@@ -77,12 +79,11 @@ export default {
         this.teeTimes = response.data;
       }
     });
-    LeagueService.getMembersByLeague(this.league.leagueId)
-    .then((response) => {
+    LeagueService.getMembersByLeague(this.league.leagueId).then((response) => {
       if (response.status === 200) {
         this.members = response.data;
       }
-    })
+    });
   },
 
   isHidden: true,
@@ -132,10 +133,6 @@ export default {
   margin-top: 5%;
   margin-bottom: 40%;
   grid-area: member-ga;
-}
-
-ul {
-
 }
 
 .list {
